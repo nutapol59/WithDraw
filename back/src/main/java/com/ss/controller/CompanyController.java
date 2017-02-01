@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/companies")
 public class CompanyController {
@@ -35,6 +35,7 @@ public class CompanyController {
 
     @RequestMapping(value = "/addCompany",method = RequestMethod.POST,headers = "Accept=application/json")
     public ResponseEntity<String> addCompany(@RequestBody String json){
+        log.info(">>>>>>>>>>>>>>>>>>>>>ADD COMPANIES<<<<<<<<<<<<<<<<<<<<<<<<<");
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
         String result = this.companyServiceImpl.addCompany(json);
@@ -54,7 +55,7 @@ public class CompanyController {
         return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(this.companyServiceImpl.getCompanies()),headers,HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/updateCompanies",method = RequestMethod.PUT,headers = "Accept=application/json")
+    @RequestMapping(value = "/updateCompany",method = RequestMethod.PUT,headers = "Accept=application/json")
     public ResponseEntity<String> updateCompanies(@RequestBody String json){
         log.info(">>>>>>>>>>>>>>>>>>>>UPDATE COMPANIES<<<<<<<<<<<<<<<<<<<<<<");
         HttpHeaders headers = new HttpHeaders();
