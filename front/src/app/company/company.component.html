@@ -1,0 +1,135 @@
+<div class="container">
+  <div class="row">
+    <button data-toggle="modal" data-target="#modalAdd" class="btn btn-raised btn-default"><i class="fa fa-plus" aria-hidden="true"></i></button>
+  </div>
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6 col-md-offset-3">
+      <table class="table table-striped">
+        <thead>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Active</th>
+          <th>Action</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let company of companies">
+            <td>{{company.code}}</td>
+            <td>{{company.name}}</td>
+            <td>{{company.active}}</td>
+            <td><span><button (click)="deleteCompany(company)" class="btn btn-raised btn-warning">Delete</button></span>
+                <span><button class="btn btn-raised btn-info" 
+                              data-target="#modalUpdate" data-toggle="modal"
+                              (click)="detailModalUpdate(company)">Update</button></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!--Modal AddCompany-->
+<div class="modal fade" id="modalAdd">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="onClear()" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Add Company</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">
+          <div class="row">    
+            <div class="form-group">
+                <label class="col-md-offset-2 col-md-2 control-label" for="nameinput">Code: </label>
+                <div class="col-md-5">
+                    <input  required class="form-control" type="text" 
+                    [(ngModel)]="company.code" #code="ngModel" [ngModelOptions]="{standalone: true}" />
+                     <!--<div [hidden]="name.valid">
+                         Name is required
+                    </div>-->
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+                <label class="col-md-offset-2 col-md-2 control-label" for="lastinput">Name: </label>
+                <div class="col-md-5">
+                    <input #name class="form-control" type="text"
+                    [(ngModel)]="company.name" [ngModelOptions]="{standalone: true}" />
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+                <label class="col-md-offset-2 col-md-2 control-label" for="ageinput">Active: </label>
+                <div class="col-md-5">
+                    <input #active class="form-control" type="text"
+                     [(ngModel)]="company.active" [ngModelOptions]="{standalone: true}" />
+                </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="onClear()" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="addCompany()">Save changes</button>
+      </div>
+      <!--[disabled]="!addCom.form.valid" -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!--Modal UpdateCompany-->
+<div class="modal fade" id="modalUpdate">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Update Company</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">
+          <div class="row">    
+            <div class="form-group">
+                <label class="col-md-offset-2 col-md-2 control-label" for="nameinput">Code: </label>
+                <div class="col-md-5">
+                    <input  required class="form-control" type="text" 
+                    [(ngModel)]="company.code" #code="ngModel" [ngModelOptions]="{standalone: true}" />
+                     <!--<div [hidden]="name.valid">
+                         Name is required
+                    </div>-->
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+                <label class="col-md-offset-2 col-md-2 control-label" for="lastinput">Name: </label>
+                <div class="col-md-5">
+                    <input #name class="form-control" type="text"
+                    [(ngModel)]="company.name" [ngModelOptions]="{standalone: true}" />
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+                <label class="col-md-offset-2 col-md-2 control-label" for="ageinput">Active: </label>
+                <div class="col-md-5">
+                    <input #active class="form-control" type="text"
+                     [(ngModel)]="company.active" [ngModelOptions]="{standalone: true}" />
+                </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="updateCompany(company)">Save changes</button>
+      </div>
+      <!--[disabled]="!addCom.form.valid" -->
+    </div>
+  </div>
+</div>
