@@ -13,6 +13,7 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class AppRole extends BaseEntity {
 

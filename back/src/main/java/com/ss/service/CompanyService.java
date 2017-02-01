@@ -1,9 +1,16 @@
 package com.ss.service;
 
 import com.ss.domain.Company;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-public interface CompanyService extends CrudRepository<Company,Long> {
+import java.util.List;
 
-    
+
+public interface CompanyService  {
+    List<Company> getCompanies();
+    String addCompany(String json);
+    String updateCompany(String json);
+    String deleteCompany(Long id);
+
 }

@@ -14,11 +14,14 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Company extends BaseEntity {
 
     @OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "company")
     private Set<Department> departments;
+
+
 
 }

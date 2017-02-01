@@ -16,21 +16,21 @@ import javax.persistence.*;
 @MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
-public class BaseEntity {
+public abstract class BaseEntity {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Long id;
+    protected Long id;
 
     @Version @JsonIgnore
-    private Long version;
+    protected Long version;
 
     @Column(name = "code")
-    private String code;
+    protected String code;
 
     @Column(name = "name")
-    private String name;
+    protected String name;
 
     @Column(name = "active")
-    private Integer active;
+    protected Integer active;
 }
