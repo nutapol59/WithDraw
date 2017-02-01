@@ -15,6 +15,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Customer extends BaseEntity {
 

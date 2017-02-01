@@ -14,7 +14,6 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
-
 @Entity
 public class Bank extends BaseEntity {
 

@@ -12,6 +12,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Department extends BaseEntity {
 

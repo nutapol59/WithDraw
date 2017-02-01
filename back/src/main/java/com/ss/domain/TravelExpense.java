@@ -13,7 +13,7 @@ import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-
+@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class TravelExpense extends DocumentMaster{
