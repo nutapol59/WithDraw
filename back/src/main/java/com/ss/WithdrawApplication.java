@@ -10,9 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@EnableWebMvc
+
 @SpringBootApplication
-@CrossOrigin(origins = "http://localhost:3000")
 public class WithdrawApplication {
 	private static final Logger log = LoggerFactory.getLogger(WithdrawApplication.class);
 

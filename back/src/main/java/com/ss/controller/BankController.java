@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/banks")
 public class BankController {
@@ -33,7 +33,7 @@ public class BankController {
         return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(this.bankServiceImpl.getBanks()),headers, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/addBank",method = RequestMethod.GET,headers = "Accept=application/json")
+    @RequestMapping(value = "/addBank",method = RequestMethod.POST,headers = "Accept=application/json")
     public ResponseEntity<String> addCompany(@RequestBody String json){
         log.info(">>>>>>>>>>>>>>>>>>>>>ADD BANKS<<<<<<<<<<<<<<<<<<<<<<<<<");
         HttpHeaders headers = new HttpHeaders();

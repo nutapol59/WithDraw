@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" routerLink='/' 
-                              routerLinkActive='active' >WithDraw</a>
+                              routerLinkActive='active' >TRAVEL EXPENSE</a>
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
@@ -17,12 +17,14 @@
           <ul class="dropdown-menu">
             <li><a href="javascript:void(0)">AppMenu</a></li>
             <li><a href="javascript:void(0)">AppRole</a></li>
-            <li><a href="javascript:void(0)">AppUser</a></li>
+            <li><a routerLink='appUsers'
+                   routerLinkActive='active'>AppUser</a></li>
             <li><a href="javascript:void(0)">Bank</a></li>
             <li><a routerLink='/companies' 
                    routerLinkActive='active'  >Company</a></li>
             <li><a href="javascript:void(0)">Customer</a></li>
-            <li><a href="javascript:void(0)">Department</a></li>
+            <li><a routerLink='/departments' 
+                   routerLinkActive='active'>Department</a></li>
           </ul>
         </li>
       </ul>

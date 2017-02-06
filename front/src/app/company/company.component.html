@@ -1,26 +1,28 @@
 <div class="container">
   <div class="row">
-    <button data-toggle="modal" data-target="#modalAdd" class="btn btn-raised btn-default"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    <button (click)="setIntitialOfActive()" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#modalAdd" class="btn btn-raised btn-default"><i class="fa fa-plus" aria-hidden="true"></i></button>
   </div>
+
   <div class="row">
-    <div class="col-md-offset-3 col-md-6 col-md-offset-3">
+    <div class="col-md-12">
       <table class="table table-striped">
         <thead>
+          <th>Action</th>
           <th>Code</th>
           <th>Name</th>
           <th>Active</th>
-          <th>Action</th>
         </thead>
         <tbody>
           <tr *ngFor="let company of companies">
+            <td><button (click)="deleteCompany(company)" class="btn btnEdit btn-raised btn-danger"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
+                <button class="btn btnEdit btn-raised btn-info" data-backdrop="static" data-keyboard="false" 
+                              data-target="#modalUpdate" data-toggle="modal"
+                              (click)="detailModalUpdate(company)"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></button>
+            </td>
             <td>{{company.code}}</td>
             <td>{{company.name}}</td>
             <td>{{company.active}}</td>
-            <td><span><button (click)="deleteCompany(company)" class="btn btn-raised btn-warning">Delete</button></span>
-                <span><button class="btn btn-raised btn-info" 
-                              data-target="#modalUpdate" data-toggle="modal"
-                              (click)="detailModalUpdate(company)">Update</button></span>
-            </td>
+            
           </tr>
         </tbody>
       </table>
@@ -62,10 +64,18 @@
           <div class="row">
             <div class="form-group">
                 <label class="col-md-offset-2 col-md-2 control-label" for="ageinput">Active: </label>
-                <div class="col-md-5">
-                    <input #active class="form-control" type="text"
-                     [(ngModel)]="company.active" [ngModelOptions]="{standalone: true}" />
+                <div class="togglebutton col-md-5">
+                  <label>
+                    <input  #active type="checkbox" (change)="onCheckBox($event)" 
+                    [(ngModel)]="company.active" [ngModelOptions]="{standalone: true}" />
+                  </label>
                 </div>
+                <!--<div *ngIf="company.active" class="togglebutton col-md-5">
+                  <label>
+                    <input  #active type="checkbox" (change)="onCheckBox($event)" checked 
+                    [(ngModel)]="company.active" [ngModelOptions]="{standalone: true}" />
+                  </label>
+                </div>-->
             </div>
           </div>
         </form>
@@ -88,17 +98,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <button type="button" (click)="onClearUpdate(code,name,active)"  class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h4 class="modal-title">Update Company</h4>
       </div>
       <div class="modal-body">
         <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">
           <div class="row">    
             <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label" for="nameinput">Code: </label>
+                <label class="col-md-offset-2 col-md-2 control-label">Code: </label>
                 <div class="col-md-5">
-                    <input  required class="form-control" type="text" 
-                    [(ngModel)]="company.code" #code="ngModel" [ngModelOptions]="{standalone: true}" />
+                    <input #code required class="form-control" type="text" 
+                    [value]="companyUpdate.code"/>
                      <!--<div [hidden]="name.valid">
                          Name is required
                     </div>-->
@@ -107,27 +117,33 @@
           </div>
           <div class="row">
             <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label" for="lastinput">Name: </label>
+                <label class="col-md-offset-2 col-md-2 control-label">Name: </label>
                 <div class="col-md-5">
                     <input #name class="form-control" type="text"
-                    [(ngModel)]="company.name" [ngModelOptions]="{standalone: true}" />
+                    [value]="companyUpdate.name"/>
                 </div>
             </div>
           </div>
           <div class="row">
             <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label" for="ageinput">Active: </label>
-                <div class="col-md-5">
-                    <input #active class="form-control" type="text"
-                     [(ngModel)]="company.active" [ngModelOptions]="{standalone: true}" />
+                <label  class="col-md-offset-2 col-md-2 control-label">Active: </label>
+                <div class="togglebutton col-md-5">
+                  <label>
+                    <input id="activeinput" #active type="checkbox" (change)="onCheckBoxUpdate($event)"
+                    [value]="companyUpdate.active"/>
+                  </label>
                 </div>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="updateCompany(company)">Save changes</button>
+        <!--<button  type="button" class="btn btn-default" data-dismiss="modal" (click)="onClearUpdate(code,name,active0)" >Close</button>-->
+        <!--<button *ngIf="checkCompanyUpdate == true" type="button" class="btn btn-default" data-dismiss="modal" (click)="onClearUpdate(code,name,active1)" >Close</button>-->
+        <button  type="button" class="btn btn-default" data-dismiss="modal" (change)="onClearUpdate(code,name,active)" >Close</button>
+
+        <button  type="submit" class="btn btn-primary" data-dismiss="modal" (click)="updateCompany(code,name,active)">Save changes</button>
+        <!--<button *ngIf="checkCompanyUpdate == false" type="submit" class="btn btn-primary" data-dismiss="modal" (click)="updateCompany(code,name,active0)">Save changes</button>-->
       </div>
       <!--[disabled]="!addCom.form.valid" -->
     </div>

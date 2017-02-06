@@ -27,16 +27,9 @@ export class CompanyService {
      return this._http.get('http://localhost:8080/companies/getCompanies',{
        headers : headers
      })
-         .map(res => {
-            // If request fails, throw an Error that will be caught
-            if(res.status < 200 || res.status >= 300) {
-               throw new Error('This request has failed ' + res.status);
-            }
-            // If everything went fine, return the response
-            else {
-               return <Company[]>res.json();
-            }
-         })
+         .map(res => <Company[]>res.json())
+         .catch((error:Response) => Observable.throw(error.text()))
+           
    }
 
     addCompany(code:string,name:string,active:number){
@@ -48,13 +41,19 @@ export class CompanyService {
             {
                 headers: headers
             })
-            .map(res => res.json());
+            .map(res => res.json())
+            .catch((error:Response) => Observable.throw(error.text()))
+            
     }
 
     deleteCompany(id:number){
         return this._http.delete('http://localhost:8080/companies/deleteCompany/'+id)
-                        .map(res => res.text())
+                        .map(res =>res.json())
+                        .catch((error:Response) => Observable.throw(error.text()))
     }
+
+
+  
 
     updateCompany(company:Company){
         var json = JSON.stringify(company);
@@ -65,7 +64,8 @@ export class CompanyService {
             {
                 headers: headers
             })
-            .map(res => res.json());
+            .map(res => res.json())
+            .catch((error:Response) => Observable.throw(error.text()))
 
     }
 }

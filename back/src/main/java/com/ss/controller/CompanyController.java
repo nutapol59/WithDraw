@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -51,8 +52,20 @@ public class CompanyController {
         log.info(">>>>>>>>>>>>>>>>>>>>>GET COMPANIES<<<<<<<<<<<<<<<<<<<<<<<<<");
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
-        log.debug("{}",this.companyServiceImpl.getCompanies());
-        return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(this.companyServiceImpl.getCompanies()),headers,HttpStatus.OK);
+        List<Company> list = new ArrayList<>();
+        try {
+            log.info("---------------------------------------------------");
+           list =  this.companyServiceImpl.getCompanies();
+            log.info("{}",list);
+            log.info("---------------------end Contoller Companies------------------------------");
+            return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(list),headers,HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(e),headers,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+
+
     }
 
     @RequestMapping(value = "/updateCompany",method = RequestMethod.PUT,headers = "Accept=application/json")
@@ -60,11 +73,19 @@ public class CompanyController {
         log.info(">>>>>>>>>>>>>>>>>>>>UPDATE COMPANIES<<<<<<<<<<<<<<<<<<<<<<");
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
-        String result = this.companyServiceImpl.updateCompany(json);
-        if(result.equals("Update Success")){
-            return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(result), headers, HttpStatus.OK);
-        }else
-            return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(result), headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        String result;
+
+        try{
+            result = this.companyServiceImpl.updateCompany(json);
+            if(result.equals("Update Success")){
+                return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(result), headers, HttpStatus.OK);
+            }else
+                return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(result), headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(e), headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
 
     }
     @RequestMapping(value = "/deleteCompany/{id}",method = RequestMethod.DELETE,headers = "Accept=application/json")
@@ -72,12 +93,21 @@ public class CompanyController {
         log.info(">>>>>>>>>>>>>>>>>>>>DELETE COMPANIES<<<<<<<<<<<<<<<<<<<<<<");
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
-        String result = this.companyServiceImpl.deleteCompany(id);
-        if(result.equals("Delete Success")){
-            return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(result),headers, HttpStatus.OK);
-        }else {
-            return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(result),headers, HttpStatus.CONFLICT);
+        String result;
+        try{
+            result = this.companyServiceImpl.deleteCompany(id);
+            log.info("result= {}",result.equalsIgnoreCase("Delete Success"));
+            if(result.equalsIgnoreCase("Delete Success")){
+
+                return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(result),headers, HttpStatus.OK);
+            }else {
+                return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(result),headers, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(e),headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
 
     }
 
@@ -85,13 +115,27 @@ public class CompanyController {
     public ResponseEntity<String> addCompanyByParam(@RequestParam String code,@RequestParam String name,@RequestParam Integer active){
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
-        Company company = new Company(null);
+        Company company = new Company();
         company.setActive(active);
         company.setCode(code);
         company.setName(name);
         this.companyRepository.save(company);
 
         return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize("save success"), headers, HttpStatus.CREATED);
+
+    }
+
+    @RequestMapping(value = "/test",method = RequestMethod.GET,headers = "Accept=application/json")
+    public ResponseEntity<String> test(){
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        Company company = this.companyRepository.findOne(3L);
+        log.debug("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n\n\n\n\n");
+        log.debug("{}",company);
+
+
+
+        return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(company.getName()+company.getId()), headers, HttpStatus.OK);
 
     }
 
