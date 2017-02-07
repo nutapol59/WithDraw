@@ -1,7 +1,6 @@
 package com.ss.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -76,17 +75,17 @@ public class AppUser implements Serializable {
         sb.append("ldapusername: ");sb.append(this.getLdapUserName());sb.append(", ");
         sb.append("password: ");sb.append(this.getPassword());sb.append(",\n");
 
-        if (!appUserRole.isEmpty()){
-            for(AppUserRole apur:appUserRole){
-                sb.append("\tAppUserRole:[");
-                sb.append("id: ");sb.append(apur.getId());sb.append(", ");
-                sb.append("version: "); sb.append(apur.getVersion());  sb.append(", ");
-                sb.append("code: ");sb.append(apur.getCode());sb.append(", ");
-                sb.append("name: "); sb.append(apur.getName());sb.append(", ");
-                sb.append("active: ");sb.append(apur.getActive());sb.append("]\n");
-
-            }
-        }
+//        if (!appUserRole.isEmpty()){
+//            for(AppUserRole apur:appUserRole){
+//                sb.append("\tAppUserRole:[");
+//                sb.append("id: ");sb.append(apur.getId());sb.append(", ");
+//                sb.append("version: "); sb.append(apur.getVersion());  sb.append(", ");
+//                sb.append("code: ");sb.append(apur.getCode());sb.append(", ");
+//                sb.append("name: "); sb.append(apur.getName());sb.append(", ");
+//                sb.append("active: ");sb.append(apur.getActive());sb.append("]\n");
+//
+//            }
+//        }
 
         sb.append("\tDepartment: [");
         sb.append("id: ");sb.append(department.getId());sb.append(", ");

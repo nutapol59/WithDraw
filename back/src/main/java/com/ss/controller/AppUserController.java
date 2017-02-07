@@ -36,8 +36,32 @@ public class AppUserController {
 
             list =  this.appUserServiceImpl.getAppUsers();
             log.info("{}",list);
-
-            return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(list),headers,HttpStatus.OK);
+//            log.info("log JSON SERIALIZE = {}",new JSONSerializer().exclude("*.class").deepSerialize(list));
+            return new ResponseEntity<>(new JSONSerializer()
+                    .include("id")
+                    .include("version")
+                    .include("empCode")
+                    .include("empName")
+                    .include("empLastName")
+                    .include("empAddress")
+                    .include("personalId")
+                    .include("tel")
+                    .include("email")
+                    .include("ldapUserName")
+                    .include("password")
+                    .include("appUserRole")
+                    .include("company.id")
+                    .include("company.version")
+                    .include("company.code")
+                    .include("company.name")
+                    .include("company.active")
+                    .include("department.id")
+                    .include("department.version")
+                    .include("department.code")
+                    .include("department.name")
+                    .include("department.active")
+                    .exclude("*")
+                    .deepSerialize(list),headers,HttpStatus.OK);
         }catch (Exception e){
             e.printStackTrace();
             return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(e),headers,HttpStatus.INTERNAL_SERVER_ERROR);
