@@ -28,9 +28,15 @@ public class BankController {
         log.info("=====================GET BANKS=====================");
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
-        log.debug("{}",this.bankServiceImpl.getBanks());
+        try{
+            log.debug("{}",this.bankServiceImpl.getBanks());
 
-        return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(this.bankServiceImpl.getBanks()),headers, HttpStatus.OK);
+            return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(this.bankServiceImpl.getBanks()),headers, HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(this.bankServiceImpl.getBanks()),headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     @RequestMapping(value = "/addBank",method = RequestMethod.POST,headers = "Accept=application/json")

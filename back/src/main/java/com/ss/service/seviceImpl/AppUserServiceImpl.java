@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,9 +33,11 @@ public class AppUserServiceImpl  implements AppUserService{
 
     @Override
     public List<AppUser> getAppUsers() {
-        List<AppUser> list;
+        List<AppUser> list = new ArrayList<>();
         try {
-            list =  (List<AppUser>)this.appUserRepository.findAll();
+            for(AppUser appUser : this.appUserRepository.findAll()){
+                list.add(appUser);
+            }
             return list;
         }catch (Exception e){
             e.printStackTrace();
