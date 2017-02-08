@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { FormWithDrawComponent } from './form-with-draw.component';
+import { DocumentMasterComponent } from './document-master.component';
 
-describe('FormWithDrawComponent', () => {
-  let component: FormWithDrawComponent;
-  let fixture: ComponentFixture<FormWithDrawComponent>;
+describe('DocumentMasterComponent', () => {
+  let component: DocumentMasterComponent;
+  let fixture: ComponentFixture<DocumentMasterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormWithDrawComponent ]
+      declarations: [ DocumentMasterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormWithDrawComponent);
+    fixture = TestBed.createComponent(DocumentMasterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

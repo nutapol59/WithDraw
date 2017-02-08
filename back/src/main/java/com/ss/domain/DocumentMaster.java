@@ -1,7 +1,6 @@
 package com.ss.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -13,8 +12,8 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
+
 @MappedSuperclass
-@AllArgsConstructor
 public class DocumentMaster {
     @Id
     @GeneratedValue
@@ -37,4 +36,9 @@ public class DocumentMaster {
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss.SSS")
     @Column
     private Date documentDate;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "approveMapFlow")
+    private ApproveMapFlow approveMapFlow;
+
 }

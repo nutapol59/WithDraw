@@ -63,9 +63,6 @@ public class CompanyController {
             e.printStackTrace();
             return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(e),headers,HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
-
-
     }
 
     @RequestMapping(value = "/updateCompany",method = RequestMethod.PUT,headers = "Accept=application/json")
