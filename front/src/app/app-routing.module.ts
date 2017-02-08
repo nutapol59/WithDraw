@@ -7,18 +7,18 @@ import { DepartmentComponent } from './department/department.component';
 import { AppUserComponent } from './app-user/app-user.component';
 import { BankComponent } from './bank/bank.component';
 import { CustomerComponent } from './customer/customer.component';
-
-import { FormWithDrawComponent } from './form-with-draw/form-with-draw.component';
-// import { BankComponent } from './customers/customers.component'
+import { TravelExpenseComponent } from './travel-expense/travel-expense.component'
+import { ListSentApproveComponent } from './list-sent-approve/list-sent-approve.component';
 
 const routes: Routes = [
     // { path: '', redirectTo: '/', pathMatch: 'full' }, //remember / == /dashboard begin openWeb
-  { path: '',  component: FormWithDrawComponent},
+  { path: '',  component: TravelExpenseComponent},
   { path: 'companies', component:CompanyComponent},
   { path: 'departments', component:DepartmentComponent},
   { path: 'appUsers' , component:AppUserComponent },
   { path: 'customers' , component:CustomerComponent },
-  { path: 'banks' , component:BankComponent }
+  { path: 'banks' , component:BankComponent },
+  { path: 'listSentApprove' , component:ListSentApproveComponent }
 
 
 //   { path: 'detail/:id', component: HeroDetailComponent },

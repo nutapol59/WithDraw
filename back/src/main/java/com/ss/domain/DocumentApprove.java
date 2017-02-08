@@ -28,11 +28,9 @@ public class DocumentApprove {
     @Column
     private Integer sequence;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "approveMapFlow")
-    private ApproveMapFlow approveMapFlow;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "travelExpense")
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "travelExpenseDocApprove")
     private TravelExpense travelExpense;
 }

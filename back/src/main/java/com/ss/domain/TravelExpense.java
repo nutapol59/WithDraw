@@ -9,13 +9,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
+
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
+
 public class TravelExpense extends DocumentMaster{
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss.SSS")
@@ -63,5 +63,59 @@ public class TravelExpense extends DocumentMaster{
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "travelExpense")
     private Set<TravelExpenseDetail> travelExpenseDetails;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "travelExpenseDocApprove")
+    private Set<DocumentApprove> documentApproves;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        TravelExpense that = (TravelExpense) o;
+        return Objects.equals(expenseDate, that.expenseDate) &&
+                Objects.equals(employee, that.employee) &&
+                Objects.equals(company, that.company) &&
+                Objects.equals(department, that.department) &&
+                Objects.equals(comment, that.comment) &&
+                Objects.equals(approvelDate, that.approvelDate) &&
+                Objects.equals(payDate, that.payDate) &&
+                Objects.equals(cash, that.cash) &&
+                Objects.equals(chequeNumber, that.chequeNumber) &&
+                Objects.equals(chequeBank, that.chequeBank) &&
+                Objects.equals(expenseSummary, that.expenseSummary) &&
+                Objects.equals(travelExpenseDetails, that.travelExpenseDetails) &&
+                Objects.equals(documentApproves, that.documentApproves);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), expenseDate, employee, company, department, comment, approvelDate, payDate, cash, chequeNumber, chequeBank, expenseSummary, travelExpenseDetails, documentApproves);
+    }
+
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("TravelExpense{");
+        sb.append("expenseDate=").append(expenseDate);
+        sb.append(", employee=").append(employee);
+        sb.append(", company=").append(company);
+        sb.append(", department=").append(department);
+        sb.append(", comment='").append(comment).append('\'');
+        sb.append(", approvelDate=").append(approvelDate);
+        sb.append(", payDate=").append(payDate);
+        sb.append(", cash=").append(cash);
+        if(cash == 1){
+            sb.append(", chequeNumber='").append(chequeNumber).append('\'');
+            sb.append(", chequeBank=").append(chequeBank.getId());
+        }
+        sb.append(", expenseSummary=").append(expenseSummary);
+        sb.append(", travelExpenseDetails=").append(travelExpenseDetails);
+        sb.append(", documentApproves=").append(documentApproves);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
