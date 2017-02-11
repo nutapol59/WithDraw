@@ -1,6 +1,6 @@
 import { Customer } from '../customer/customer';
 import { TravelExpense } from '../travel-expense/travel-expense';
-export class TravelExpenseDetail{
+export class TravelExpenseDetail {
     id:number;
     version:number;
     travelDate = new Date();

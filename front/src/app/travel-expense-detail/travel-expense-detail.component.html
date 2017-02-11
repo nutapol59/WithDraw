@@ -1,107 +1,4 @@
-			<div class="row">
-				<div class="col-md-12">
-					<fieldset class="col-sm-offset-1 col-sm-9 fieldset">
-    					<legend>&nbsp;กรณีไปหาลูกค้า&nbsp;</legend>
-    					<div class="row">
-							<div class="col-md-offset-1 col-md-5 nopadding-left-right">
-								<div class="form-group ">
-									<label for="" class="col-md-3 nopadding-left-right controlLabel">วันที่</label>
-									<div class="col-md-9 nopadding-left-right">
-										<input class="form-control" type="date" name="name" value="คันนายาว">
-									</div>
-								</div>
-							</div>
 
-							<div class="col-md-5   nopadding-left-right">
-								<div class="form-group ">
-									<label for="" class="col-md-2 nopadding-left-right controlLabel">ลูกค้า</label>
-									<div class="col-md-10 nopadding-left-right">
-										<select class="form-control">
-											<option>UAT</option>
-											<option>BBS</option>
-											<option>UNT</option>
-										</select>
-									</div>
-								</div>
-							</div>		
-						</div>
-
-						<div class="row">
-							<div class="col-md-offset-1 col-md-5 nopadding-left-right">
-								<div class="form-group ">
-									<label for="" class="col-md-3 nopadding-left-right controlLabel">เดินทางจาก</label>
-									<div class="col-md-9 nopadding-left-right">
-										<input class="form-control" type="text" name="name" value="คันนายาว">
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-5 nopadding-left-right">
-								<div class="form-group ">
-									<label for="" class="col-md-2 nopadding-left-right controlLabel">ถึง</label>
-									<div class="col-md-10 nopadding-left-right">
-										<input class="form-control" type="text" name="name" value="คันนายาว">
-									</div>
-								</div>
-							</div>				
-						</div>
-
-						<div class="row">
-							<div class="col-md-offset-1 col-md-5 nopadding-left-right">
-								<div class="form-group ">
-									<label for="" class="col-md-3 nopadding-left-right controlLabel">ค่าเดินทาง</label>
-									<div class="col-md-7 nopadding-left-right">
-										<input class="form-control" type="text" name="name" value="">
-									</div>
-									<label for="" class="col-md-1 nopadding-left-right label-center">บาท</label>
-								</div>
-							</div>
-
-							<div class="col-md-5 nopadding-left-right">
-								<div class="form-group ">
-									<label for="" class="col-md-3 nopadding-left-right controlLabel">ค่าทางด่วน</label>
-									<div class="col-md-8 nopadding-left-right">
-										<input class="form-control" type="text" name="name" value="">
-									</div>
-									<label for="" class="col-md-1 nopadding-left-right label-center">บาท</label>
-								</div>
-							</div>				
-						</div>
-
-						<div class="row">
-							<div class="col-md-offset-1 col-md-5 nopadding-left-right">
-								<div class="form-group ">
-									<label for="" class="col-md-3 nopadding-left-right controlLabel">ยอดเงินรวม</label>
-									<div class="col-md-7 nopadding-left-right">
-										<input class="form-control" type="text" name="name" value="">
-									</div>
-									<label for="" class="col-md-1 nopadding-left-right label-center">บาท</label>
-								</div>
-							</div>
-
-							<div class="col-md-5 nopadding-left-right">
-								<div class="form-group ">
-									<label for="" class="col-md-3 nopadding-left-right controlLabel">หมายเหตุ</label>
-									<div class="col-md-9 nopadding-left-right">
-										<input class="form-control" type="text" name="name" value="">
-									</div>
-									
-								</div>
-							</div>				
-						</div>
-
-						<div class="row">
-							<div class="col-md-12">
-								<div class="form-group ">
-									<input class="btn btn-raised btn-inverse" type="submit" name="submit" value="เพิ่ม" />
-								</div>
-							</div>
-						</div>
-					</fieldset>
-					
-				</div>
-				
-			</div>
 
 			<div class="row">
 				<div class="col-md-12">
@@ -122,15 +19,15 @@
 
 									</thead>
 									<tbody>
-										<tr>
-											<td>01/01/2558</td>
-											<td>UMM</td>
-											<td>บ้าน</td>
-											<td>บิ๊กซี</td>
-											<td>100</td>
-											<td>300</td>
-											<td>400</td>
-											<td>-</td>
+										<tr *ngFor="let travelExpenseDetail of travelExpenseDetails">
+											<td>{{travelExpenseDetail.travelDate}}</td>
+											<td>{{travelExpenseDetail.customer.name}}</td>
+											<td>{{travelExpenseDetail.travelFrom}}</td>
+											<td>{{travelExpenseDetail.travelTo}}</td>
+											<td>{{travelExpenseDetail.expense}}</td>
+											<td>{{travelExpenseDetail.expWayExpense}}</td>
+											<td>{{travelExpenseDetail.expenseSubSummary}}</td>
+											<td>{{travelExpenseDetail.comment}}</td>
 										</tr>
 									</tbody>
 								</table>	
@@ -140,10 +37,137 @@
 						<div class="row">
 							<div class="col-md-12">
 								<!--<center>-->
-									<input class="btn btn-raised btn-success" type="submit" name="summary" value="บันทึกแบบคำขอใบเบิก"/>
+									<input routerLink='/listSentApprove' routerLinkActive='active' class="btn btn-raised btn-success" type="submit" name="summary" value="บันทึกแบบคำขอใบเบิก"/>
 								<!--</center>-->
 							</div>
 						</div>
 					</fieldset>
+				</div>
+			</div>
+
+
+
+
+
+			<div class="modal fade modal-lg" id="modalAddTravelExpenseDetail">
+				<div class="modal-dialog modal-lg">
+					
+					<div class="modal-content modal-lg">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title">กรณีไปหาลูกค้า</h4>
+						</div>
+						<div class="modal-body modal-lg">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="row">
+										<div class="col-md-offset-1 col-md-5 nopadding-left-right">
+											<div class="form-group ">
+												<label for="" class="col-md-3 nopadding-left-right controlLabel">วันที่</label>
+												<div class="col-md-9 nopadding-left-right">
+													<input #travelDate class="form-control" type="date"
+													[(ngModel)]="travelExpenseDetail.travelDate" [ngModelOptions]="{standalone: true}" />
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-5   nopadding-left-right">
+											<div class="form-group ">
+												<label for="" class="col-md-2 nopadding-left-right controlLabel">ลูกค้า</label>
+												<div class="col-md-10 nopadding-left-right">
+													<select #customer [(ngModel)]="travelExpenseDetail.customer" [ngModelOptions]="{standalone: true}" class="form-control">
+														<option *ngFor="let customer of customers" [value]="customer.id">
+															{{customer.name}}
+														</option>
+
+													</select>
+												</div>
+											</div>
+										</div>		
+									</div>
+
+									<div class="row">
+										<div class="col-md-offset-1 col-md-5 nopadding-left-right">
+											<div class="form-group ">
+												<label for="" class="col-md-3 nopadding-left-right controlLabel">เดินทางจาก</label>
+												<div class="col-md-9 nopadding-left-right">
+													<input #travelFrom class="form-control" type="text" 
+													[(ngModel)]="travelExpenseDetail.travelFrom" [ngModelOptions]="{standalone: true}">
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-5 nopadding-left-right">
+											<div class="form-group ">
+												<label for="" class="col-md-2 nopadding-left-right controlLabel">ถึง</label>
+												<div class="col-md-10 nopadding-left-right">
+													<input #travelTo class="form-control" type="text"
+													[(ngModel)]="travelExpenseDetail.travelTo" [ngModelOptions]="{standalone: true}">
+												</div>
+											</div>
+										</div>				
+									</div>
+
+									<div class="row">
+										<div class="col-md-offset-1 col-md-5 nopadding-left-right">
+											<div class="form-group ">
+												<label for="" class="col-md-3 nopadding-left-right controlLabel">ค่าเดินทาง</label>
+												<div class="col-md-7 nopadding-left-right">
+													<input #expense class="form-control" type="number" min="0" 
+													[(ngModel)]="travelExpenseDetail.expense" (keypress)="validateNegative($event)">
+												</div>
+												<label for="" class="col-md-1 nopadding-left-right label-center">บาท</label>
+											</div>
+										</div>
+
+										<div class="col-md-5 nopadding-left-right">
+											<div class="form-group ">
+												<label for="" class="col-md-3 nopadding-left-right controlLabel">ค่าทางด่วน</label>
+												<div class="col-md-8 nopadding-left-right">
+													<input #expWayExpense class="form-control" type="text" min="0" 
+													[(ngModel)]="travelExpenseDetail.expWayExpense" (keypress)="validateNegative($event)" />
+												</div>
+												<label for="" class="col-md-1 nopadding-left-right label-center">บาท</label>
+											</div>
+										</div>				
+									</div>
+
+									<div class="row">
+										<div class="col-md-offset-1 col-md-5 nopadding-left-right">
+											<div class="form-group ">
+												<label for="" class="col-md-3 nopadding-left-right controlLabel">ยอดเงินรวม</label>
+												<div class="col-md-7 nopadding-left-right">
+													<input #expenseSubSummary class="form-control" type="text" 
+													[(ngModel)]="travelExpenseDetail.expenseSubSummary" [ngModelOptions]="{standalone: true}">
+												</div>
+												<label for="" class="col-md-1 nopadding-left-right label-center">บาท</label>
+											</div>
+										</div>
+
+										<div class="col-md-5 nopadding-left-right">
+											<div class="form-group ">
+												<label for="" class="col-md-3 nopadding-left-right controlLabel">หมายเหตุ</label>
+												<div class="col-md-9 nopadding-left-right">
+													<input #comment class="form-control" type="text"
+													[(ngModel)]="travelExpenseDetail.comment" [ngModelOptions]="{standalone: true}">
+												</div>
+												
+											</div>
+										</div>				
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<div class="row">
+								<div class="col-md-offset-8 col-md-3">
+									<div class="form-group">
+										<button  type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+										<button (click)="addTravelExpenseDetail()" data-dismiss="modal" class="btn btn-raised btn-inverse" type="submit" name="submit">เพิ่ม</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>

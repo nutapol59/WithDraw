@@ -1,0 +1,179 @@
+<div class="container">
+  <div class="row">
+    <button  (click)="getAppUsers()" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#modalAdd" class="btn btn-raised btn-default"><i class="fa fa-plus" aria-hidden="true"></i></button>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <th>Action</th>
+          <th>Employee</th>
+          <th>Apv1Emp</th>
+          <th>Apv2Emp</th>
+          <th>AccountEmp</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let apvmf of apvmfs">
+            <td><button (click)="deleteApproveMapFlow(apvmf)" class="btn btnEdit btn-raised btn-danger"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
+                <button class="btn btnEdit btn-raised btn-info" data-backdrop="static" data-keyboard="false" 
+                              data-target="#modalUpdate" data-toggle="modal"
+                              (click)="detailModalUpdate(apvmf)"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></button>
+            </td>
+            <td>{{apvmf.employee.empCode}}<br/>{{apvmf.employee.empName +" "+apvmf.employee.empLastName}}</td>
+            <td>{{apvmf.apv1Emp.empCode}}<br/>{{apvmf.apv1Emp.empName +" "+apvmf.apv1Emp.empLastName}}</td>
+            <td>{{apvmf.apv2Emp.empCode}}<br/>{{apvmf.apv2Emp.empName +" "+apvmf.apv2Emp.empLastName}}</td>
+            <td>{{apvmf.accountEmp.empCode}}<br/>{{apvmf.accountEmp.empName +" "+apvmf.accountEmp.empLastName}}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!--Modal AddApmf-->
+<div class="modal fade" id="modalAdd">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="onClear()" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Add ApproveMapFlow</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">
+          <div class="row">
+            <div class="form-group">
+              <label for="selectEmployee" class="col-md-offset-2 col-md-2 control-label">Employee: </label>
+               <div class="col-md-5">
+                  <select id="selectEmployee" [(ngModel)]="employeeId" class="form-control"
+                  [ngModelOptions]="{standalone: true}">
+                    <option  *ngFor="let employee of employees" [ngValue]="employee.id">
+                      {{employee.empName}}
+                    </option>
+                  </select>
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <label for="selectApv1" class="col-md-offset-2 col-md-2 control-label">Apv1Emp: </label>
+               <div class="col-md-5">
+                  <select id="selectApv1" [(ngModel)]="apv1Id" class="form-control"
+                  [ngModelOptions]="{standalone: true}">
+                    <option  *ngFor="let employee of employees" [ngValue]="employee.id">
+                      {{employee.empName}}
+                    </option>
+                  </select>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <label for="selectApv2" class="col-md-offset-2 col-md-2 control-label">Apv2Emp: </label>
+               <div class="col-md-5">
+                  <select id="selectApv2" [(ngModel)]="apv2Id" class="form-control"
+                  [ngModelOptions]="{standalone: true}">
+                    <option  *ngFor="let employee of employees" [ngValue]="employee.id">
+                      {{employee.empName}}
+                    </option>
+                  </select>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <label for="selectAccount" class="col-md-offset-2 col-md-2 control-label">AccountEmp: </label>
+               <div class="col-md-5">
+                  <select id="selectAccount" [(ngModel)]="accountId" class="form-control"
+                  [ngModelOptions]="{standalone: true}">
+                    <option  *ngFor="let employee of employees" [ngValue]="employee.id">
+                      {{employee.empName}}
+                    </option>
+                  </select>
+                </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" (click)="onClear()" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="addApproveMapFlow()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!--Modal UpdateApmf-->
+<div class="modal fade" id="modalUpdate">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" (click)="onClearUpdate(employee,apv1,apv2,account)"  class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Update ApproveMapFlow</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">       
+          <div class="row">
+            <div class="form-group">
+              <label for="selectEmployee" class="col-md-offset-2 col-md-2 control-label">Employee: </label>
+               <div class="col-md-5">
+                  <input #employee readonly class="form-control" type="text" [value]="employeeUpdate.empName+' '+employeeUpdate.empLastName" />
+                </div>
+            </div>
+         
+            <div class="row">
+              <div class="form-group">
+                <label for="selectApv1" class="col-md-offset-2 col-md-2 control-label">Apv1Emp: </label>
+                <div class="col-md-5">
+                    <select #apv1 id="selectApv1" [(ngModel)]="apv1IdUpdate" class="form-control" (change)="onSelectboxChange($event.target.value)"
+                    [ngModelOptions]="{standalone: true}">
+                      <option  *ngFor="let employeeUpdate of employeesUpdate" [ngValue]="employeeUpdate.id">
+                        {{employeeUpdate.empName+" "+employeeUpdate.empLastName}}
+                      </option>
+                    </select>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <label for="selectApv2" class="col-md-offset-2 col-md-2 control-label">Apv2Emp: </label>
+                <div class="col-md-5">
+                    <select #apv2 id="selectApv2" [(ngModel)]="apv2IdUpdate" class="form-control" (change)="onSelectboxChange($event.target.value)"
+                    [ngModelOptions]="{standalone: true}">
+                      <option  *ngFor="let employeeUpdate of employeesUpdate" [ngValue]="employeeUpdate.id">
+                       {{employeeUpdate.empName+" "+employeeUpdate.empLastName}}
+                      </option>
+                    </select>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <label for="selectAccount" class="col-md-offset-2 col-md-2 control-label">AccountEmp: </label>
+                <div class="col-md-5">
+                    <select #account id="selectAccount" [(ngModel)]="accountIdUpdate" class="form-control" (change)="onSelectboxChange($event.target.value)"
+                    [ngModelOptions]="{standalone: true}">
+                      <option  *ngFor="let employeeUpdate of employeesUpdate" [ngValue]="employeeUpdate.id">
+                        {{employeeUpdate.empName+" "+employeeUpdate.empLastName}}
+                      </option>
+                    </select>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button  type="button" class="btn btn-default" data-dismiss="modal" (click)="onClearUpdate()" >Close</button>
+        <button  type="submit" class="btn btn-primary" data-dismiss="modal" (click)="updateApproveMapFlow()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

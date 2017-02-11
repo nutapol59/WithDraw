@@ -61,3 +61,21 @@ table,th,td{
 body{
     background-color: #DFE6EF;
 }
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: inherit; 
+    bottom: 0;
+    left: inherit; 
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
+
+.modal-lg{
+    width: 1170px !important;
+    height: inherit !important;
+}

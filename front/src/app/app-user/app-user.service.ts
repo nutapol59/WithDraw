@@ -31,6 +31,16 @@ export class AppUserService {
            
    }
 
+   getAppUserById(id:number){
+        var headers = new Headers();
+        headers.append("Content-Type","application/json");
+        return this._http.post('http://localhost:8080/appUsers/getAppUserById?id='+id,{
+        headers : headers
+     })
+         .map(res => <AppUser>res.json())
+         .catch((error:Response) => Observable.throw(error.text()))
+   }
+
     addAppUser(empCode:string, empName:string, empLastName:string, empAddress:string, personalId:string,
               tel:string, email:string, ldapUserName:string, password:string, departmentId:number, companyId:number){
 
