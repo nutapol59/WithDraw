@@ -1,8 +1,36 @@
 import { Injectable } from '@angular/core';
 
+import { Headers, Http, Response,RequestOptions } from '@angular/http';
+
+// Add the RxJS Observable operators.
+import { Observable }     from 'rxjs/Observable';
+// Statics
+import 'rxjs/add/observable/throw';
+// Operators
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/toPromise';
+
+import { TravelExpenseDetail } from '../travel-expense-detail/travel-expense-detail'
+
 @Injectable()
 export class TravelExpenseDetailService {
 
-  constructor() { }
+  constructor(private _http:Http) { }
 
+  addTravelExpenseDetail(travelExpenseDetail:TravelExpenseDetail,travelExpenseId:number){
+    console.log("InService: "+travelExpenseId);
+      var headers = new Headers();
+      var json = JSON.stringify({travelExpenseDetail:travelExpenseDetail,travelExpenseId:travelExpenseId})
+      headers.append("Content-Type","application/json");
+      return this._http.post('http://localhost:8080/travelExpenseDetails/addTravelExpenseDetail',json,{
+        headers : headers
+      })
+          .map(res => res.json())
+          .catch((error:Response) => Observable.throw(error.text()))
+           
+  }
 }

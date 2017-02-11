@@ -38,11 +38,23 @@ public class AppUserServiceImpl  implements AppUserService{
             for(AppUser appUser : this.appUserRepository.findAll()){
                 list.add(appUser);
             }
+            log.info("LIST IN GET APP USERS ====== {}",list);
             return list;
         }catch (Exception e){
             e.printStackTrace();
             return null;
         }
+    }
+    @Override
+    public AppUser getAppUserById(Long id) {
+        try {
+            return this.appUserRepository.findOne(id);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     @Override
@@ -136,4 +148,6 @@ public class AppUserServiceImpl  implements AppUserService{
             return "Delete Failed Not Found Department";
         }
     }
+
+
 }

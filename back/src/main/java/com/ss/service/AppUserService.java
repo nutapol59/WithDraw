@@ -10,4 +10,5 @@ public interface AppUserService {
     String addAppUser(String json);
     String updateAppUser(String json);
     String deleteAppUser(Long id);
+    AppUser getAppUserById(Long id);
 }

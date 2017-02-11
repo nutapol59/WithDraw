@@ -7,7 +7,6 @@
     <div class="col-md-12">
       <table class="table table-striped ">
       <thead>
-        <th>No.</th>
         <th>Expense_Date</th>
         <th>Cash</th>
         <th>ExpenseSummary</th>
@@ -18,9 +17,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let travelExpense of travelExpenses">
-          <td><button class="btn btnEdit btn-raised btn-danger"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
+          <!--<td><button class="btn btnEdit btn-raised btn-danger"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
                 <button class="btn btnEdit btn-raised btn-info"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></button>
-            </td>
+            </td>-->
           <td>{{travelExpense.expenseDate  | date:'dd/MM/yyyy HH:mm:ss'}}</td>
           <td>{{travelExpense.cash}}</td>
           <td>{{travelExpense.expenseSummary}}</td>

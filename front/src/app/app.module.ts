@@ -21,10 +21,12 @@ import { BankService } from './bank/bank.service';
 import { CustomerService } from './customer/customer.service';
 import { TravelExpenseService } from './travel-expense/travel-expense.service';
 import { TravelExpenseDetailService } from './travel-expense-detail/travel-expense-detail.service';
+import { ApproveMapFlowService } from './approve-map-flow/approve-map-flow.service';
 
 import { AppRoutingModule }     from './app-routing.module';
 import { DocumentMasterComponent } from './document-master/document-master.component';
 import { ListSentApproveComponent } from './list-sent-approve/list-sent-approve.component';
+import { ApproveMapFlowComponent } from './approve-map-flow/approve-map-flow.component';
 
 
 
@@ -42,7 +44,8 @@ import { ListSentApproveComponent } from './list-sent-approve/list-sent-approve.
     TravelExpenseComponent,
     TravelExpenseDetailComponent,
     DocumentMasterComponent,
-    ListSentApproveComponent
+    ListSentApproveComponent,
+    ApproveMapFlowComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { ListSentApproveComponent } from './list-sent-approve/list-sent-approve.
     AppRoutingModule
   ],
   providers: [CompanyService,DepartmentService,AppUserService
-             ,CustomerService,BankService,TravelExpenseService,TravelExpenseDetailService],
+             ,CustomerService,BankService,TravelExpenseService
+             ,TravelExpenseDetailService,ApproveMapFlowService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,6 +15,9 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
 
 import { TravelExpense } from './travel-expense'
+import { AppUser } from '../app-user/app-user';
+import { Company } from '../company/company';
+import { Department } from '../department/department';
 
 @Injectable()
 export class TravelExpenseService {
@@ -29,6 +32,20 @@ export class TravelExpenseService {
      })
          .map(res => <TravelExpense[]>res.json())
          .catch((error:Response) => Observable.throw(error.text()))
+           
+   }
+
+   addTravelExpense(appUserId:number, companyId:number, departmentId:number, comment:string){
+     console.log(appUserId);
+      var headers = new Headers();
+      var json = JSON.stringify({appUserId:appUserId, companyId:companyId,
+                                  departmentId:departmentId,comment:comment})
+      headers.append("Content-Type","application/json");
+      return this._http.post('http://localhost:8080/travelExpenses/addTravelExpense',json,{
+        headers : headers
+      })
+          .map(res => res.json())
+          .catch((error:Response) => Observable.throw(error.text()))
            
    }
 

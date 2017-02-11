@@ -9,6 +9,7 @@ import { BankComponent } from './bank/bank.component';
 import { CustomerComponent } from './customer/customer.component';
 import { TravelExpenseComponent } from './travel-expense/travel-expense.component'
 import { ListSentApproveComponent } from './list-sent-approve/list-sent-approve.component';
+import { ApproveMapFlowComponent } from './approve-map-flow/approve-map-flow.component';
 
 const routes: Routes = [
     // { path: '', redirectTo: '/', pathMatch: 'full' }, //remember / == /dashboard begin openWeb
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'appUsers' , component:AppUserComponent },
   { path: 'customers' , component:CustomerComponent },
   { path: 'banks' , component:BankComponent },
-  { path: 'listSentApprove' , component:ListSentApproveComponent }
+  { path: 'listSentApprove' , component:ListSentApproveComponent },
+  { path: 'approveMapFlow' , component:ApproveMapFlowComponent }
 
 
 //   { path: 'detail/:id', component: HeroDetailComponent },

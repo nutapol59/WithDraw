@@ -16,8 +16,7 @@ front-end
 2. angular cli  
 	npm install -g angular-cli
 3. Go into directory front
-4. $npm install
-4. run project front-end with => ng serve or npm start
+4. run project front-end with => ng serve
 --------------------------------------------------------------------
 Back-end
 1. Go into directory back

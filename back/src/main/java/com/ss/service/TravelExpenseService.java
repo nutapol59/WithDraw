@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TravelExpenseService {
      List<TravelExpense> getTravelExpenses();
-     String addTravelExpense(String json);
+     Long addTravelExpense(String json);
      String updateTravelExpense(String json);
      String deleteTravelExpense(Long id);
 }

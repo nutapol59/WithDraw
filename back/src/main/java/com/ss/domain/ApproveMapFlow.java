@@ -6,11 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 @Data
 @NoArgsConstructor
 @Entity
-public class ApproveMapFlow {
+public class ApproveMapFlow implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "id")
@@ -37,4 +39,34 @@ public class ApproveMapFlow {
     private AppUser apv2Emp;
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ApproveMapFlow that = (ApproveMapFlow) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(version, that.version) &&
+                Objects.equals(employee, that.employee) &&
+                Objects.equals(apv1Emp, that.apv1Emp) &&
+                Objects.equals(accountEmp, that.accountEmp) &&
+                Objects.equals(apv2Emp, that.apv2Emp);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, version, employee, apv1Emp, accountEmp, apv2Emp);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("ApproveMapFlow{");
+        sb.append("id=").append(id);
+        sb.append(", version=").append(version);
+        sb.append(", employee=").append(employee);
+        sb.append(", apv1Emp=").append(apv1Emp);
+        sb.append(", accountEmp=").append(accountEmp);
+        sb.append(", apv2Emp=").append(apv2Emp);
+        sb.append('}');
+        return sb.toString();
+    }
 }

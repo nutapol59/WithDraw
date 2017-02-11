@@ -7,16 +7,18 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
-
+@Data
 @NoArgsConstructor
 @Entity
+@AllArgsConstructor
 
-public class TravelExpense extends DocumentMaster{
+public class TravelExpense extends DocumentMaster implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss.SSS")
     @Column
