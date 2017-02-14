@@ -10,7 +10,10 @@ import java.util.List;
 
 public interface TravelExpenseRepository extends CrudRepository<TravelExpense,Long>,JpaRepository<TravelExpense, Long> {
 
-    @Query("select max(t.documentNumber) from TravelExpense t  ")
-    String findAllCustom();
+    @Query("select max(t.documentNumber) from TravelExpense t")
+    String lastTravelExpenseNumber();
+
+    @Query("select t from TravelExpense t where t.employee.id = ?1")
+    List<TravelExpense> getTravelExpensesByAppUserId(Long appUserId);
 
 }

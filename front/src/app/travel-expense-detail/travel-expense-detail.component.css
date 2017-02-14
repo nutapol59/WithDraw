@@ -79,3 +79,17 @@ body{
     width: 1170px !important;
     height: inherit !important;
 }
+
+.datepicker-input-container{
+    width: 352px !important;
+
+}
+.datepicker-input .ng-pristine .ng-valid .ng-touched{
+    width: 300px !important;
+}
+
+.btnEdit{
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+    

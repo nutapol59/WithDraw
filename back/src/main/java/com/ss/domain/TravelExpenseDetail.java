@@ -26,7 +26,8 @@ public class TravelExpenseDetail {
     private Long version;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss.SSS")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+//    HH:mm:ss.SSS
     @Column
     private Date travelDate;
 

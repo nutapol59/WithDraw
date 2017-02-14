@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'appUsers' , component:AppUserComponent },
   { path: 'customers' , component:CustomerComponent },
   { path: 'banks' , component:BankComponent },
-  { path: 'listSentApprove' , component:ListSentApproveComponent },
+  { path: 'listSentApprove/:id' , component:ListSentApproveComponent },
   { path: 'approveMapFlow' , component:ApproveMapFlowComponent }
 
 

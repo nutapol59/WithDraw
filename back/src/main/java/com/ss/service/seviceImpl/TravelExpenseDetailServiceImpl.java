@@ -36,8 +36,26 @@ public class TravelExpenseDetailServiceImpl implements TravelExpenseDetailServic
 
     @Override
     public List<TravelExpenseDetail> getTravelExpenseDetails() {
-        return null;
+        try{
+            return this.travelExpenseDetailRepository.findAll();
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
+
+    @Override
+    public List<TravelExpenseDetail> getTravelExpenseDetailsByTravelExpenseId(Long travelExpenseId) {
+        try{
+            List<TravelExpenseDetail> list = this.travelExpenseDetailRepository.getTravelExpenseDetailsByTravelExpenseId(travelExpenseId);
+            log.info("LIST TravelExpenseDetail = {}",list);
+            return list;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     @Override
     public String addTravelExpenseDetail(String json) {
@@ -45,6 +63,7 @@ public class TravelExpenseDetailServiceImpl implements TravelExpenseDetailServic
             JSONObject jsonObject = new JSONObject(json);
 
             Map<String,Object> travelExpenseDetailMap = new JSONDeserializer<Map<String,Object>>().deserialize(jsonObject.get("travelExpenseDetail").toString());
+
 
             log.info("MapDetail =  {}",travelExpenseDetailMap);
 //            TravelExpenseDetail travelExpenseDetail = travelExpenseDetailMap.get("travelExpenseDetail");
@@ -64,14 +83,19 @@ public class TravelExpenseDetailServiceImpl implements TravelExpenseDetailServic
 
             Customer customer = this.customerRepository.findOne(Long.parseLong(travelExpenseDetailMap.get("customer")+""));
             travelExpenseDetail.setCustomer(customer);
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-            travelExpenseDetail.setTravelDate(formatter.parse(""+travelExpenseDetailMap.get("travelDate")));
-//            travelExpenseDetail.setAttachFile1("attachFile1");
+
+            Long date = jsonObject.getLong("date");
+            log.info("date = {}",date);
+            Date travelDate = new Date(date);
+            log.info("travelDate = {}",travelDate);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String dateText = formatter.format(travelDate);
+            log.info("dateText: {}",dateText);
+            travelExpenseDetail.setTravelDate(formatter.parse(dateText));
+    //            travelExpenseDetail.setAttachFile1("attachFile1");
 //            travelExpenseDetail.setAttachFile2("attachFile2");
 //            travelExpenseDetail.setAttachFile3("attachFile3");
 
-
-            travelExpenseDetail.setTravelExpense(travelExpense);
             this.travelExpenseDetailRepository.save(travelExpenseDetail);
 
             return "Created Success";
@@ -83,11 +107,70 @@ public class TravelExpenseDetailServiceImpl implements TravelExpenseDetailServic
 
     @Override
     public String updateTravelExpenseDetail(String json) {
-        return null;
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+
+            Map<String,Object> travelExpenseDetailMapUpdate = new JSONDeserializer<Map<String,Object>>().deserialize(jsonObject.get("travelExpenseDetail").toString());
+
+
+            log.info("MapDetail =  {}",travelExpenseDetailMapUpdate);
+//            TravelExpenseDetail travelExpenseDetail = travelExpenseDetailMap.get("travelExpenseDetail");
+
+
+            TravelExpenseDetail travelExpenseDetail = this.travelExpenseDetailRepository.findOne((Long)travelExpenseDetailMapUpdate.get("id"));
+            if(travelExpenseDetail != null){
+                travelExpenseDetail.setTravelFrom((String)travelExpenseDetailMapUpdate.get("travelFrom"));
+                travelExpenseDetail.setTravelTo((String)travelExpenseDetailMapUpdate.get("travelTo"));
+                travelExpenseDetail.setComment((String)travelExpenseDetailMapUpdate.get("comment"));
+                travelExpenseDetail.setExpense(new BigDecimal(travelExpenseDetailMapUpdate.get("expense")+""));
+                travelExpenseDetail.setExpWayExpense(new BigDecimal(travelExpenseDetailMapUpdate.get("expWayExpense")+""));
+                travelExpenseDetail.setExpenseSubSummary(new BigDecimal(travelExpenseDetailMapUpdate.get("expenseSubSummary")+""));
+
+                TravelExpense travelExpense = this.travelExpenseRepository.findOne(jsonObject.getLong("travelExpenseId"));
+                travelExpenseDetail.setTravelExpense(travelExpense);
+
+                Customer customer = this.customerRepository.findOne(jsonObject.getLong("customerId"));
+                travelExpenseDetail.setCustomer(customer);
+
+                Long date = jsonObject.getLong("date");
+                log.info("date = {}",date);
+                Date travelDate = new Date(date);
+                log.info("travelDate = {}",travelDate);
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String dateText = formatter.format(travelDate);
+                log.info("dateText: {}",dateText);
+                travelExpenseDetail.setTravelDate(formatter.parse(dateText));
+
+//            travelExpenseDetail.setAttachFile1("attachFile1");
+//            travelExpenseDetail.setAttachFile2("attachFile2");
+//            travelExpenseDetail.setAttachFile3("attachFile3");
+
+                this.travelExpenseDetailRepository.save(travelExpenseDetail);
+
+                return "Update Success";
+            }else {
+                return "Update Failed";
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Update Failed";
+        }
     }
 
     @Override
     public String deleteTravelExpenseDetail(Long id) {
-        return null;
+        try{
+            TravelExpenseDetail travelExpenseDetail = this.travelExpenseDetailRepository.findOne(id);
+            if(travelExpenseDetail != null){
+                this.travelExpenseDetailRepository.delete(id);
+                return "Delete Success";
+            }else{
+                return "Delete Failed";
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return "Delete Failed";
+        }
     }
 }

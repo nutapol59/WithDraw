@@ -3,7 +3,7 @@ import { TravelExpense } from '../travel-expense/travel-expense';
 export class TravelExpenseDetail {
     id:number;
     version:number;
-    travelDate = new Date();
+    travelDate:number;
     customer:Customer;
     travelFrom:string;
     travelTo:string;

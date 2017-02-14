@@ -33,7 +33,8 @@ public class DocumentMaster {
     private Integer approveSeq;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss.SSS")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+//    HH:mm:ss.SSS
     @Column
     private Date documentDate;
 

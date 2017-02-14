@@ -52,6 +52,20 @@ public class TravelExpenseServiceImpl  implements TravelExpenseService{
     }
 
     @Override
+    public List<TravelExpense> getTravelExpensesByAppUserId(Long appUserId) {
+        log.info("======== get TravelExpenseByAppUserId ========");
+        List<TravelExpense> list;
+        try{
+            list = this.travelExpenseRepository.getTravelExpensesByAppUserId(appUserId);
+            log.info("list = {}",list);
+            return list;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public synchronized Long addTravelExpense(String json) {
        log.info("========= add TravelExpense =========");
        try{
@@ -101,7 +115,7 @@ public class TravelExpenseServiceImpl  implements TravelExpenseService{
            travelExpense.setApproveSeq(0);
 
            String lastTravelExpenseNumber = "TE" +
-                   leftPad(  (Long.parseLong(this.travelExpenseRepository.findAllCustom().substring(2))  +1L)+"",6,"0");
+                   leftPad(  (Long.parseLong(this.travelExpenseRepository.lastTravelExpenseNumber().substring(2))  +1L)+"",6,"0");
            log.info(lastTravelExpenseNumber);
            travelExpense.setDocumentNumber(lastTravelExpenseNumber);
            this.travelExpenseRepository.save(travelExpense);
@@ -119,12 +133,38 @@ public class TravelExpenseServiceImpl  implements TravelExpenseService{
     }
 
     @Override
-    public String updateTravelExpense(String json) {
-        return null;
+    public Long updateTravelExpense(String json) {
+        log.info("------- add TravelExpense --------");
+        JSONObject jsonObject = new JSONObject(json);
+        try{
+            Long travelExpenseId = jsonObject.getLong("travelExpenseId");
+            log.info("travelExpenseId in Update = {}",travelExpenseId);
+            TravelExpense travelExpense = this.travelExpenseRepository.findOne(travelExpenseId);
+            if(travelExpense != null){
+                travelExpense.setComment(jsonObject.getString("comment"));
+                return travelExpense.getId();
+            }else {
+                return null;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
     public String deleteTravelExpense(Long id) {
-        return null;
+        try{
+            TravelExpense travelExpense = this.travelExpenseRepository.findOne(id);
+            if(travelExpense != null){
+                this.travelExpenseRepository.delete(id);
+                return "Delete Success";
+            }else{
+                return "Delete Failed";
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return "Delete Failed";
+        }
     }
 }

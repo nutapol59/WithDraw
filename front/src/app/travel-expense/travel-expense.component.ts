@@ -1,5 +1,6 @@
 import { Component, OnInit, Input,Directive } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router'
 
 
 import { TravelExpense } from './travel-expense'
@@ -38,8 +39,9 @@ export class TravelExpenseComponent implements OnInit {
   isResultTable : boolean = false;
 
   constructor(private travelExpenseService:TravelExpenseService,
-              private appUserService:AppUserService, private customerService:CustomerService) {
-                 
+              private appUserService:AppUserService, private customerService:CustomerService,
+              private router: Router) {
+              
                }
 
   
@@ -57,6 +59,11 @@ export class TravelExpenseComponent implements OnInit {
     this.isResultTable = true;  
   }
 
+  gotoListSentApprove(){
+    console.log(this.appUser.id);
+    this.router.navigate(['/listSentApprove', this.appUser.id]);
+  }
+
   getTravelExpenses(){
     this.travelExpenseService.getTravelExpenses()
             .subscribe(
@@ -67,7 +74,7 @@ export class TravelExpenseComponent implements OnInit {
   }
 
   getAppUserById(){
-    this.appUserService.getAppUserById(1)
+    this.appUserService.getAppUserById(2)
       .subscribe(
                 data => this.appUser = data,
                 error => alert(error),
@@ -97,6 +104,24 @@ export class TravelExpenseComponent implements OnInit {
                                   console.log(this.travelExpense.id)}
                             )
     
+  }
+
+  onClearUpdate(comment:HTMLInputElement){
+    comment.value = this.travelExpense.comment;
+  }
+
+  updateTravelExpense(comment:HTMLInputElement){
+    this.travelExpense.comment = comment.value;
+    console.log("Update TravelExpense: "+ this.travelExpense.id);
+    this.travelExpenseService.updateTravelExpense(this.travelExpense.id,this.travelExpense.comment)
+                             .subscribe(
+                               data => this.travelExpense.id = data,
+                               error => alert(error),
+                               () => {
+                                 console.log("Update Success"),
+                                 console.log(this.travelExpense.id)}
+                               
+                             )
   }
 
 }

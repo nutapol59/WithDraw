@@ -4,6 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
+// import { DatePickerModule } from 'ng2-datepicker';
+import { MyDatePickerModule } from 'mydatepicker';
+import { DatepickerModule } from 'angular2-material-datepicker'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppComponent } from './app.component';
 import { CompanyComponent } from './company/company.component';
 import { HeaderComponent } from './header/header.component';
@@ -51,7 +56,10 @@ import { ApproveMapFlowComponent } from './approve-map-flow/approve-map-flow.com
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DatepickerModule,
+    MyDatePickerModule,
+    NgbModule
   ],
   providers: [CompanyService,DepartmentService,AppUserService
              ,CustomerService,BankService,TravelExpenseService
