@@ -35,6 +35,15 @@ export class TravelExpenseService {
            
    }
 
+  getTravelExpensesByAppUserId(appUserId:number){
+    var headers = new Headers();
+    headers.append("Content-Type","application/json");
+     return this._http.post('http://localhost:8080/travelExpenses/getTravelExpensesByAppUserId?appUserId='+appUserId,{
+       headers : headers
+     })
+         .map(res => <TravelExpense[]>res.json())
+         .catch((error:Response) => Observable.throw(error.text()))
+  }
    addTravelExpense(appUserId:number, companyId:number, departmentId:number, comment:string){
      console.log(appUserId);
       var headers = new Headers();
@@ -42,6 +51,19 @@ export class TravelExpenseService {
                                   departmentId:departmentId,comment:comment})
       headers.append("Content-Type","application/json");
       return this._http.post('http://localhost:8080/travelExpenses/addTravelExpense',json,{
+        headers : headers
+      })
+          .map(res => res.json())
+          .catch((error:Response) => Observable.throw(error.text()))
+           
+   }
+
+   updateTravelExpense(travelExpenseId:number, comment:string){
+     console.log(travelExpenseId);
+      var headers = new Headers();
+      var json = JSON.stringify({travelExpenseId:travelExpenseId, comment:comment})
+      headers.append("Content-Type","application/json");
+      return this._http.put('http://localhost:8080/travelExpenses/updateTravelExpense',json,{
         headers : headers
       })
           .map(res => res.json())

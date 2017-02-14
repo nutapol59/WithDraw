@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -20,7 +21,8 @@ import java.util.Set;
 
 public class TravelExpense extends DocumentMaster implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss.SSS")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+//    HH:mm:ss.SSS
     @Column
     private Date expenseDate;
 
@@ -40,12 +42,14 @@ public class TravelExpense extends DocumentMaster implements Serializable{
     private String comment;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss.SSS")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+//    HH:mm:ss.SSS
     @Column
     private  Date approvelDate;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss.SSS")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+//    HH:mm:ss.SSS"
     @Column
     private Date payDate;
 
@@ -93,12 +97,6 @@ public class TravelExpense extends DocumentMaster implements Serializable{
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), expenseDate, employee, company, department, comment, approvelDate, payDate, cash, chequeNumber, chequeBank, expenseSummary, travelExpenseDetails, documentApproves);
-    }
-
-
-    @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("TravelExpense{");
         sb.append("expenseDate=").append(expenseDate);
@@ -109,10 +107,10 @@ public class TravelExpense extends DocumentMaster implements Serializable{
         sb.append(", approvelDate=").append(approvelDate);
         sb.append(", payDate=").append(payDate);
         sb.append(", cash=").append(cash);
-        if(cash == 1){
+//        if(cash == 1){
             sb.append(", chequeNumber='").append(chequeNumber).append('\'');
             sb.append(", chequeBank=").append(chequeBank.getId());
-        }
+//        }
         sb.append(", expenseSummary=").append(expenseSummary);
         sb.append(", travelExpenseDetails=").append(travelExpenseDetails);
         sb.append(", documentApproves=").append(documentApproves);

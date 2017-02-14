@@ -21,10 +21,13 @@ export class TravelExpenseDetailService {
 
   constructor(private _http:Http) { }
 
-  addTravelExpenseDetail(travelExpenseDetail:TravelExpenseDetail,travelExpenseId:number){
+  addTravelExpenseDetail(travelExpenseDetail:TravelExpenseDetail,travelExpenseId:number,travelExpenseDetailDate:number){
+    console.log("travelDate : "+travelExpenseDetailDate);
     console.log("InService: "+travelExpenseId);
+
       var headers = new Headers();
-      var json = JSON.stringify({travelExpenseDetail:travelExpenseDetail,travelExpenseId:travelExpenseId})
+      var json = JSON.stringify({travelExpenseDetail:travelExpenseDetail,travelExpenseId:travelExpenseId,
+                                  date:travelExpenseDetailDate})
       headers.append("Content-Type","application/json");
       return this._http.post('http://localhost:8080/travelExpenseDetails/addTravelExpenseDetail',json,{
         headers : headers
@@ -33,4 +36,52 @@ export class TravelExpenseDetailService {
           .catch((error:Response) => Observable.throw(error.text()))
            
   }
+
+  updateTravelExpenseDetail(travelExpenseDetail:TravelExpenseDetail,travelExpenseId:number,
+                            customerId:number,travelExpenseDetailDate:number){
+    console.log("travelDate in Update : "+travelExpenseDetail.travelDate);
+    console.log("InService: "+travelExpenseId);
+    console.log("customerId : "+customerId);
+      var headers = new Headers();
+      var json = JSON.stringify({travelExpenseDetail:travelExpenseDetail,travelExpenseId:travelExpenseId
+                                , customerId:customerId, date:travelExpenseDetailDate})
+      headers.append("Content-Type","application/json");
+      return this._http.put('http://localhost:8080/travelExpenseDetails/updateTravelExpenseDetail',json,{
+        headers : headers
+      })
+          .map(res => res.json())
+          .catch((error:Response) => Observable.throw(error.text()))
+  }
+
+  getTravelExpenseDetails(){
+    var headers = new Headers();
+    headers.append("Content-Type","application/json");
+    return this._http.get('http://localhost:8080/travelExpenseDetails/getTravelExpenseDetails',{
+      headers:headers
+    })
+      .map(res => res.json())
+      .catch((error:Response) => Observable.throw(error.text()))
+  }
+
+
+getTravelExpenseDetailsByTravelExpenseId(travelExpenseId:number){
+    var headers = new Headers();
+    headers.append("Content-Type","application/json");
+    return this._http.post('http://localhost:8080/travelExpenseDetails/getTravelExpenseDetailsByTravelExpenseId?travelExpenseId='+travelExpenseId,{
+      headers:headers
+    })
+      .map(res => res.json())
+      .catch((error:Response) => Observable.throw(error.text()))
+  }
+
+  deleteTravelExpenseDetail(travelExpenseDetailId:number){
+    var headers = new Headers();
+    headers.append("Content-Type","application/json");
+    return this._http.delete('http://localhost:8080/travelExpenseDetails/deleteTravelExpenseDetail/'+travelExpenseDetailId,{
+      headers:headers
+    })
+      .map(res => res.json())
+      .catch((error:Response) => Observable.throw(error.text()))
+  }
+
 }
