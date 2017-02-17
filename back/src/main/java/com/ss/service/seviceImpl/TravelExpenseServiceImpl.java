@@ -113,11 +113,16 @@ public class TravelExpenseServiceImpl  implements TravelExpenseService{
            travelExpense.setExpenseDate(new Date());
 
            travelExpense.setApproveSeq(0);
+            String docNumber = this.travelExpenseRepository.lastTravelExpenseNumber();
+           if(docNumber==null){
+               travelExpense.setDocumentNumber("TE000000");
+           }else {
+               String lastTravelExpenseNumber = "TE" +
+                       leftPad(  (Long.parseLong(docNumber.substring(2))  +1L)+"",6,"0");
+               log.info(lastTravelExpenseNumber);
+               travelExpense.setDocumentNumber(lastTravelExpenseNumber);
+           }
 
-           String lastTravelExpenseNumber = "TE" +
-                   leftPad(  (Long.parseLong(this.travelExpenseRepository.lastTravelExpenseNumber().substring(2))  +1L)+"",6,"0");
-           log.info(lastTravelExpenseNumber);
-           travelExpense.setDocumentNumber(lastTravelExpenseNumber);
            this.travelExpenseRepository.save(travelExpense);
 
            log.info("TravelExpense Id = {}",travelExpense.getId());
