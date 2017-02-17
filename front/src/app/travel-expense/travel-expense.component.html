@@ -1,107 +1,111 @@
 <div class="container">
-	<div class="row">
-		<div class="col-md-offset-8 col-md-4" style="text-align:right;">
-			<button (click)="gotoListSentApprove()" class="btn btn-raised btn-info" >
-				ใบเบิกที่ส่งขออนุมัติแล้ว
-			</button>
-		</div>
-	</div>
 		<div class="form-horizontal">
 		<div class="row">
-					<fieldset class="col-sm-offset-1 col-sm-9 fieldset">
-    					<legend>&nbsp;ข้อมูลใบเบิก&nbsp;</legend>
+					<div class="col-sm-12">
+						<div class="panel" >
+							<div class="panel-heading" style="background-color: rgb(20,20,20);">
+								<h2 class="panel-title" style="color: white;">ข้อมูลใบเบิก</h2>
+							</div>
+							<div class="panel-body">
 					<div class="row">
-						<div class="col-md-offset-1 col-md-3 nopadding-left-right">
-							<div class="form-group ">
-								<label for="" class="col-md-3  nopadding-left-right controlLabel">ข้าพเจ้า</label>
-								<div class="col-md-9 nopadding-left-right">
+						<div class="col-md-offset-1 col-md-5 nopadding-left-right">
+							<div class="form-group has-warning">
+								<label for="" class="col-md-4  nopadding-left-right controlLabel">ข้าพเจ้า</label>
+								<div class="col-md-8 nopadding-left-right">
 									<input class="form-control" type="text" readonly  [value]="appUser.empName+' '+ appUser.empLastName">
 								</div>
 							</div>
 						</div>
 
-						<div class="col-md-3 nopadding-left-right">
-							<div class="form-group  ">
-								<label for="" class="col-md-3 nopadding-left-right controlLabel">บริษัท</label>
-								<div class="col-md-9 nopadding-left-right">
+						<div class="col-md-5 nopadding-left-right">
+							<div class="form-group  has-warning ">
+								<label for="" class="col-md-4 nopadding-left-right controlLabel">บริษัท</label>
+								<div class="col-md-8 nopadding-left-right">
 									<input class="form-control" readonly type="text" [value]="company.name">
 								</div>
 							</div>
 						</div>
 
-						<div class="col-md-4 nopadding-left-right">
-							<div class="form-group  ">
+						<div class="col-md-offset-1 col-md-5 nopadding-left-right">
+							<div class="form-group   has-warning">
 								<label for="" class="col-md-4 nopadding-left-right controlLabel">ฝ่าย/แผนก</label>
 								<div class="col-md-8 nopadding-left-right">
 									<input class="form-control" readonly type="text" [value]="department.name">
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-offset-1 col-md-4 nopadding-left-right">
-							<div class="form-group  ">
-								<label for="" class="col-md-5 nopadding-left-right controlLabel">บัตรประชาชนเลขที่</label>
-								<div class="col-md-7 nopadding-left-right">
+					<!--</div>-->
+					<!--<div class="row">-->
+						<div class="col-md-5 nopadding-left-right">
+							<div class="form-group  has-warning ">
+								<label for="" class="col-md-4 nopadding-left-right controlLabel">เลขบัตรประชาชน</label>
+								<div class="col-md-8 nopadding-left-right">
 									<input class="form-control" readonly type="text" [value]="appUser.personalId">
 								</div>
 							</div>
 						</div>
 
-						<div class="col-md-3 nopadding-left-right">
-							<div class="form-group ">
-								<label for="" class="col-md-2 nopadding-left-right controlLabel">โทร</label>
-								<div class="col-md-10 nopadding-left-right">
+						<div class="col-md-offset-1 col-md-5 nopadding-left-right">
+							<div class="form-group  has-warning ">
+								<label for="" class="col-md-4 nopadding-left-right controlLabel">โทร</label>
+								<div class="col-md-8 nopadding-left-right">
 									<input class="form-control" readonly type="text"  [value]="appUser.tel">
 								</div>
 								<!-- <label for="" class="col-md-2 controlLabel">รายละเอียดดังนี้</label> -->
 							</div>
 						</div>
 
-						<div class="col-md-3 nopadding-left-right">
-							<div class="form-group">
-								<label  class="col-md-3 nopadding-left-right label-center">อีเมลล์</label>
-								<div class="col-md-9 nopadding-left-right">
+						<div class="col-md-5 nopadding-left-right">
+							<div class="form-group  has-warning">
+								<label  class="col-md-4 nopadding-left-right">อีเมลล์</label>
+								<div class="col-md-8 nopadding-left-right">
 									<input class="form-control" readonly type="text"  [value]="appUser.email">
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="row">
+					<!--</div>-->
+					<!--<div class="row">-->
 						<div class="col-md-offset-1 col-md-10 nopadding-left-right">
-							<div class="form-group ">
+							<div class="form-group  has-warning">
 								<label for="" class="col-md-2 nopadding-left-right controlLabel">ที่อยู่</label>
 								<div class="col-md-10 nopadding-left-right">
 									<textarea class="form-control border" readonly type="text" row="3">{{appUser.empAddress}}</textarea> 
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="row">
+					<!--</div>-->
+					<!--<div class="row">-->
 						<div class="col-md-offset-1 col-md-10 nopadding-left-right">
-							<div class="form-group ">
-								<label for="" class="col-md-2 nopadding-left-right controlLabel">เพื่อชำระค่า</label>
+							<div class="form-group  has-warning">
+								<label for="" class="col-md-2 nopadding-left-right controlLabel ">เพื่อชำระค่า</label>
 								<div class="col-md-10 nopadding-left-right">
 									<textarea *ngIf="!isResultTable"class="form-control border" type="text" row="3" [(ngModel)]="travelExpense.comment"></textarea> 
 									<textarea *ngIf="isResultTable" readonly class="form-control border" type="text" row="3" [(ngModel)]="travelExpense.comment"></textarea> 
 								</div>
 							</div>
 						</div>
-					</div>
-
+					<!--</div>-->
 					<div class="row">
 						<div class="col-md-12">
-							<div class="form-group" style="text-align: center;">
+							<div style="width: 100%; border-bottom: 1px solid rgba(0,0,0,0.1); margin-top: 10px; margin-bottom: 10px;"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-offset-1 col-md-10">
+							<div class="form-group" style="text-align: right;">
 								<button *ngIf="isResultTable" (click)="getCustomers()" data-toggle="modal" data-target="#modalAddTravelExpenseDetail" data-backdrop="static" data-keyboard="false"
 								class="btn btn-raised btn-warning"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;รายละเอียดกรณีไปพบลูกค้า</button>
-								<button *ngIf="isResultTable" data-toggle="modal" data-target="#modalUpdateTravelExpense" class="btn  btn-raised btn-primary">อัพเดตใบเบิก</button>
-								<button *ngIf="!isResultTable" (click)="addTravelExpense()" class="btn  btn-raised btn-primary">สร้างใบเบิก</button>
-								
+								<button *ngIf="isResultTable" data-toggle="modal" data-target="#modalUpdateTravelExpense" class="btn  btn-raised btn-warning">อัพเดตใบเบิก</button>
+								<button *ngIf="!isResultTable" (click)="addTravelExpense()" class="btn  btn-raised btn-warning">สร้างใบเบิก</button>
+								<button (click)="gotoListSentApprove()" class="btn btn-raised btn-warning" >
+										ใบเบิกที่ส่งขออนุมัติแล้ว</button>
 							</div>
 							
 						</div>
 					</div>
-			</fieldset>
+					</div>
+					</div> <!--panel-->
+			</div>
 		</div>
 		<div *ngIf="isResultTable" class="row">
 			<app-travel-expense-detail [appUserId]="appUser.id" [customers]="customers" [travelExpenseId]="travelExpense.id"></app-travel-expense-detail>
