@@ -34,6 +34,9 @@ import { ListSentApproveComponent } from './list-sent-approve/list-sent-approve.
 import { ApproveMapFlowComponent } from './approve-map-flow/approve-map-flow.component';
 
 
+import { ConfigModeServerService } from './config-mode-server.service';
+
+
 
 
 
@@ -63,7 +66,8 @@ import { ApproveMapFlowComponent } from './approve-map-flow/approve-map-flow.com
   ],
   providers: [CompanyService,DepartmentService,AppUserService
              ,CustomerService,BankService,TravelExpenseService
-             ,TravelExpenseDetailService,ApproveMapFlowService],
+             ,TravelExpenseDetailService,ApproveMapFlowService,
+             ConfigModeServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

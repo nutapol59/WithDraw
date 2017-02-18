@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { Headers, Http, Response,RequestOptions } from '@angular/http';
 
@@ -15,15 +16,20 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
 
 import { AppUser } from './app-user';
+import { ConfigModeServerService } from '../config-mode-server.service';
 
 @Injectable()
 export class AppUserService {
 
-  constructor(private _http: Http) { }
+  constructor(private _http: Http,private location:Location,
+              private configModeServerService : ConfigModeServerService) {
+      console.log("Path: "+window.location.hostname);
+      
+   }
   getAppUsers(){
     var headers = new Headers();
     headers.append("Content-Type","application/json");
-     return this._http.get('http://localhost:8080/appUsers/getAppUsers',{
+     return this._http.get(this.configModeServerService.ipServer+'/appUsers/getAppUsers',{
        headers : headers
      })
          .map(res => <AppUser[]>res.json())
@@ -34,7 +40,7 @@ export class AppUserService {
    getAppUserById(id:number){
         var headers = new Headers();
         headers.append("Content-Type","application/json");
-        return this._http.post('http://localhost:8080/appUsers/getAppUserById?id='+id,{
+        return this._http.post(this.configModeServerService.ipServer+'/appUsers/getAppUserById?id='+id,{
         headers : headers
      })
          .map(res => <AppUser>res.json())
@@ -52,7 +58,7 @@ export class AppUserService {
         var headers = new Headers();
         headers.append("Content-Type","application/json");
 
-        return this._http.post('http://localhost:8080/appUsers/addAppUser', json,
+        return this._http.post(this.configModeServerService.ipServer+'/appUsers/addAppUser', json,
             {
                 headers: headers
             })
@@ -65,7 +71,7 @@ export class AppUserService {
         var headers = new Headers();
         headers.append("Content-Type","application/json");
 
-        return this._http.delete('http://localhost:8080/appUsers/deleteAppUser/'+id,{
+        return this._http.delete(this.configModeServerService.ipServer+'/appUsers/deleteAppUser/'+id,{
           headers: headers
         })
                         .map(res =>res.json())
@@ -84,7 +90,7 @@ export class AppUserService {
         //var params = 'json=' + json;
         var headers = new Headers();
         headers.append("Content-Type","application/json");
-        return this._http.put('http://localhost:8080/appUsers/updateAppUser', json,
+        return this._http.put(this.configModeServerService.ipServer+'/appUsers/updateAppUser', json,
             {
                 headers: headers
             })

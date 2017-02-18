@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200") //develop Mode
+// @CrossOrigin(origins = "http://103.208.24.217:4200") //production Mode
 @RestController
 @RequestMapping("/travelExpenseDetails")
 public class TravelExpenseDetailController {
@@ -106,6 +107,7 @@ public class TravelExpenseDetailController {
         log.info("---------------Add Travel Expense Detail---------------");
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
+        log.info("JSON STRING ADD = {}",json);
         String result;
         try{
             result = this.travelExpenseDetailServiceImpl.addTravelExpenseDetail(json);

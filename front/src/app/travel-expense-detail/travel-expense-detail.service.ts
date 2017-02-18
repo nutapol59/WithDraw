@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { Headers, Http, Response,RequestOptions } from '@angular/http';
 
@@ -15,13 +16,18 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
 
 import { TravelExpenseDetail } from '../travel-expense-detail/travel-expense-detail'
+import { ConfigModeServerService } from '../config-mode-server.service';
 
 @Injectable()
 export class TravelExpenseDetailService {
 
-  constructor(private _http:Http) { }
+  constructor(private _http:Http,private location :Location,
+              private configModeServerService:ConfigModeServerService) {
+    console.log(location.prepareExternalUrl(location.path()));
+   }
 
   addTravelExpenseDetail(travelExpenseDetail:TravelExpenseDetail,travelExpenseId:number,travelExpenseDetailDate:number){
+    console.log(JSON.stringify(travelExpenseDetail));
     console.log("travelDate : "+travelExpenseDetailDate);
     console.log("InService: "+travelExpenseId);
 
@@ -29,7 +35,7 @@ export class TravelExpenseDetailService {
       var json = JSON.stringify({travelExpenseDetail:travelExpenseDetail,travelExpenseId:travelExpenseId,
                                   date:travelExpenseDetailDate})
       headers.append("Content-Type","application/json");
-      return this._http.post('http://localhost:8080/travelExpenseDetails/addTravelExpenseDetail',json,{
+      return this._http.post(this.configModeServerService.ipServer+'/travelExpenseDetails/addTravelExpenseDetail',json,{
         headers : headers
       })
           .map(res => res.json())
@@ -46,7 +52,7 @@ export class TravelExpenseDetailService {
       var json = JSON.stringify({travelExpenseDetail:travelExpenseDetail,travelExpenseId:travelExpenseId
                                 , customerId:customerId, date:travelExpenseDetailDate})
       headers.append("Content-Type","application/json");
-      return this._http.put('http://localhost:8080/travelExpenseDetails/updateTravelExpenseDetail',json,{
+      return this._http.put(this.configModeServerService.ipServer+'/travelExpenseDetails/updateTravelExpenseDetail',json,{
         headers : headers
       })
           .map(res => res.json())
@@ -56,7 +62,7 @@ export class TravelExpenseDetailService {
   getTravelExpenseDetails(){
     var headers = new Headers();
     headers.append("Content-Type","application/json");
-    return this._http.get('http://localhost:8080/travelExpenseDetails/getTravelExpenseDetails',{
+    return this._http.get(this.configModeServerService.ipServer+'/travelExpenseDetails/getTravelExpenseDetails',{
       headers:headers
     })
       .map(res => res.json())
@@ -67,7 +73,7 @@ export class TravelExpenseDetailService {
 getTravelExpenseDetailsByTravelExpenseId(travelExpenseId:number){
     var headers = new Headers();
     headers.append("Content-Type","application/json");
-    return this._http.post('http://localhost:8080/travelExpenseDetails/getTravelExpenseDetailsByTravelExpenseId?travelExpenseId='+travelExpenseId,{
+    return this._http.post(this.configModeServerService.ipServer+'/travelExpenseDetails/getTravelExpenseDetailsByTravelExpenseId?travelExpenseId='+travelExpenseId,{
       headers:headers
     })
       .map(res => res.json())
@@ -77,7 +83,7 @@ getTravelExpenseDetailsByTravelExpenseId(travelExpenseId:number){
   deleteTravelExpenseDetail(travelExpenseDetailId:number){
     var headers = new Headers();
     headers.append("Content-Type","application/json");
-    return this._http.delete('http://localhost:8080/travelExpenseDetails/deleteTravelExpenseDetail/'+travelExpenseDetailId,{
+    return this._http.delete(this.configModeServerService.ipServer+'/travelExpenseDetails/deleteTravelExpenseDetail/'+travelExpenseDetailId,{
       headers:headers
     })
       .map(res => res.json())

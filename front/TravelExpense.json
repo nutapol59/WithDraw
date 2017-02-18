@@ -1,0 +1,25 @@
+/**
+ Export to JSON plugin for PHPMyAdmin
+ @version 0.1
+ */
+
+// Database 'TravelExpense'
+// TravelExpense.approve_map_flow
+
+[{"id": 1,"version": 0,"account_emp": 4,"apv1emp": 1,"apv2emp": 3,"employee": 2}]// TravelExpense.app_user
+
+[{"id": 1,"email": "43565","emp_address": "ss","emp_code": "001","emp_last_name": "Khamayothin","emp_name": "Nutapol","ldap_user_name": "546578","password": "43565787","personal_id": "123456578798","tel": "32454567687","version": 0,"company": 2,"department": 1}, {"id": 2,"email": "3243546","emp_address": "yt","emp_code": "002","emp_last_name": "rty","emp_name": "Wad","ldap_user_name": "565787","password": "4565768","personal_id": "5768798","tel": "3455676","version": 0,"company": 2,"department": 4}, {"id": 3,"email": "43546576","emp_address": "567","emp_code": "0005","emp_last_name": "wrty","emp_name": "ww","ldap_user_name": "23454657","password": "uitu","personal_id": "65768798","tel": "54657687980","version": 0,"company": 2,"department": 3}, {"id": 4,"email": "56u","emp_address": "35465","emp_code": "6756","emp_last_name": "34657687","emp_name": "3546576","ldap_user_name": "56u56u5","password": "54654","personal_id": "uw45","tel": "56156","version": 0,"company": 2,"department": 2}]// TravelExpense.bank
+
+[{"id": 1,"active": 1,"code": "00001","name": "SCB","version": 0}]// TravelExpense.company
+
+[{"id": 2,"active": 1,"code": "0001","name": "SoftPlus","version": 0}]// TravelExpense.customer
+
+[{"id": 1,"active": 1,"code": "0001","name": "ES","version": 0,"address": "KORAT"}]// TravelExpense.department
+
+[{"id": 1,"active": 1,"code": "0001","name": "SA","version": 0,"company": 2}, {"id": 2,"active": 1,"code": "0002","name": "MaNaGer","version": 0,"company": 2}, {"id": 3,"active": 1,"code": "0003","name": "HR","version": 0,"company": 2}, {"id": 4,"active": 1,"code": "0004","name": "Engineer","version": 0,"company": 2}]// TravelExpense.document_approve
+
+[{"id": 1,"sequence": 0,"version": 0,"approver": 1,"travel_expense_doc_approve": 1}, {"id": 2,"sequence": 2,"version": 0,"approver": 4,"travel_expense_doc_approve": 1}, {"id": 3,"sequence": 1,"version": 0,"approver": 3,"travel_expense_doc_approve": 1}]// TravelExpense.travel_expense
+
+[{"id": 1,"approve_seq": 0,"document_date": "2017-02-15 13:47:43","document_number": "TE000000","document_status": null,"version": 0,"approvel_date": null,"cash": null,"cheque_number": null,"comment": "aaaaa","expense_date": "2017-02-15 13:47:43","expense_summary": null,"pay_date": null,"approve_map_flow": 1,"bank": null,"company": 2,"department": 4,"app_user": 2}]// TravelExpense.travel_expense_detail
+
+[{"id": 1,"attach_file1": null,"attach_file2": null,"attach_file3": null,"comment": "w","exp_way_expense": "1.00","expense": "1.00","expense_sub_summary": "2.00","travel_date": "2017-02-01 00:00:00","travel_from": "a","travel_to": "n","version": 0,"customer": 1,"travel_expense": 1}, {"id": 2,"attach_file1": null,"attach_file2": null,"attach_file3": null,"comment": "","exp_way_expense": "2.00","expense": "2.00","expense_sub_summary": "4.00","travel_date": "2017-02-17 00:00:00","travel_from": "t","travel_to": "y","version": 0,"customer": 1,"travel_expense": 1}]
