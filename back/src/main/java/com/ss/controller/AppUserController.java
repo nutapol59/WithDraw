@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@CrossOrigin(origins = "http://localhost:4200") //develop Mode
+// @CrossOrigin(origins = "http://103.208.24.217:4200") //production Mode
 @RestController
 @RequestMapping(value = "/appUsers")
-@CrossOrigin(origins = "http://localhost:4200")
 public class AppUserController {
     private static final Logger log = LoggerFactory.getLogger(AppUserController.class);
     private AppUserServiceImpl appUserServiceImpl;

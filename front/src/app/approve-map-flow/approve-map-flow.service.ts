@@ -16,16 +16,18 @@ import 'rxjs/add/operator/toPromise';
 
 import { AppUser } from '../app-user/app-user';
 import { ApproveMapFlow } from '../approve-map-flow/approve-map-flow';
+import { ConfigModeServerService } from '../config-mode-server.service';
 
 @Injectable()
 export class ApproveMapFlowService {
 
-  constructor(private _http:Http) { }
+
+  constructor(private _http:Http,private configModeServerService:ConfigModeServerService) { }
 
   getApproveMapFlows(){
     var headers = new Headers();
     headers.append("Content-Type","application/json");
-     return this._http.get('http://localhost:8080/approveMapFlows/getApproveMapFlows',{
+     return this._http.get(this.configModeServerService.ipServer+'/approveMapFlows/getApproveMapFlows',{
        headers : headers
      })
          .map(res => <ApproveMapFlow[]>res.json())
@@ -39,7 +41,7 @@ export class ApproveMapFlowService {
         var headers = new Headers();
         headers.append("Content-Type","application/json");
 
-        return this._http.post('http://localhost:8080/approveMapFlows/addApproveMapFlow', json,
+        return this._http.post(this.configModeServerService.ipServer+'/approveMapFlows/addApproveMapFlow', json,
             {
                 headers: headers
             })
@@ -49,7 +51,7 @@ export class ApproveMapFlowService {
     }
 
     deleteApproveMapFlow(id:number){
-        return this._http.delete('http://localhost:8080/approveMapFlows/deleteApproveMapFlow/'+id)
+        return this._http.delete(this.configModeServerService.ipServer+'/approveMapFlows/deleteApproveMapFlow/'+id)
                         .map(res =>res.json())
                         .catch((error:Response) => Observable.throw(error.text()))
     }
@@ -63,7 +65,7 @@ export class ApproveMapFlowService {
         console.log("employeeId= "+employeeId);
         var headers = new Headers();
         headers.append("Content-Type","application/json");
-        return this._http.put('http://localhost:8080/approveMapFlows/updateApproveMapFlow', json,
+        return this._http.put(this.configModeServerService.ipServer+'/approveMapFlows/updateApproveMapFlow', json,
             {
                 headers: headers
             })

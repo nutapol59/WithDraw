@@ -16,19 +16,21 @@ import 'rxjs/add/operator/toPromise';
 
 
 import { Company } from './company'
+import { ConfigModeServerService } from '../config-mode-server.service'
 
 @Injectable()
 export class CompanyService {
 
-  constructor(private _http:Http) { }
+  constructor(private _http:Http,private configModeServerService: ConfigModeServerService) { }
   getCompanies(){
     var headers = new Headers();
     headers.append("Content-Type","application/json");
-     return this._http.get('http://localhost:8080/companies/getCompanies',{
+     return this._http.get(this.configModeServerService.ipServer+'/companies/getCompanies',{
        headers : headers
      })
          .map(res => <Company[]>res.json())
          .catch((error:Response) => Observable.throw(error.text()))
+         
            
    }
 
@@ -37,7 +39,7 @@ export class CompanyService {
         var headers = new Headers();
         headers.append("Content-Type","application/json");
 
-        return this._http.post('http://localhost:8080/companies/addCompany', json,
+        return this._http.post(this.configModeServerService.ipServer+'/companies/addCompany', json,
             {
                 headers: headers
             })
@@ -47,7 +49,7 @@ export class CompanyService {
     }
 
     deleteCompany(id:number){
-        return this._http.delete('http://localhost:8080/companies/deleteCompany/'+id)
+        return this._http.delete(this.configModeServerService.ipServer+'/companies/deleteCompany/'+id)
                         .map(res =>res.json())
                         .catch((error:Response) => Observable.throw(error.text()))
     }
@@ -60,7 +62,7 @@ export class CompanyService {
         //var params = 'json=' + json;
         var headers = new Headers();
         headers.append("Content-Type","application/json");
-        return this._http.put('http://localhost:8080/companies/updateCompany', json,
+        return this._http.put(this.configModeServerService.ipServer+'/companies/updateCompany', json,
             {
                 headers: headers
             })

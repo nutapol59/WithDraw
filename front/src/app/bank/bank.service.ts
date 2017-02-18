@@ -15,15 +15,18 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
 
 import { Bank } from './bank'
+import { ConfigModeServerService } from '../config-mode-server.service';
 
 @Injectable()
 export class BankService {
-  constructor(private _http:Http) { }
+
+
+  constructor(private _http:Http,private configModeServerService: ConfigModeServerService) { }
 
   getBanks(){
     var headers = new Headers();
     headers.append("Content-Type","application/json");
-     return this._http.get('http://localhost:8080/banks/getBanks',{
+     return this._http.get(this.configModeServerService.ipServer+'/banks/getBanks',{
        headers : headers
      })
          .map(res => <Bank[]>res.json())
@@ -36,7 +39,7 @@ export class BankService {
         var headers = new Headers();
         headers.append("Content-Type","application/json");
 
-        return this._http.post('http://localhost:8080/banks/addBank', json,
+        return this._http.post(this.configModeServerService.ipServer+'/banks/addBank', json,
             {
                 headers: headers
             })
@@ -46,7 +49,7 @@ export class BankService {
     }
 
     deleteBank(id:number){
-        return this._http.delete('http://localhost:8080/banks/deleteBank/'+id)
+        return this._http.delete(this.configModeServerService.ipServer+'/banks/deleteBank/'+id)
                         .map(res =>res.json())
                         .catch((error:Response) => Observable.throw(error.text()))
     }
@@ -59,7 +62,7 @@ export class BankService {
         //var params = 'json=' + json;
         var headers = new Headers();
         headers.append("Content-Type","application/json");
-        return this._http.put('http://localhost:8080/banks/updateBank', json,
+        return this._http.put(this.configModeServerService.ipServer+'/banks/updateBank', json,
             {
                 headers: headers
             })

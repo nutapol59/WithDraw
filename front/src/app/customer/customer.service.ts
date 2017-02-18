@@ -15,14 +15,18 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
 
 import { Customer } from './customer'
+import { ConfigModeServerService } from '../config-mode-server.service'
 @Injectable()
+
+
 export class CustomerService {
-constructor(private _http:Http) { }
+    
+constructor(private _http:Http,private configModeServerService:ConfigModeServerService) { }
 
   getCustomers(){
     var headers = new Headers();
     headers.append("Content-Type","application/json");
-     return this._http.get('http://localhost:8080/customers/getCustomers',{
+     return this._http.get(this.configModeServerService.ipServer+'/customers/getCustomers',{
        headers : headers
      })
          .map(res => <Customer[]>res.json())
@@ -35,7 +39,7 @@ constructor(private _http:Http) { }
         var headers = new Headers();
         headers.append("Content-Type","application/json");
 
-        return this._http.post('http://localhost:8080/customers/addCustomer', json,
+        return this._http.post(this.configModeServerService.ipServer+'/customers/addCustomer', json,
             {
                 headers: headers
             })
@@ -45,7 +49,7 @@ constructor(private _http:Http) { }
     }
 
     deleteCustomer(id:number){
-        return this._http.delete('http://localhost:8080/customers/deleteCustomer/'+id)
+        return this._http.delete(this.configModeServerService.ipServer+'/customers/deleteCustomer/'+id)
                         .map(res =>res.json())
                         .catch((error:Response) => Observable.throw(error.text()))
     }
@@ -58,7 +62,7 @@ constructor(private _http:Http) { }
         //var params = 'json=' + json;
         var headers = new Headers();
         headers.append("Content-Type","application/json");
-        return this._http.put('http://localhost:8080/customers/updateCustomer', json,
+        return this._http.put(this.configModeServerService.ipServer+'/customers/updateCustomer', json,
             {
                 headers: headers
             })

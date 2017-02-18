@@ -19,15 +19,17 @@ import { AppUser } from '../app-user/app-user';
 import { Company } from '../company/company';
 import { Department } from '../department/department';
 
+import { ConfigModeServerService } from '../config-mode-server.service';
+
 @Injectable()
 export class TravelExpenseService {
 
-  constructor(private _http:Http) { }
+  constructor(private _http:Http,private configModeServerService : ConfigModeServerService) { }
 
   getTravelExpenses(){
     var headers = new Headers();
     headers.append("Content-Type","application/json");
-     return this._http.get('http://localhost:8080/travelExpenses/getTravelExpenses',{
+     return this._http.get(this.configModeServerService.ipServer+'/travelExpenses/getTravelExpenses',{
        headers : headers
      })
          .map(res => <TravelExpense[]>res.json())
@@ -38,7 +40,7 @@ export class TravelExpenseService {
   getTravelExpensesByAppUserId(appUserId:number){
     var headers = new Headers();
     headers.append("Content-Type","application/json");
-     return this._http.post('http://localhost:8080/travelExpenses/getTravelExpensesByAppUserId?appUserId='+appUserId,{
+     return this._http.post(this.configModeServerService.ipServer+'/travelExpenses/getTravelExpensesByAppUserId?appUserId='+appUserId,{
        headers : headers
      })
          .map(res => <TravelExpense[]>res.json())
@@ -50,7 +52,7 @@ export class TravelExpenseService {
       var json = JSON.stringify({appUserId:appUserId, companyId:companyId,
                                   departmentId:departmentId,comment:comment})
       headers.append("Content-Type","application/json");
-      return this._http.post('http://localhost:8080/travelExpenses/addTravelExpense',json,{
+      return this._http.post(this.configModeServerService.ipServer+'/travelExpenses/addTravelExpense',json,{
         headers : headers
       })
           .map(res => res.json())
@@ -63,7 +65,7 @@ export class TravelExpenseService {
       var headers = new Headers();
       var json = JSON.stringify({travelExpenseId:travelExpenseId, comment:comment})
       headers.append("Content-Type","application/json");
-      return this._http.put('http://localhost:8080/travelExpenses/updateTravelExpense',json,{
+      return this._http.put(this.configModeServerService.ipServer+'/travelExpenses/updateTravelExpense',json,{
         headers : headers
       })
           .map(res => res.json())

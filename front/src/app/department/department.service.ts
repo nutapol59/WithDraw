@@ -16,17 +16,20 @@ import 'rxjs/add/operator/toPromise';
 
 import { Department } from '../department/department';
 import { Company } from '../company/company';
+import { ConfigModeServerService } from '../config-mode-server.service';
 
 @Injectable()
 export class DepartmentService {
+   
     company = new Company;
+    
 
-  constructor(private _http:Http) { }
+  constructor(private _http:Http,private configModeServerService:ConfigModeServerService) { }
 
   getDepartments(){
     var headers = new Headers();
     headers.append("Content-Type","application/json");
-     return this._http.get('http://localhost:8080/departments/getDepartments',{
+     return this._http.get(this.configModeServerService.ipServer+'/departments/getDepartments',{
        headers : headers
      })
          .map(res => <Department[]>res.json())
@@ -40,7 +43,7 @@ export class DepartmentService {
         var headers = new Headers();
         headers.append("Content-Type","application/json");
 
-        return this._http.post('http://localhost:8080/departments/addDepartment', json,
+        return this._http.post(this.configModeServerService.ipServer+'/departments/addDepartment', json,
             {
                 headers: headers
             })
@@ -49,7 +52,7 @@ export class DepartmentService {
     }
 
     deleteDepartment(id:number){
-        return this._http.delete('http://localhost:8080/departments/deleteDepartment/'+id)
+        return this._http.delete(this.configModeServerService.ipServer+'/departments/deleteDepartment/'+id)
                         .map(res => res.text())
                         .catch((error:Response) => Observable.throw(error.text())) 
     }
@@ -60,7 +63,7 @@ export class DepartmentService {
         //var params = 'json=' + json;
         var headers = new Headers();
         headers.append("Content-Type","application/json");
-        return this._http.put('http://localhost:8080/departments/updateDepartment', json,
+        return this._http.put(this.configModeServerService.ipServer+'/departments/updateDepartment', json,
             {
                 headers: headers
             })
