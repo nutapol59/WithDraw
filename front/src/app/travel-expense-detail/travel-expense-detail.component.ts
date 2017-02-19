@@ -19,7 +19,10 @@ import { DatepickerModule as YourAlias } from 'angular2-material-datepicker'
 export class TravelExpenseDetailComponent implements OnInit {
   travelExpenseDetails:TravelExpenseDetail[];
   travelExpenseDetail = new TravelExpenseDetail();
-  travelExpenseDetailUpdate:TravelExpenseDetail;
+  travelExpenseDetailUpdate = new TravelExpenseDetail();
+  expenseResult:number =  0;
+  expenseWayResult:number = 0;
+  expenseSummary:number = 0;
 
   @Input('customers')
   customers:Customer[];
@@ -48,6 +51,8 @@ export class TravelExpenseDetailComponent implements OnInit {
   ngOnInit() {
     console.log("TravelExpenseId in TravelExpenseDetail: "+this.travelExpenseId);
     console.log("AppUserId: "+this.appUserId);
+    this.travelExpenseDetail.expense = 0;
+    this.travelExpenseDetail.expWayExpense = 0;
   }
 
 
@@ -136,14 +141,48 @@ export class TravelExpenseDetailComponent implements OnInit {
   }
 
   validateNegative(event){
-      console.log(event.target.value.match(/[^\d]/g));
-      if(event.target.value!=null &&  (event.target.value.match(/[^\d]/g)) ){
+      console.log(event.target.value.match(/[^\d.]/g));
+      if(event.target.value!=null &&  (event.target.value.match(/[^\d.]/g)) ){
         event.target.value = "";
-      }
-  }string
+      }else if(event.target.value==null)
+       event.target.value = 0;
+      
+  }
+  sumTravelExpenseSubSummary(expense:HTMLInputElement,expWayExpense:HTMLInputElement){
+    var total = 0;
+    console.log("expense = "+this.travelExpenseDetail.expense)
+    console.log("Wayexpense = "+this.travelExpenseDetail.expWayExpense)
+    if(expense.value == ""){
+      this.travelExpenseDetail.expense = 0;
+      expense.value= "0";
+    } 
+    if(expWayExpense.value == ""){
+      this.travelExpenseDetail.expWayExpense = 0;
+      expWayExpense.value = "0";
+    }
+    total= parseFloat(expense.value) + parseFloat(expWayExpense.value);
+    this.travelExpenseDetail.expenseSubSummary = total;
+  }
+
+  sumTravelExpenseSubSummaryUpdate(expense:HTMLInputElement,expWayExpense:HTMLInputElement){
+    var total = 0;
+    console.log("expense = "+this.travelExpenseDetailUpdate.expense)
+    console.log("Wayexpense = "+this.travelExpenseDetailUpdate.expWayExpense)
+    if(expense.value == ""){
+      this.travelExpenseDetailUpdate.expense = 0;
+      expense.value= "0";
+    } 
+    if(expWayExpense.value == ""){
+      this.travelExpenseDetailUpdate.expWayExpense = 0;
+      expWayExpense.value = "0";
+    }
+    total= parseFloat(expense.value) + parseFloat(expWayExpense.value);
+    this.travelExpenseDetailUpdate.expenseSubSummary = total;
+  }
 
   gotoListSentApprove(){
     console.log(this.appUserId);
+
     this.router.navigate(['/listSentApprove', this.appUserId]);
   }
 
@@ -199,7 +238,8 @@ export class TravelExpenseDetailComponent implements OnInit {
               data => console.log(JSON.stringify(data)),
               error => console.log(error),
               () => {console.log("Update Detail Success"),
-                      this.getTravelExpenseDetailsByTravelExpenseId() }
+                      this.getTravelExpenseDetailsByTravelExpenseId(),
+                      this.customerIdUpdate = null }
             )
           
   }
@@ -229,17 +269,41 @@ export class TravelExpenseDetailComponent implements OnInit {
         .subscribe(
           data => {this.travelExpenseDetails = data, console.log(JSON.stringify(data))},
           error => console.log(error),
-          () => alert("Get TravelExpenseDetails Success")
+          () => {
+            alert("Get TravelExpenseDetails Success");
+            this.calculateExpenseResult();
+                
+          }
         )
   }
-  // getCustomers(){
-  //   this.customerService.getCustomers()
-  //     .subscribe(
-  //       data => this.customers = data,
-  //       error => console.log(error),
-  //       () => console.log(JSON.stringify(this.customers))
-  //     )
-    
-  // }
+
+ addExpenseSummary(){
+   this.travelExpenseService.addExpenseSummary(this.expenseSummary,this.travelExpenseId)
+        .subscribe(
+          data =>  console.log(data),
+          error => console.log(error),
+          () => {
+            alert("Save Expense Summary Complete"),
+            this.router.navigate(['/listSentApprove', this.appUserId]);
+          }
+
+        )
+ }
+
+ calculateExpenseResult(){
+   this.expenseResult = 0;
+   this.expenseWayResult = 0;
+   this.expenseSummary = 0;
+   for(var i = 0 ; i < this.travelExpenseDetails.length ;i++){
+     console.log(this.travelExpenseDetails[i].expense);
+     console.log(this.travelExpenseDetails[i].expWayExpense);
+     this.expenseResult += this.travelExpenseDetails[i].expense;
+     this.expenseWayResult += this.travelExpenseDetails[i].expWayExpense;
+     this.expenseSummary += this.travelExpenseDetails[i].expenseSubSummary;
+   }
+   console.log("Expense Result: "+this.expenseResult);
+   console.log("ExpWay  Result: "+this.expenseWayResult);
+   console.log("ExpenseSummary : "+this.expenseSummary);
+ }  
 
 }
