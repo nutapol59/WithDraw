@@ -29,7 +29,7 @@ public class TravelExpenseController {
 
     @RequestMapping(value="/getTravelExpenses" ,method = RequestMethod.GET,headers = "Accept=application/json")
     public ResponseEntity<String> getTravelExpenses(){
-        log.info(">>>>>>>>>>>>>>>>>>>>>GET Travel Expense<<<<<<<<<<<<<<<<<<<<<<<<<");
+        log.info("-------------------------GET Travel Expense---------------------------");
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
         List<TravelExpense> list = new ArrayList<>();
@@ -107,6 +107,26 @@ public class TravelExpenseController {
         }catch (Exception e){
             e.printStackTrace();
             return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize("Add Failed"),headers,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(value = "/addExpenseSummary",method = RequestMethod.POST,headers = "Accept=application/json")
+    public ResponseEntity<String> addExpenseSummary(@RequestBody String json){
+        log.info("---------------Add Expense Summary------------------");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        String result;
+        try{
+            result = this.travelExpenseServiceImpl.addExpenseSummary(json);
+            if(result.equalsIgnoreCase("Save Success")){
+                return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(result),headers, HttpStatus.OK);
+            }else {
+                return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize("Error"),headers,HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize("Error"),headers,HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

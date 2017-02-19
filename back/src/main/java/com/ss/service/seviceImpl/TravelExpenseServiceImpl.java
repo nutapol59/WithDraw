@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -126,15 +127,34 @@ public class TravelExpenseServiceImpl  implements TravelExpenseService{
            this.travelExpenseRepository.save(travelExpense);
 
            log.info("TravelExpense Id = {}",travelExpense.getId());
-
-
-
-               return travelExpense.getId();
+           return travelExpense.getId();
 
        }catch (Exception e){
            e.printStackTrace();
            return null;
        }
+    }
+
+    @Override
+    public String addExpenseSummary(String json) {
+        JSONObject jsonObject = new JSONObject(json);
+        log.info("addExpenseSummary JSON = {}",json);
+        try{
+            Long travelExpenseId = jsonObject.getLong("travelExpenseId");
+            TravelExpense travelExpense = this.travelExpenseRepository.findOne(travelExpenseId);
+            if(travelExpense != null){
+                travelExpense.setExpenseSummary(new BigDecimal(jsonObject.getInt("expenseSummary")));
+                this.travelExpenseRepository.save(travelExpense);
+                return "Save Success";
+            }else {
+                return "Save Failed";
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return "Save Failed";
+        }
+
     }
 
     @Override

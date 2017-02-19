@@ -59,6 +59,18 @@ export class TravelExpenseService {
           .catch((error:Response) => Observable.throw(error.text()))
            
    }
+   
+   addExpenseSummary(expenseSummary:number,travelExpenseId:number){
+      var headers = new Headers();
+      var json  = JSON.stringify({expenseSummary:expenseSummary,travelExpenseId:travelExpenseId});
+      headers.append("Content-Type", "application/json");
+      return this._http.post(this.configModeServerService.ipServer+'/travelExpenses/addExpenseSummary',json,{
+        headers:headers
+      })
+          .map(res => res.json())
+          .catch((error:Response) => Observable.throw(error.text()))
+
+   }
 
    updateTravelExpense(travelExpenseId:number, comment:string){
      console.log(travelExpenseId);
