@@ -29,4 +29,6 @@ public abstract class BaseEntity {
 
     @Column(name = "active")
     protected Integer active;
+
+
 }

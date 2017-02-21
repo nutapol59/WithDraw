@@ -60,6 +60,8 @@ public class AppUser implements Serializable {
     @JoinColumn(name = "company")
     private Company company;
 
+
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("\nAppuser{");

@@ -20,6 +20,7 @@ public class Department extends BaseEntity implements Serializable {
     private Company company;
 
 
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), company);

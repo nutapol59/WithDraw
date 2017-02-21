@@ -12,7 +12,6 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
-
 @MappedSuperclass
 public class DocumentMaster {
     @Id
@@ -41,5 +40,6 @@ public class DocumentMaster {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "approveMapFlow")
     private ApproveMapFlow approveMapFlow;
+
 
 }

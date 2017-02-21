@@ -1,0 +1,40 @@
+package com.ss.domain;
+
+
+import com.ss.repository.TravelExpenseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class TravelExpenseFactory {
+
+    private final TravelExpenseRepository travelExpenseRepository;
+    @Autowired
+    public TravelExpenseFactory(TravelExpenseRepository travelExpenseRepository) {
+        this.travelExpenseRepository = travelExpenseRepository;
+    }
+
+    public List<TravelExpense> createJasperDataSource(){
+
+
+        TravelExpense travelExpense = new TravelExpense();
+
+        TravelExpenseDetail travelExpenseDetail = new TravelExpenseDetail();
+
+
+        Customer customer = new Customer();
+
+        Company company = new Company();
+
+        Department department = new Department();
+
+        Bank bank = new Bank();
+
+        AppUser appUser = new AppUser();
+
+        ApproveMapFlow approveMapFlow = new ApproveMapFlow();
+
+        return Arrays.asList(travelExpense);
+    }
+}

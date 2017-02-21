@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 
-
-@EqualsAndHashCode(callSuper = true)
 @Data
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class AppMenu extends BaseEntity {
 
@@ -22,4 +22,6 @@ public class AppMenu extends BaseEntity {
 
     @Column
     private Integer menuType;
+
+
 }

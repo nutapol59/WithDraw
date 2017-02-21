@@ -67,6 +67,8 @@ public class TravelExpenseDetail {
     @JoinColumn(name = "travelExpense")
     private TravelExpense travelExpense;
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

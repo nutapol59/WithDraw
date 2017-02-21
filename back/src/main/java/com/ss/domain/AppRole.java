@@ -21,4 +21,5 @@ public class AppRole extends BaseEntity {
     @JoinColumn(name = "appRole")
     private Set<AppRoleMenu> appRoleMenus;
 
+
 }

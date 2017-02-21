@@ -33,4 +33,6 @@ public class DocumentApprove {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "travelExpenseDocApprove")
     private TravelExpense travelExpense;
+
+
 }

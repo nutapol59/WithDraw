@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TravelExpenseJasper_TableDetail" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5c63a94a-c1d0-409e-821e-87b27c0666c4">
-	<property name="ireport.zoom" value="1.2100000000000006"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TravelExpenseJasper_TableDetail" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5c63a94a-c1d0-409e-821e-87b27c0666c4">
+	<property name="ireport.zoom" value="1.210000000000001"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
@@ -347,268 +347,568 @@
 			<pen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<subDataset name="travelExpenseDetail" uuid="65daa1a7-ab6e-401d-9e06-c810599bda11">
-		<parameter name="xxx" class="java.lang.String"/>
+	<style name="table 17">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 17_TH" mode="Opaque" backcolor="#FFE2BF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 17_CH" mode="Opaque" backcolor="#FFF3E6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 17_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 18">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 18_TH" mode="Opaque" backcolor="#FAEBD7">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 18_CH" mode="Opaque" backcolor="#FFE4BF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 18_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 19">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 19_TH" mode="Opaque" backcolor="#FFE4C4">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 19_CH" mode="Opaque" backcolor="#FFE2BF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 19_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 20">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 20_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 20_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 20_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 21">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 21_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 21_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 21_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 22">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 22_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 22_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 22_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 23">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 23_TH" mode="Opaque" backcolor="#FFE4BF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 23_CH" mode="Opaque" backcolor="#FFF4E6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 23_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 24">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 24_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 24_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 24_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 25">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 25_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 25_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 25_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 26">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 26_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 26_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 26_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 27">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 27_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 27_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 27_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 28">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 28_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 28_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 28_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 29">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 29_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 29_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 29_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 30">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 30_TH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 30_CH" mode="Opaque" backcolor="#E6F3FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 30_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="details" uuid="047e1818-3fa1-4a56-bf58-5761b7ebbf64">
 		<queryString>
-			<![CDATA[select *
-from travel_expense_detail t,customer c
-where t.travel_expense =1 and t.customer = c.id]]>
+			<![CDATA[]]>
 		</queryString>
-		<field name="id" class="java.lang.Long">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="attach_file1" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="attach_file2" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="attach_file3" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="comment" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="exp_way_expense" class="java.math.BigDecimal">
-			<fieldDescription><![CDATA[]]></fieldDescription>
+		<field name="travelDate" class="java.util.Date">
+			<fieldDescription><![CDATA[travelDate]]></fieldDescription>
 		</field>
 		<field name="expense" class="java.math.BigDecimal">
-			<fieldDescription><![CDATA[]]></fieldDescription>
+			<fieldDescription><![CDATA[expense]]></fieldDescription>
 		</field>
-		<field name="expense_sub_summary" class="java.math.BigDecimal">
-			<fieldDescription><![CDATA[]]></fieldDescription>
+		<field name="travelTo" class="java.lang.String">
+			<fieldDescription><![CDATA[travelTo]]></fieldDescription>
 		</field>
-		<field name="travel_date" class="java.sql.Timestamp">
-			<fieldDescription><![CDATA[]]></fieldDescription>
+		<field name="expenseSubSummary" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[expenseSubSummary]]></fieldDescription>
 		</field>
-		<field name="travel_from" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
+		<field name="comment" class="java.lang.String">
+			<fieldDescription><![CDATA[comment]]></fieldDescription>
 		</field>
-		<field name="travel_to" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
+		<field name="travelExpense" class="com.ss.domain.TravelExpense">
+			<fieldDescription><![CDATA[travelExpense]]></fieldDescription>
 		</field>
-		<field name="version" class="java.lang.Long">
-			<fieldDescription><![CDATA[]]></fieldDescription>
+		<field name="expWayExpense" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[expWayExpense]]></fieldDescription>
 		</field>
-		<field name="customer" class="java.lang.Long">
-			<fieldDescription><![CDATA[]]></fieldDescription>
+		<field name="travelFrom" class="java.lang.String">
+			<fieldDescription><![CDATA[travelFrom]]></fieldDescription>
 		</field>
-		<field name="travel_expense" class="java.lang.Long">
-			<fieldDescription><![CDATA[]]></fieldDescription>
+		<field name="customer" class="com.ss.domain.Customer">
+			<fieldDescription><![CDATA[customer]]></fieldDescription>
 		</field>
-		<field name="active" class="java.lang.Integer">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="code" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="name" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="address" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<group name="travel_date">
-			<groupExpression><![CDATA[$F{travel_date}]]></groupExpression>
-		</group>
+		<variable name="variable1" class="java.lang.String"/>
 	</subDataset>
+	<parameter name="travelExpenseDetails" class="java.util.Set"/>
 	<queryString>
-		<![CDATA[select 1 from dual]]>
+		<![CDATA[]]>
 	</queryString>
-	<field name="1" class="java.lang.Long"/>
-	<variable name="xx" class="java.lang.Integer">
-		<initialValueExpression><![CDATA[10]]></initialValueExpression>
-	</variable>
+	<field name="travelTo" class="java.lang.String">
+		<fieldDescription><![CDATA[travelTo]]></fieldDescription>
+	</field>
+	<field name="expWayExpense" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[expWayExpense]]></fieldDescription>
+	</field>
+	<field name="comment" class="java.lang.String">
+		<fieldDescription><![CDATA[comment]]></fieldDescription>
+	</field>
+	<field name="customer" class="com.ss.domain.Customer">
+		<fieldDescription><![CDATA[customer]]></fieldDescription>
+	</field>
+	<field name="expenseSubSummary" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[expenseSubSummary]]></fieldDescription>
+	</field>
+	<field name="travelExpense" class="com.ss.domain.TravelExpense">
+		<fieldDescription><![CDATA[travelExpense]]></fieldDescription>
+	</field>
+	<field name="travelDate" class="java.util.Date">
+		<fieldDescription><![CDATA[travelDate]]></fieldDescription>
+	</field>
+	<field name="travelFrom" class="java.lang.String">
+		<fieldDescription><![CDATA[travelFrom]]></fieldDescription>
+	</field>
+	<field name="expense" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[expense]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="50">
+		<band height="53">
 			<staticText>
-				<reportElement x="25" y="14" width="99" height="36" uuid="d9561ae4-1a98-4822-baf4-3c57019cfa47"/>
+				<reportElement x="24" y="7" width="99" height="36" uuid="d9561ae4-1a98-4822-baf4-3c57019cfa47"/>
 				<textElement>
 					<font fontName="TH Sarabun New" size="20" isBold="true"/>
 				</textElement>
 				<text><![CDATA[กรณีไปหาลูกค้า]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="357" y="14" width="34" height="20" uuid="ecf7cf25-547c-4913-8bce-8dc9b3fcc9fe"/>
-				<textFieldExpression><![CDATA[$V{xx}]]></textFieldExpression>
-			</textField>
 		</band>
 	</title>
 	<pageHeader>
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band splitType="Stretch"/>
+		<band/>
 	</columnHeader>
 	<detail>
-		<band height="54" splitType="Stretch">
+		<band height="53" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 16" style="table" x="0" y="2" width="538" height="50" uuid="107bd664-b667-4ce4-a9c9-56c654b8c8dd"/>
+				<reportElement key="table 30" style="table 30" x="0" y="0" width="572" height="53" uuid="b21fa6c7-a0b3-481d-b084-40591880f237"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="travelExpenseDetail" uuid="9997fc90-17e7-4805-9269-7b6c26e9b206">
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<datasetRun subDataset="details" uuid="c7192e0e-35a6-45bc-bd4b-6dc25946f973">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{travelExpenseDetails})]]></dataSourceExpression>
 					</datasetRun>
-					<jr:column width="68" uuid="575511db-2416-4b34-b62d-ab1b0c4ea9c7">
-						<jr:columnHeader style="table" height="30" rowSpan="1">
+					<jr:column width="61" uuid="869a2b45-71cc-4be0-8d9c-05a35fbe4b96">
+						<jr:columnHeader style="table" height="64" rowSpan="2">
 							<staticText>
-								<reportElement x="1" y="0" width="67" height="30" uuid="3c594da9-14fd-4db0-840d-84c6666145e8"/>
+								<reportElement x="0" y="0" width="61" height="64" uuid="59a8c6dd-4854-4b69-b6d8-2cd1de825f73"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
+									<font fontName="TH Sarabun New" size="16" isBold="true"/>
 								</textElement>
 								<text><![CDATA[วันที่]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table" height="33" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="68" height="32" uuid="6dbe40c2-f200-431c-a4bf-00a70279d348"/>
+						<jr:detailCell style="table" height="55" rowSpan="1">
+							<textField pattern="dd/MM/yyyy">
+								<reportElement x="0" y="0" width="61" height="54" uuid="16324a8f-525c-4add-9c68-3be0d2a6ca34"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="TH Sarabun New" size="16"/>
 								</textElement>
-								<textFieldExpression><![CDATA[new SimpleDateFormat("MM/dd/yyyy").format($F{travel_date})]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{travelDate}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="57" uuid="c9a638f6-bd3f-4615-a015-46d1b849b5e9">
-						<jr:columnHeader style="table" height="30" rowSpan="1">
+					<jr:column width="73" uuid="2e86b5ed-20f8-4fdb-839d-deb0d39a70c7">
+						<jr:columnHeader style="table" height="64" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="0" width="57" height="30" uuid="8040fbb7-6d45-4869-ad77-7def1a52294e"/>
+								<reportElement x="0" y="0" width="73" height="64" uuid="f97e378c-cd31-46ba-b366-071a6054c14c"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
+									<font fontName="TH Sarabun New" size="16" isBold="true"/>
 								</textElement>
 								<text><![CDATA[ลูกค้า]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table" height="33" rowSpan="1">
+						<jr:detailCell style="table" height="55" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="57" height="32" uuid="5ccccb9d-45ea-44e4-8891-585c15d5f6c2"/>
+								<reportElement x="0" y="0" width="73" height="54" uuid="11ed13f4-9612-4273-ad45-4115ab142759"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="TH Sarabun New" size="16"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{customer}.getName()]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="63" uuid="70be8de1-d325-4cc4-8d53-e066448de16b">
+					<jr:columnGroup width="135" uuid="a8c54cab-0439-44a1-8eea-19f744383128">
 						<jr:columnHeader style="table" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="63" height="30" uuid="2cd17e4a-864d-4dba-8952-a95d9d32a8b0"/>
+								<reportElement x="0" y="0" width="135" height="30" uuid="f4929f01-7d2d-4669-9ef1-cc3943165d0d"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
+									<font fontName="TH Sarabun New" size="16" isBold="true"/>
 								</textElement>
-								<text><![CDATA[จาก]]></text>
+								<text><![CDATA[เดินทาง]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table" height="33" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="63" height="32" uuid="65da0308-4d6c-47cf-8a83-dc428136fba7"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{travel_from}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="72" uuid="536cf171-3d7c-4954-9fec-fe9ac958e2d5">
+						<jr:column width="68" uuid="0ec2544d-d839-448b-bfea-d9f1bfd97dc2">
+							<jr:columnHeader style="table" height="34" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="68" height="34" uuid="eaad19a7-8c71-40e6-adfa-21bbdafb3034"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="TH Sarabun New" size="16" isBold="true"/>
+									</textElement>
+									<text><![CDATA[จาก]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table" height="55" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="68" height="54" uuid="13297292-5006-4a05-898b-2492062d34e5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="TH Sarabun New" size="16"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{travelFrom}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="67" uuid="e479a3c6-0f05-49f8-8664-c0731482cc39">
+							<jr:columnHeader style="table" height="34" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="67" height="34" uuid="3b74c6ee-4dd6-4011-99df-f2fde659c7cc"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="TH Sarabun New" size="16" isBold="true"/>
+									</textElement>
+									<text><![CDATA[ถึง]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table" height="55" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="67" height="54" uuid="47160f5a-e05a-497e-945b-0b644ac3ffe3"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="TH Sarabun New" size="16"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{travelTo}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+					<jr:columnGroup width="113" uuid="4931ded5-a7e1-4aa7-9dd1-67821ec9d410">
 						<jr:columnHeader style="table" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="72" height="30" uuid="a4b4b1e0-1531-4b2a-ac70-31bb21809d63"/>
+								<reportElement x="0" y="0" width="113" height="30" uuid="6b2db42c-4a73-42e0-bc25-10bb02db615f"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
+									<font fontName="TH Sarabun New" size="16" isBold="true"/>
 								</textElement>
-								<text><![CDATA[ถึง]]></text>
+								<text><![CDATA[ค่าใช้จ่าย]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table" height="33" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="72" height="32" uuid="d3e298c2-7341-4c71-ab55-1a639c522711"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{travel_to}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="68" uuid="8e31d574-16e7-4e2f-9e84-308d8c578000">
-						<jr:columnHeader style="table" height="30" rowSpan="1">
+						<jr:column width="54" uuid="ad2d5736-3dda-48df-b223-4972e6873579">
+							<jr:columnHeader style="table" height="34" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="54" height="34" uuid="a21628a1-33e0-4d44-bb5f-500d6141bc86"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="TH Sarabun New" size="16" isBold="true"/>
+									</textElement>
+									<text><![CDATA[ค่าเดินทาง]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table" height="55" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="54" height="54" uuid="50eef0a5-17a5-4dca-b67b-0e851a7c5c7c"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="TH Sarabun New" size="16"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{expWayExpense}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="59" uuid="32304183-9652-4116-886b-59769c91b9a0">
+							<jr:columnHeader style="table" height="34" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="59" height="34" uuid="c85e55f6-a097-423c-bdfb-03413ee2f286"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="TH Sarabun New" size="16" isBold="true"/>
+									</textElement>
+									<text><![CDATA[ค่าทางด่วน]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table" height="55" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="59" height="54" uuid="c3a2cf8c-a6c1-45ea-9f3a-a08fdee4a9fb"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="TH Sarabun New" size="16"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{expenseSubSummary}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+					<jr:column width="55" uuid="34920abc-b05c-4324-933b-6be0ab5b6855">
+						<jr:columnHeader style="table" height="64" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="0" width="68" height="30" uuid="0a96b8a4-776e-4b55-a287-8202dc4db759"/>
+								<reportElement x="0" y="0" width="55" height="64" uuid="8c61af2d-09c4-4661-ae08-66f24b387f23"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
-								</textElement>
-								<text><![CDATA[ค่าเดินทาง]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="table" height="33" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="68" height="32" uuid="0c9ff32f-d82f-4b5d-8d06-2f075c4bec1c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{expense}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="74" uuid="67ca9fc6-4daa-4088-b1ac-986af8679ea1">
-						<jr:columnHeader style="table" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="74" height="30" uuid="41c1d481-fef2-4cb0-9138-5d6094449064"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
-								</textElement>
-								<text><![CDATA[ค่าทางด่วน]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="table" height="33" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="74" height="33" uuid="deeec37c-4ed2-4e7b-adcb-7ffd72555b82"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{exp_way_expense}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="80" uuid="adaf9803-91e6-4e5d-9609-881514a5ed8c">
-						<jr:columnHeader style="table" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="80" height="30" uuid="75ed3001-0da3-427d-a3ef-54adb460dd0c"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
+									<font fontName="TH Sarabun New" size="16" isBold="true"/>
 								</textElement>
 								<text><![CDATA[รวมทั้งสิ้น]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table" height="33" rowSpan="1">
+						<jr:detailCell style="table" height="55" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="80" height="32" uuid="ecbaa110-971d-464c-a3c2-d278bcd02775"/>
+								<reportElement x="0" y="0" width="55" height="54" uuid="239466c9-dfb8-4f5a-8de4-2fbf3aa11f67"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="TH Sarabun New" size="16"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{expense_sub_summary}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{expenseSubSummary}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="55" uuid="dfbfb243-f60e-4884-93c7-3cd642c73553">
-						<jr:columnHeader style="table" height="30" rowSpan="1">
+					<jr:column width="90" uuid="47c32271-b74a-4c4f-852c-b9c9d7ac8d59">
+						<jr:tableHeader height="0" rowSpan="1"/>
+						<jr:tableFooter height="0" rowSpan="1"/>
+						<jr:columnHeader style="table" height="64" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="0" width="55" height="30" uuid="37a46654-3dea-49ab-a714-f72605240750"/>
+								<reportElement x="0" y="0" width="90" height="64" uuid="c7903b0e-5c76-4129-9471-bf44ad59bda8"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
+									<font fontName="TH Sarabun New" size="16" isBold="true"/>
 								</textElement>
 								<text><![CDATA[หมายเหตุ]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table" height="33" rowSpan="1"/>
+						<jr:detailCell style="table" height="55" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="54" uuid="b66d695d-5664-443a-af6c-4573481be8cc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="TH Sarabun New" size="16"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{comment}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
 					</jr:column>
 				</jr:table>
 			</componentElement>
 		</band>
 	</detail>
 	<columnFooter>
-		<band splitType="Stretch"/>
+		<band/>
 	</columnFooter>
 	<pageFooter>
 		<band splitType="Stretch"/>
