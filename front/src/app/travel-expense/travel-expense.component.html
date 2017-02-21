@@ -1,146 +1,147 @@
 <div class="container">
 		<div class="form-horizontal">
-		<div class="row">
-					<div class="col-sm-12">
-						<div class="panel" >
-							<div class="panel-heading" style="background-color: rgb(20,20,20);">
-								<h2 class="panel-title" style="color: white;">ข้อมูลใบเบิก</h2>
-							</div>
-							<div class="panel-body">
-					<div class="row">
-						<div class="col-md-offset-1 col-md-5 nopadding-left-right">
-							<div class="form-group has-warning">
-								<label for="" class="col-md-4  nopadding-left-right controlLabel">ข้าพเจ้า</label>
-								<div class="col-md-8 nopadding-left-right">
-									<input class="form-control" type="text" readonly  [value]="appUser.empName+' '+ appUser.empLastName">
-								</div>
-							</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel" >
+						<div class="panel-heading" style="background-color: rgb(20,20,20);">
+							<h2 class="panel-title" style="color: white;">ข้อมูลใบเบิก</h2>
 						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-offset-1 col-md-5 nopadding-left-right">
+									<div class="form-group has-warning">
+										<label for="" class="col-md-4  nopadding-left-right controlLabel">ข้าพเจ้า</label>
+										<div class="col-md-8 nopadding-left-right">
+											<input class="form-control" type="text" readonly  [value]="appUser.empName+' '+ appUser.empLastName">
+										</div>
+									</div>
+								</div>
 
-						<div class="col-md-5 nopadding-left-right">
-							<div class="form-group  has-warning ">
-								<label for="" class="col-md-4 nopadding-left-right controlLabel">บริษัท</label>
-								<div class="col-md-8 nopadding-left-right">
-									<input class="form-control" readonly type="text" [value]="company.name">
+								<div class="col-md-5 nopadding-left-right">
+									<div class="form-group  has-warning ">
+										<label for="" class="col-md-4 nopadding-left-right controlLabel">บริษัท</label>
+										<div class="col-md-8 nopadding-left-right">
+											<input class="form-control" readonly type="text" [value]="company.name">
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
 
-						<div class="col-md-offset-1 col-md-5 nopadding-left-right">
-							<div class="form-group   has-warning">
-								<label for="" class="col-md-4 nopadding-left-right controlLabel">ฝ่าย/แผนก</label>
-								<div class="col-md-8 nopadding-left-right">
-									<input class="form-control" readonly type="text" [value]="department.name">
+								<div class="col-md-offset-1 col-md-5 nopadding-left-right">
+									<div class="form-group   has-warning">
+										<label for="" class="col-md-4 nopadding-left-right controlLabel">ฝ่าย/แผนก</label>
+										<div class="col-md-8 nopadding-left-right">
+											<input class="form-control" readonly type="text" [value]="department.name">
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-					<!--</div>-->
-					<!--<div class="row">-->
-						<div class="col-md-5 nopadding-left-right">
-							<div class="form-group  has-warning ">
-								<label for="" class="col-md-4 nopadding-left-right controlLabel">เลขบัตรประชาชน</label>
-								<div class="col-md-8 nopadding-left-right">
-									<input class="form-control" readonly type="text" [value]="appUser.personalId">
+								<!--</div>-->
+								<!--<div class="row">-->
+								<div class="col-md-5 nopadding-left-right">
+									<div class="form-group  has-warning ">
+										<label for="" class="col-md-4 nopadding-left-right controlLabel">เลขบัตรประชาชน</label>
+										<div class="col-md-8 nopadding-left-right">
+											<input class="form-control" readonly type="text" [value]="appUser.personalId">
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
 
-						<div class="col-md-offset-1 col-md-5 nopadding-left-right">
-							<div class="form-group  has-warning ">
-								<label for="" class="col-md-4 nopadding-left-right controlLabel">โทร</label>
-								<div class="col-md-8 nopadding-left-right">
-									<input class="form-control" readonly type="text"  [value]="appUser.tel">
+								<div class="col-md-offset-1 col-md-5 nopadding-left-right">
+									<div class="form-group  has-warning ">
+										<label for="" class="col-md-4 nopadding-left-right controlLabel">โทร</label>
+										<div class="col-md-8 nopadding-left-right">
+											<input class="form-control" readonly type="text"  [value]="appUser.tel">
+										</div>
+										<!-- <label for="" class="col-md-2 controlLabel">รายละเอียดดังนี้</label> -->
+									</div>
 								</div>
-								<!-- <label for="" class="col-md-2 controlLabel">รายละเอียดดังนี้</label> -->
-							</div>
-						</div>
 
-						<div class="col-md-5 nopadding-left-right">
-							<div class="form-group  has-warning">
-								<label  class="col-md-4 nopadding-left-right">อีเมลล์</label>
-								<div class="col-md-8 nopadding-left-right">
-									<input class="form-control" readonly type="text"  [value]="appUser.email">
+								<div class="col-md-5 nopadding-left-right">
+									<div class="form-group  has-warning">
+										<label  class="col-md-4 nopadding-left-right">อีเมลล์</label>
+										<div class="col-md-8 nopadding-left-right">
+											<input class="form-control" readonly type="text"  [value]="appUser.email">
+										</div>
+									</div>
+								</div>
+								<!--</div>-->
+								<!--<div class="row">-->
+								<div class="col-md-offset-1 col-md-10 nopadding-left-right">
+									<div class="form-group  has-warning">
+										<label for="" class="col-md-2 nopadding-left-right controlLabel">ที่อยู่</label>
+										<div class="col-md-10 nopadding-left-right">
+											<textarea class="form-control border" readonly type="text" row="3">{{appUser.empAddress}}</textarea> 
+										</div>
+									</div>
+								</div>
+								<!--</div>-->
+								<!--<div class="row">-->
+								<div class="col-md-offset-1 col-md-10 nopadding-left-right">
+									<div class="form-group  has-warning">
+										<label for="" class="col-md-2 nopadding-left-right controlLabel ">เพื่อชำระค่า</label>
+										<div class="col-md-10 nopadding-left-right">
+											<textarea *ngIf="!isResultTable"class="form-control border" type="text" row="3" [(ngModel)]="travelExpense.comment"></textarea> 
+											<textarea *ngIf="isResultTable" readonly class="form-control border" type="text" row="3" [(ngModel)]="travelExpense.comment"></textarea> 
+										</div>
+									</div>
+								</div>
+								<!--</div>-->
+								<div class="row">
+									<div class="col-md-12">
+										<div style="width: 100%; border-bottom: 1px solid rgba(0,0,0,0.1); margin-top: 10px; margin-bottom: 10px;"></div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-offset-1 col-md-10">
+										<div class="form-group" style="text-align: right;">
+											<button *ngIf="isResultTable" (click)="getCustomers()" data-toggle="modal" data-target="#modalAddTravelExpenseDetail" data-backdrop="static" data-keyboard="false"
+											class="btn btn-raised btn-warning"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;รายละเอียดกรณีไปพบลูกค้า</button>
+											<button *ngIf="isResultTable" data-toggle="modal" data-target="#modalUpdateTravelExpense" class="btn  btn-raised btn-warning">อัพเดตใบเบิก</button>
+											<button *ngIf="!isResultTable" (click)="addTravelExpense()" class="btn  btn-raised btn-warning">สร้างใบเบิก</button>
+											<button (click)="gotoListSentApprove()" class="btn btn-raised btn-warning" >
+													ใบเบิกที่ส่งขออนุมัติแล้ว</button>
+										</div>
+										
+									</div>
 								</div>
 							</div>
-						</div>
-					<!--</div>-->
-					<!--<div class="row">-->
-						<div class="col-md-offset-1 col-md-10 nopadding-left-right">
-							<div class="form-group  has-warning">
-								<label for="" class="col-md-2 nopadding-left-right controlLabel">ที่อยู่</label>
-								<div class="col-md-10 nopadding-left-right">
-									<textarea class="form-control border" readonly type="text" row="3">{{appUser.empAddress}}</textarea> 
-								</div>
-							</div>
-						</div>
-					<!--</div>-->
-					<!--<div class="row">-->
-						<div class="col-md-offset-1 col-md-10 nopadding-left-right">
-							<div class="form-group  has-warning">
-								<label for="" class="col-md-2 nopadding-left-right controlLabel ">เพื่อชำระค่า</label>
-								<div class="col-md-10 nopadding-left-right">
-									<textarea *ngIf="!isResultTable"class="form-control border" type="text" row="3" [(ngModel)]="travelExpense.comment"></textarea> 
-									<textarea *ngIf="isResultTable" readonly class="form-control border" type="text" row="3" [(ngModel)]="travelExpense.comment"></textarea> 
-								</div>
-							</div>
-						</div>
-					<!--</div>-->
-					<div class="row">
-						<div class="col-md-12">
-							<div style="width: 100%; border-bottom: 1px solid rgba(0,0,0,0.1); margin-top: 10px; margin-bottom: 10px;"></div>
-						</div>
+						</div> <!--panel-->
 					</div>
-					<div class="row">
-						<div class="col-md-offset-1 col-md-10">
-							<div class="form-group" style="text-align: right;">
-								<button *ngIf="isResultTable" (click)="getCustomers()" data-toggle="modal" data-target="#modalAddTravelExpenseDetail" data-backdrop="static" data-keyboard="false"
-								class="btn btn-raised btn-warning"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;รายละเอียดกรณีไปพบลูกค้า</button>
-								<button *ngIf="isResultTable" data-toggle="modal" data-target="#modalUpdateTravelExpense" class="btn  btn-raised btn-warning">อัพเดตใบเบิก</button>
-								<button *ngIf="!isResultTable" (click)="addTravelExpense()" class="btn  btn-raised btn-warning">สร้างใบเบิก</button>
-								<button (click)="gotoListSentApprove()" class="btn btn-raised btn-warning" >
-										ใบเบิกที่ส่งขออนุมัติแล้ว</button>
-							</div>
-							
-						</div>
-					</div>
-					</div>
-					</div> <!--panel-->
-			</div>
-		</div>
-		<div *ngIf="isResultTable" class="row">
-			<app-travel-expense-detail [appUserId]="appUser.id" [customers]="customers" [travelExpenseId]="travelExpense.id"></app-travel-expense-detail>
+				</div>
 			
 		</div>
-		
+		<div *ngIf="isResultTable">
+			<app-travel-expense-detail [appUserId]="appUser.id" [customers]="customers" [travelExpenseId]="travelExpense.id"></app-travel-expense-detail>
+		</div>
 	</div>
-
-
-	<!--update TravelExpense-->
-<div class="modal fade" id="modalUpdateTravelExpense">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" (click)="onClearUpdate(comment)"  class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Update TravelExpense</h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-horzontal">
-          <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-3 control-label">เพื่อชำระค่า: </label>
-                <div class="col-md-5">
-                    <input #comment required class="form-control" type="text" 
-                    [value]="travelExpense.comment"/>
-                </div>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button  type="button" class="btn btn-default" data-dismiss="modal" (click)="onClearUpdate(comment)" >Close</button>
-        <button  type="submit" class="btn btn-primary" data-dismiss="modal" (click)="updateTravelExpense(comment)">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
+
+
+		<!--update TravelExpense-->
+		<div class="modal fade" id="modalUpdateTravelExpense">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" (click)="onClearUpdate(comment)"  class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h4 class="modal-title">Update TravelExpense</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horzontal">
+							<div class="row">    
+								<div class="form-group">
+										<label class="col-md-offset-2 col-md-3 control-label">เพื่อชำระค่า: </label>
+										<div class="col-md-5">
+												<input #comment required class="form-control" type="text" 
+												[value]="travelExpense.comment"/>
+										</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button  type="button" class="btn btn-default" data-dismiss="modal" (click)="onClearUpdate(comment)" >Close</button>
+						<button  type="submit" class="btn btn-primary" data-dismiss="modal" (click)="updateTravelExpense(comment)">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
