@@ -6,17 +6,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" routerLink='/' 
-                              routerLinkActive='active' >TRAVEL EXPENSE</a>
+      <a class="navbar-brand" href="javascript:void(0)">TRAVEL EXPENSE</a>
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
+        
         <li class="dropdown">
-          <a href="#" data-target="dropdown" class="dropdown-toggle" data-toggle="dropdown">Master
+          <a href="#" data-target="dropdown" class="dropdown-toggle headerMenu" data-toggle="dropdown">Master
             <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="javascript:void(0)">AppMenu</a></li>
-            <li><a href="javascript:void(0)">AppRole</a></li>
+            <!--<li><a href="javascript:void(0)">AppMenu</a></li>
+            <li><a href="javascript:void(0)">AppRole</a></li>-->
 
             <li><a routerLink='approveMapFlow'
                    routerLinkActive='active'>ApproveMapFlow</a></li>
@@ -37,6 +37,8 @@
                    routerLinkActive='active'>Department</a></li>
           </ul>
         </li>
+        <li><a class="headerMenu" routerLink='/'  routerLinkActive='active' >Create</a></li>
+        <li><a routerLink="/listSentApprove/2" routerLinkActive='active' class="headerMenu">List</a></li>
       </ul>
     </div>
   </div>

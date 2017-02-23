@@ -21,40 +21,47 @@
   </div>-->
 
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" style="display: block">
      
-        <table class="table table-striped table-responsive table-black">
+        <table class="table table-striped table-black">
           <thead>
             <th>Action</th>
             <th>empCode</th>
             <th>empName</th>
             <th>empLastName</th>
             <th>empAddress</th>
-            <th>personalId</th>
+            <!--<th>personalId</th>
             <th>tel</th>
             <th>email</th>
             <th>ldapUserName</th>
-            <th>password</th>
+            <th>password</th>-->
             <th>department</th>
             <th>company</th>
           </thead>
           <tbody>
             <tr *ngFor="let appUser of appUsers">
-              <td><button (click)="deleteAppUser(appUser)" class="btn btnEdit btn-raised btn-danger"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
-                  <button class="btn btnEdit btn-raised btn-info" data-backdrop="static" data-keyboard="false" 
+              <td>
+                <div class="btn-group btn-group-justified btnPill">
+                  <a href="#" (click)="deleteAppUser(appUser)" class="btn btnEdit btn-raised btn-danger">
+                    <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                  </a>
+                  <a href="#" class="btn btn-raised btn-info btnEdit" data-backdrop="static" data-keyboard="false" 
                                 data-target="#modalUpdate" data-toggle="modal"
                                 (click)="detailModalUpdate(appUser)" (click)="getCompanies()"
-                                (click)="getDepartments()"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></button>
+                                (click)="getDepartments()">
+                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                  </a>
+                </div>
               </td>
               <td>{{appUser.empCode}}</td>
               <td>{{appUser.empName}}</td>
               <td>{{appUser.empLastName}}</td>
               <td>{{appUser.empAddress}}</td>
-              <td>{{appUser.personalId}}</td>
+              <!--<td>{{appUser.personalId}}</td>
               <td>{{appUser.tel}}</td>
               <td>{{appUser.email}}</td>
               <td>{{appUser.ldapUserName}}</td>
-              <td>{{appUser.password}}</td>
+              <td>{{appUser.password}}</td>-->
               <td>{{appUser.department.name}}</td>
               <td>{{appUser.company.name}}</td>
             </tr>
@@ -66,7 +73,7 @@
 </div>
 
 <!--Modal AddAppUser-->
-<div class="modal fade" id="modalAdd">
+<div class="modal fade modal-black" id="modalAdd">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -77,10 +84,10 @@
         <form class="form-horizontal " (ngSubmit)="onSubmit()" #addCom="ngForm">
           <div class="row">    
             <!--<div class="form-group">-->
-                <div class="col-md-offset-2 col-md-3">
+                <div class="col-md-offset-1 col-md-2 textRight">
                   <label class="control-label">EmpCode: </label>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-8">
                     <input  required class="form-control" type="text" 
                     [(ngModel)]="appUser.empCode"  [ngModelOptions]="{standalone: true}" />
                 </div>
@@ -89,10 +96,10 @@
 
           <div class="row">    
             <!--<div class="form-group">-->
-                <div class="col-md-offset-2 col-md-3">
+                <div class="col-md-offset-1 col-md-2 textRight">
                   <label class="control-label">EmpName: </label>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-8">
                     <input  required class="form-control" type="text" 
                     [(ngModel)]="appUser.empName"  [ngModelOptions]="{standalone: true}" />
                 </div>
@@ -100,10 +107,10 @@
           </div>
           <div class="row">    
             <!--<div class="form-group">-->
-                <div class="col-md-offset-2 col-md-3">
+                <div class="col-md-offset-1 col-md-2 textRight">
                   <label class="control-label">EmpLastName: </label>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-8">
                     <input  required class="form-control" type="text" 
                     [(ngModel)]="appUser.empLastName" [ngModelOptions]="{standalone: true}" />
                 </div>
@@ -111,10 +118,10 @@
           </div>
           <div class="row">    
             <!--<div class="form-group">-->
-                <div class="col-md-offset-2 col-md-3">
+                <div class="col-md-offset-1 col-md-2 textRight">
                   <label class="control-label">EmpAddress: </label>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-8">
                     <input  required class="form-control" type="text" 
                     [(ngModel)]="appUser.empAddress" [ngModelOptions]="{standalone: true}" />
                 </div>
@@ -122,10 +129,10 @@
           </div>
           <div class="row">    
             <!--<div class="form-group">-->
-                <div class="col-md-offset-2 col-md-3">
+                <div class="col-md-offset-1 col-md-2 textRight">
                   <label class="control-label">PersonalId: </label>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-8">
                     <input  required class="form-control" type="text" 
                     [(ngModel)]="appUser.personalId" [ngModelOptions]="{standalone: true}" />
                 </div>
@@ -133,10 +140,10 @@
           </div>
           <div class="row">    
             <!--<div class="form-group">-->
-                <div class="col-md-offset-2 col-md-3">
+                <div class="col-md-offset-1 col-md-2 textRight">
                   <label class="control-label">Tel: </label>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-8">
                     <input  required class="form-control" type="text" 
                     [(ngModel)]="appUser.tel" [ngModelOptions]="{standalone: true}" />
                 </div>
@@ -144,10 +151,10 @@
           </div>
           <div class="row">    
             <!--<div class="form-group">-->
-                <div class="col-md-offset-2 col-md-3">
+                <div class="col-md-offset-1 col-md-2 textRight">
                   <label class="control-label">Email: </label>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-8">
                     <input  required class="form-control" type="text" 
                     [(ngModel)]="appUser.email" [ngModelOptions]="{standalone: true}" />
                 </div>
@@ -155,10 +162,10 @@
           </div>
           <div class="row">    
             <!--<div class="form-group">-->
-                <div class="col-md-offset-2 col-md-3">
+                <div class="col-md-offset-1 col-md-2 textRight">
                   <label class="control-label">LdapUserName: </label>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-8">
                     <input  required class="form-control" type="text" 
                     [(ngModel)]="appUser.ldapUserName" [ngModelOptions]="{standalone: true}" />
                 </div>
@@ -166,10 +173,10 @@
           </div>
           <div class="row">    
             <!--<div class="form-group">-->
-                <div class="col-md-offset-2 col-md-3">
+                <div class="col-md-offset-1 col-md-2 textRight">
                   <label class="control-label">Password: </label>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-8">
                     <input  required class="form-control" type="text" 
                     [(ngModel)]="appUser.password" [ngModelOptions]="{standalone: true}" />
                 </div>
@@ -177,10 +184,10 @@
           </div>
           <div class="row">
             <!--<div class="form-group">-->
-              <div class="col-md-offset-2 col-md-3">
+              <div class="col-md-offset-1 col-md-2 textRight">
                 <label for="selectCompany" class="control-label">Department: </label>
               </div>
-               <div class="col-md-5">
+               <div class="col-md-8">
                   <select id="selectDepartment" class="form-control" [(ngModel)]="departmentId" required
                   [ngModelOptions]="{standalone: true}" >
                     <option disabled ></option>
@@ -193,10 +200,10 @@
           </div>
           <div class="row">
             <!--<div class="form-group">-->
-              <div class="col-md-offset-2 col-md-3">
+              <div class="col-md-offset-1 col-md-2 textRight">
                 <label for="selectCompany" class="control-label">Company: </label>
               </div>
-               <div class="col-md-5">
+               <div class="col-md-8">
                   <select id="selectCompany" [(ngModel)]="companyId" class="form-control" [ngModelOptions]="{standalone: true}">
                     <option   disabled>Choose one</option>
                     <option  *ngFor="let company of companies" [value]="company.id">
@@ -210,7 +217,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" (click)="onClear()" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="addAppUser()">Save changes</button>
+        <button type="submit" class="btn btn-warning" data-dismiss="modal" (click)="addAppUser()">Save changes</button>
       </div>
       <!--[disabled]="!addCom.form.valid" -->
     </div>
@@ -222,7 +229,7 @@
 
 
 <!--Modal UpdateAppUser-->
-<div class="modal fade" id="modalUpdate">
+<div class="modal fade modal-black" id="modalUpdate">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -233,90 +240,110 @@
       <div class="modal-body">
         <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">EmpCode: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">  
+                  <label class="control-label">EmpCode: </label>
+                </div>
+                <div class="col-md-8">
                     <input #empCode required class="form-control" type="text" 
                     [value]="appUserUpdate.empCode"/>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">EmpName: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">EmpName: </label>
+                </div>
+                <div class="col-md-8">
                     <input #empName required class="form-control" type="text" 
                     [value]="appUserUpdate.empName"/>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">EmpLastName: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">EmpLastName: </label>
+                </div>
+                <div class="col-md-8">
                     <input #empLastName required class="form-control" type="text" 
                     [value]="appUserUpdate.empLastName"/>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">EmpAddress: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">EmpAddress: </label>
+                </div>
+                <div class="col-md-8">
                     <input #empAddress required class="form-control" type="text" 
                     [value]="appUserUpdate.empAddress"/>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">PersonalId: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">PersonalId: </label>
+                </div>
+                <div class="col-md-8">
                     <input #personalId required class="form-control" type="text" 
                     [value]="appUserUpdate.personalId"/>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Tel: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">Tel: </label>
+                </div>
+                <div class="col-md-8">
                     <input #tel required class="form-control" type="text" 
                     [value]="appUserUpdate.tel"/>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Email: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">Email: </label>
+                </div>
+                <div class="col-md-8">
                     <input #email required class="form-control" type="text" 
                     [value]="appUserUpdate.email"/>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">LdapUserName: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">LdapUserName: </label>
+                </div>
+                <div class="col-md-8">
                     <input #ldap required class="form-control" type="text" 
                     [value]="appUserUpdate.ldapUserName"/>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Password: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">Password: </label>
+                </div>
+                <div class="col-md-8">
                     <input #password required class="form-control" type="text" 
                     [value]="appUserUpdate.password"/>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-              <label for="selectCompany" class="col-md-offset-2 col-md-2 control-label">Department: </label>
-               <div class="col-md-5">
+            <!--<div class="form-group">-->
+              <div class="col-md-offset-1 col-md-2 textRight">
+                <label for="selectCompany" class="control-label">Department: </label>
+              </div>
+               <div class="col-md-8">
                   <select id="selectDepartment"  #selectDep  class="form-control" [(ngModel)]="departmentIdUpdate" (change)="onSelectboxDepChange($event.target.value)"
                   required [ngModelOptions]="{standalone: true}" >
                     <option disabled ></option>
@@ -325,12 +352,14 @@
                     </option>
                   </select>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-              <label for="selectCompany" class="col-md-offset-2 col-md-2 control-label">Company: </label>
-               <div class="col-md-5">
+            <!--<div class="form-group">-->
+              <div class="col-md-offset-1 col-md-2 textRight">
+                <label for="selectCompany" class="control-label">Company: </label>
+              </div>
+               <div class="col-md-8">
                   <select id="selectCompany"  #selectCom  class="form-control" [(ngModel)]="companyIdUpdate" (change)="onSelectboxCompanyChange($event.target.value)"
                   required [ngModelOptions]="{standalone: true}" >
                     <option disabled ></option>
@@ -339,7 +368,7 @@
                     </option>
                   </select>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
         </form>
       </div>
@@ -347,7 +376,7 @@
         <button  type="button" class="btn btn-default" data-dismiss="modal" (click)="onClearUpdate(empCode, empName, empLastName,
                                                                             empAddress, personalId, tel,
                                                                             email, ldap, password, selectDep , selectCom)" >Close</button>
-        <button  type="submit" class="btn btn-primary" data-dismiss="modal" (click)="updateAppUser(empCode, empName, empLastName,
+        <button  type="submit" class="btn btn-warning" data-dismiss="modal" (click)="updateAppUser(empCode, empName, empLastName,
                                                                             empAddress, personalId, tel,
                                                                             email, ldap, password,departmentIdUpdate,companyIdUpdate)">Save changes</button>
       </div>

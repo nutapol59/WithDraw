@@ -20,8 +20,8 @@
 		<div class="form-horizontal">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="panel" >
-						<div class="panel-heading panel-black">
+					<div class="panel panel-black" >
+						<div class="panel-heading ">
 							<h2 class="panel-title" style="color: white;">ข้อมูลใบเบิก</h2>
 						</div>
 						<div class="panel-body">
@@ -127,15 +127,17 @@
 				</div>
 			
 		</div>
-		<div *ngIf="isResultTable">
-			<app-travel-expense-detail [appUserId]="appUser.id" [customers]="customers" [travelExpenseId]="travelExpense.id"></app-travel-expense-detail>
-		</div>
+		
 	</div>
 </div>
+<!-- detail -->
+<!--<div *ngIf="isResultTable">-->
+	<app-travel-expense-detail *ngIf="isResultTable" [appUserId]="appUser.id" [customers]="customers" [travelExpenseId]="travelExpense.id"></app-travel-expense-detail>
+<!--</div>-->
 
 
 		<!--update TravelExpense-->
-		<div class="modal fade" id="modalUpdateTravelExpense">
+		<div class="modal fade modal-black" id="modalUpdateTravelExpense">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -145,19 +147,21 @@
 					<div class="modal-body">
 						<form class="form-horzontal">
 							<div class="row">    
-								<div class="form-group">
-										<label class="col-md-offset-2 col-md-3 control-label">เพื่อชำระค่า: </label>
-										<div class="col-md-5">
-												<input #comment required class="form-control" type="text" 
-												[value]="travelExpense.comment"/>
-										</div>
-								</div>
+								<!--<div class="form-group">-->
+									<div class="col-md-offset-2 col-md-3 " style="text-align: right">
+										<label class="control-label">เพื่อชำระค่า: </label>
+									</div>
+									<div class="col-md-5">
+											<input #comment required class="form-control" type="text" 
+											[value]="travelExpense.comment"/>
+									</div>
+								<!--</div>-->
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
 						<button  type="button" class="btn btn-default" data-dismiss="modal" (click)="onClearUpdate(comment)" >Close</button>
-						<button  type="submit" class="btn btn-primary" data-dismiss="modal" (click)="updateTravelExpense(comment)">Save changes</button>
+						<button  type="submit" class="btn btn-warning" data-dismiss="modal" (click)="updateTravelExpense(comment)">Save changes</button>
 					</div>
 				</div>
 			</div>

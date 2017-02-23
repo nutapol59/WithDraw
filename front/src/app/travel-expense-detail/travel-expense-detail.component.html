@@ -1,8 +1,8 @@
-
+<div class="container">
 <div class="row">
 	<div class="col-md-12">
-		<div class="panel">
-			<div class="panel-heading panel-black" >
+		<div class="panel panel-black">
+			<div class="panel-heading " >
 				<h2 class="panel-title" style="color: white;">ตารางสรุปผล</h2>
 			</div>
 			<div class="panel-body">
@@ -69,21 +69,21 @@
 		</div> <!-- panel -->
 	</div>
 </div>
-
+</div>
 
 
 
 <!-- add case -->
-<div class="modal fade modal-lg" id="modalAddTravelExpenseDetail">
-	<div class="modal-dialog modal-lg">
+<div class="modal fade modal-black" id="modalAddTravelExpenseDetail">
+	<div class="modal-dialog">
 		
-		<div class="modal-content modal-lg">
-			<div class="modal-header modal-black">
+		<div class="modal-content">
+			<div class="modal-header">
 				<button (click)="onClear()" type="button" class="close" data-dismiss="modal" aria-hidden="true" >×</button>
 				<h4 class="modal-title">เพิ่มกรณีไปหาลูกค้า</h4>
 			</div>
 			
-			<div class="modal-body modal-lg">
+			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="row">
@@ -289,7 +289,7 @@
 					<div class="col-md-offset-8 col-md-3">
 						<div class="form-group">
 							<button (click)="onClear()" type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
-							<button (click)="addTravelExpenseDetail()" data-dismiss="modal" class="btn btn-raised btn-inverse" type="submit" name="submit">เพิ่ม</button>
+							<button (click)="addTravelExpenseDetail()" data-dismiss="modal" class="btn btn-raised btn-warning" type="submit" name="submit">เพิ่ม</button>
 						</div>
 					</div>
 				</div>
@@ -303,15 +303,15 @@
 
 
 <!--Update TravelExpenseDetail-->
-<div class="modal fade modal-lg" id="modalUpdateTravelExpenseDetail">
-	<div class="modal-dialog modal-lg">
+<div class="modal fade modal-black" id="modalUpdateTravelExpenseDetail">
+	<div class="modal-dialog">
 		
-		<div class="modal-content modal-lg">
-			<div class="modal-header modal-black">
+		<div class="modal-content">
+			<div class="modal-header ">
 				<button (click)="onClearUpdate(travelDate,customer,travelFrom,travelTo,expenseUpdate,expWayExpenseUpdate,expenseSubSummaryUpdate,comment)" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				<h4 class="modal-title">อัพเดทกรณีไปหาลูกค้า</h4>
 			</div>
-			<div class="modal-body modal-lg">
+			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="row">

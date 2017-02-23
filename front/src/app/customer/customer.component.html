@@ -33,10 +33,17 @@
         </thead>
         <tbody>
           <tr *ngFor="let customer of customers">
-            <td><button (click)="deleteCustomer(customer)" class="btn btnEdit btn-raised btn-danger"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
-                <button class="btn btnEdit btn-raised btn-info" data-backdrop="static" data-keyboard="false" 
+            <td>
+              <div class="btn-group btn-group-justified btnPill">
+                <a (click)="deleteCustomer(customer)" class="btn btnEdit btn-raised btn-danger">
+                  <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                </a>
+                <a class="btn btnEdit btn-raised btn-info" data-backdrop="static" data-keyboard="false" 
                               data-target="#modalUpdate" data-toggle="modal"
-                              (click)="detailModalUpdate(customer)"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></button>
+                              (click)="detailModalUpdate(customer)">
+                              <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                </a>
+              </div>
             </td>
             <td>{{customer.code}}</td>
             <td>{{customer.name}}</td>
@@ -51,7 +58,7 @@
 </div>
 
 <!--Modal AddCustomer-->
-<div class="modal fade" id="modalAdd">
+<div class="modal fade modal-black" id="modalAdd">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -61,48 +68,56 @@
       <div class="modal-body">
         <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Code: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">Code: </label>
+                </div>
+                <div class="col-md-8">
                     <input  required class="form-control" type="text" 
                     [(ngModel)]="customer.code" #code="ngModel" [ngModelOptions]="{standalone: true}" />
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Name: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">Name: </label>
+                </div>
+                <div class="col-md-8">
                     <input #name class="form-control" type="text"
                     [(ngModel)]="customer.name" [ngModelOptions]="{standalone: true}" />
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Active: </label>
-                <div class="togglebutton col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">Active: </label>
+                </div>
+                <div class="togglebutton col-md-8  togglebutton-warning">
                   <label>
                     <input  #active type="checkbox" (change)="onCheckBox($event)" 
                     [(ngModel)]="customer.active" [ngModelOptions]="{standalone: true}" />
                   </label>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-              <label for="textArea" class="col-md-offset-2 col-md-2 control-label">Address: </label>
-              <div class="col-md-6">
+            <!--<div class="form-group">-->
+              <div class="col-md-offset-1 col-md-2 textRight">
+                <label for="textArea" class="control-label">Address: </label>
+              </div>
+              <div class="col-md-8">
                 <textarea class="form-control" #address  rows="3" id="textArea"
                 [(ngModel)]="customer.address" [ngModelOptions]="{standalone: true}"></textarea>               
               </div>
-            </div>
+            <!--</div>-->
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" (click)="onClear()" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="addCustomer()">Save changes</button>
+        <button type="submit" class="btn btn-warning" data-dismiss="modal" (click)="addCustomer()">Save changes</button>
       </div>
     </div>
   </div>
@@ -113,7 +128,7 @@
 
 
 <!--Modal UpdateCustomer-->
-<div class="modal fade" id="modalUpdate">
+<div class="modal fade modal-black" id="modalUpdate">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -123,48 +138,57 @@
       <div class="modal-body">
         <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Code: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">Code: </label>
+                </div>
+                <div class="col-md-8">
                     <input #code required class="form-control" type="text" 
                     [value]="customerUpdate.code"/>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Name: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">Name: </label>
+                </div>
+                <div class="col-md-8">
                     <input #name class="form-control" type="text"
                     [value]="customerUpdate.name"/>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-                <label  class="col-md-offset-2 col-md-2 control-label">Active: </label>
-                <div class="togglebutton col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label  class="control-label">Active: </label>
+                </div>
+                <div class="togglebutton col-md-8 togglebutton-warning" >
                   <label>
                     <input id="activeinput" #active type="checkbox" (change)="onCheckBoxUpdate($event)"
                     [value]="customerUpdate.active"/>
                   </label>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-              <label for="textArea" class="col-md-offset-2 col-md-2 control-label">Address: </label>
-              <div class="col-md-6">
+            <!--<div class="form-group">-->
+              <div class="col-md-offset-1 col-md-2 textRight">
+                <label for="textArea" class="control-label">Address: </label>
+              </div>
+              <div class="col-md-8">
                 <textarea class="form-control" #address  rows="3" id="textArea" [value]="customerUpdate.address"></textarea>
               </div>
-            </div>
+            <!--</div>-->
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button  type="button" class="btn btn-default" data-dismiss="modal" (click)="onClearUpdate(code,name,active,address)" >Close</button>
-        <button  type="submit" class="btn btn-primary" data-dismiss="modal" (click)="updateCustomer(code,name,active,address)">Save changes</button>
+        <button  type="submit" class="btn btn-warning" data-dismiss="modal" (click)="updateCustomer(code,name,active,address)">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+

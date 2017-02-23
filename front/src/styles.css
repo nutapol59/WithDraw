@@ -1,1 +1,87 @@
 /* You can add global styles to this file, and also import other style files */
+.modal-black{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.modal-black .modal-dialog{
+    width: 80% !important;
+}
+
+.modal-black .modal-dialog .modal-content{
+    width: 100% !important;
+}
+
+.modal-black .modal-dialog .modal-content .modal-header{
+    background-color: rgb(50,50,50);
+    padding-bottom: 20px;
+    color: white;
+    border-bottom: 2px solid rgb(255,100,0);
+    border-top: 1px solid rgb(100,100,100);
+    border-left: 1px solid rgb(100,100,100);
+    border-right: 1px solid rgb(100,100,100);
+}
+
+.modal-black .modal-dialog .modal-content .modal-header button{
+    color: white;
+}
+ 
+
+.table-black{
+    /*width: calc(100% - 30px);*/
+    border-radius: 0px;
+    box-shadow: 3px 2px 10px 1px rgba(0,0,0,0.2);
+}
+
+.table-black thead{
+    background-color: rgb(50,50,50);
+    border-bottom: 2px solid rgb(255,100,0);
+}
+
+.table-black thead th{
+    background: none;
+    font-size: 14px;
+    border-right: 1px solid rgb(70,70,70);
+}
+
+.table-black tbody td{
+    border-right: 1px solid rgb(250,230,230);
+    /*white-space:pre;*/
+    /*white-space:pre-wrap ; word-wrap:break-word;*/
+}
+    
+.btnEdit{
+    /*padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-right: 0px;*/
+    padding: 5px;
+}
+
+.panel-black .panel-heading{
+    background-color: rgb(50,50,50);
+    border-bottom: 2px solid rgb(255,100,0);
+}
+
+.textRight{
+    text-align: right;
+    /*border-left: 4px solid  rgb(255,100,0);*/
+}
+.btnPill{
+    max-width: 120px;
+    width: auto;
+}
+/*.btnPill a{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}*/
+.headerMenu{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-bottom: 2px solid rgb(50,50,50);
+}
+.headerMenu:hover{
+    border-bottom: 2px solid rgb(255,100,0);
+}

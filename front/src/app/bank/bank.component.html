@@ -32,10 +32,17 @@
         </thead>
         <tbody>
           <tr *ngFor="let bank of banks">
-            <td><button (click)="deleteBank(bank)" class="btn btnEdit btn-raised btn-danger"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
-                <button class="btn btnEdit btn-raised btn-info" data-backdrop="static" data-keyboard="false" 
-                              data-target="#modalUpdate" data-toggle="modal"
-                              (click)="detailModalUpdate(bank)"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></button>
+            <td>
+              <div class="btn-group btn-group-justified btnPill">
+                <a (click)="deleteBank(bank)" class="btn btnEdit btn-raised btn-danger">
+                  <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                </a>
+                <a class="btn btnEdit btn-raised btn-info" data-backdrop="static" data-keyboard="false" 
+                                data-target="#modalUpdate" data-toggle="modal"
+                                (click)="detailModalUpdate(bank)">
+                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                </a>
+              </div>
             </td>
             <td>{{bank.code}}</td>
             <td>{{bank.name}}</td>
@@ -49,7 +56,7 @@
 </div>
 
 <!--Modal AddBank-->
-<div class="modal fade" id="modalAdd">
+<div class="modal fade modal-black" id="modalAdd">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -59,39 +66,45 @@
       <div class="modal-body">
         <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Code: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight" >
+                  <label class=" control-label">Code: </label>
+                </div>
+                <div class="col-md-8">
                     <input  required class="form-control" type="text" 
                     [(ngModel)]="bank.code" #code="ngModel" [ngModelOptions]="{standalone: true}" />
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Name: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">Name: </label>
+                </div>
+                <div class="col-md-8">
                     <input #name class="form-control" type="text"
                     [(ngModel)]="bank.name" [ngModelOptions]="{standalone: true}" />
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Active: </label>
-                <div class="togglebutton col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">Active: </label>
+                </div>
+                <div class="togglebutton col-md-8 togglebutton-warning">
                   <label>
                     <input  #active type="checkbox" (change)="onCheckBox($event)" 
                     [(ngModel)]="bank.active" [ngModelOptions]="{standalone: true}" />
                   </label>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" (click)="onClear()" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="addBank()">Save changes</button>
+        <button type="submit" class="btn btn-warning" data-dismiss="modal" (click)="addBank()">Save changes</button>
       </div>
     </div>
   </div>
@@ -102,7 +115,7 @@
 
 
 <!--Modal UpdateBank-->
-<div class="modal fade" id="modalUpdate">
+<div class="modal fade modal-black" id="modalUpdate">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -112,27 +125,33 @@
       <div class="modal-body">
         <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Code: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">Code: </label>
+                </div>
+                <div class="col-md-8">
                     <input #code required class="form-control" type="text" 
                     [value]="bankUpdate.code"/>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Name: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">  
+                  <label class="control-label">Name: </label>
+                </div>
+                <div class="col-md-8">
                     <input #name class="form-control" type="text"
                     [value]="bankUpdate.name"/>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
             <div class="form-group">
-                <label  class="col-md-offset-2 col-md-2 control-label">Active: </label>
-                <div class="togglebutton col-md-5">
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label  class="control-label">Active: </label>
+                </div>
+                <div class="togglebutton col-md-8 togglebutton-warning">
                   <label>
                     <input id="activeinput" #active type="checkbox" (change)="onCheckBoxUpdate($event)"
                     [value]="bankUpdate.active"/>
@@ -144,7 +163,7 @@
       </div>
       <div class="modal-footer">
         <button  type="button" class="btn btn-default" data-dismiss="modal" (click)="onClearUpdate(code,name,active)" >Close</button>
-        <button  type="submit" class="btn btn-primary" data-dismiss="modal" (click)="updateBank(code,name,active)">Save changes</button>
+        <button  type="submit" class="btn btn-warning" data-dismiss="modal" (click)="updateBank(code,name,active)">Save changes</button>
       </div>
     </div>
   </div>

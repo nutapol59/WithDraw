@@ -32,10 +32,17 @@
         </thead>
         <tbody>
           <tr *ngFor="let company of companies">
-            <td><button (click)="deleteCompany(company)" class="btn btnEdit btn-raised btn-danger"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
-                <button class="btn btnEdit btn-raised btn-info" data-backdrop="static" data-keyboard="false" 
+            <td>
+              <div class="btn-group btn-group-justified btnPill">
+                <a (click)="deleteCompany(company)" class="btn btnEdit btn-raised btn-danger">
+                  <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                </a>
+                <a class="btn btnEdit btn-raised btn-info" data-backdrop="static" data-keyboard="false" 
                               data-target="#modalUpdate" data-toggle="modal"
-                              (click)="detailModalUpdate(company)"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></button>
+                              (click)="detailModalUpdate(company)">
+                              <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                </a>
+              </div>
             </td>
             <td>{{company.code}}</td>
             <td>{{company.name}}</td>
@@ -49,7 +56,7 @@
 </div>
 
 <!--Modal AddCompany-->
-<div class="modal fade" id="modalAdd">
+<div class="modal fade modal-black" id="modalAdd">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -59,30 +66,36 @@
       <div class="modal-body">
         <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label" for="nameinput">Code: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label" for="nameinput">Code: </label>
+                </div>
+                <div class="col-md-8">
                     <input  required class="form-control" type="text" 
                     [(ngModel)]="company.code" #code="ngModel" [ngModelOptions]="{standalone: true}" />
                      <!--<div [hidden]="name.valid">
                          Name is required
                     </div>-->
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label" for="lastinput">Name: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label" for="lastinput">Name: </label>
+                </div>
+                <div class="col-md-8">
                     <input #name class="form-control" type="text"
                     [(ngModel)]="company.name" [ngModelOptions]="{standalone: true}" />
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label" for="ageinput">Active: </label>
-                <div class="togglebutton col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label" for="ageinput">Active: </label>
+                </div>
+                <div class="togglebutton col-md-8 togglebutton-warning">
                   <label>
                     <input  #active type="checkbox" (change)="onCheckBox($event)" 
                     [(ngModel)]="company.active" [ngModelOptions]="{standalone: true}" />
@@ -94,7 +107,7 @@
                     [(ngModel)]="company.active" [ngModelOptions]="{standalone: true}" />
                   </label>
                 </div>-->
-            </div>
+            <!--</div>-->
           </div>
         </form>
       </div>
@@ -112,7 +125,7 @@
 
 
 <!--Modal UpdateCompany-->
-<div class="modal fade" id="modalUpdate">
+<div class="modal fade modal-black" id="modalUpdate">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -122,30 +135,36 @@
       <div class="modal-body">
         <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">
           <div class="row">    
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Code: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">Code: </label>
+                </div>
+                <div class="col-md-8">
                     <input #code required class="form-control" type="text" 
                     [value]="companyUpdate.code"/>
                      <!--<div [hidden]="name.valid">
                          Name is required
                     </div>-->
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-                <label class="col-md-offset-2 col-md-2 control-label">Name: </label>
-                <div class="col-md-5">
+            <!--<div class="form-group">-->
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label class="control-label">Name: </label>
+                </div>
+                <div class="col-md-8">
                     <input #name class="form-control" type="text"
                     [value]="companyUpdate.name"/>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
             <div class="form-group">
-                <label  class="col-md-offset-2 col-md-2 control-label">Active: </label>
-                <div class="togglebutton col-md-5">
+                <div class="col-md-offset-1 col-md-2 textRight">
+                  <label  class="control-label">Active: </label>
+                </div>
+                <div class="togglebutton col-md-8 togglebutton-warning">
                   <label>
                     <input id="activeinput" #active type="checkbox" (change)="onCheckBoxUpdate($event)"
                     [value]="companyUpdate.active"/>

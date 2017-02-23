@@ -36,10 +36,17 @@
         </thead>
         <tbody >
           <tr *ngFor="let apvmf of apvmfs" >
-            <td><button (click)="deleteApproveMapFlow(apvmf)" class="btn btnEdit btn-raised btn-danger"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
-                <button class="btn btnEdit btn-raised btn-info" data-backdrop="static" data-keyboard="false" 
+            <td style="text-align: center">
+              <div class="btn-group btn-group-justified btnPill">
+                <a (click)="deleteApproveMapFlow(apvmf)" class="btn btnEdit btn-raised btn-danger">
+                  <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                </a>
+                <a class="btn btnEdit btn-raised btn-info" data-backdrop="static" data-keyboard="false" 
                               data-target="#modalUpdate" data-toggle="modal"
-                              (click)="detailModalUpdate(apvmf)"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></button>
+                              (click)="detailModalUpdate(apvmf)">
+                              <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                </a>
+              </div>
             </td>
             <td>{{apvmf.employee.empCode}}<br/>{{apvmf.employee.empName +" "+apvmf.employee.empLastName}}</td>
             <td>{{apvmf.apv1Emp.empCode}}<br/>{{apvmf.apv1Emp.empName +" "+apvmf.apv1Emp.empLastName}}</td>
@@ -54,18 +61,18 @@
 </div>
 
 <!--Modal AddApmf-->
-<div class="modal fade" id="modalAdd">
+<div class="modal fade modal-black" id="modalAdd">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header modal-header-black">
         <button type="button" class="close" (click)="onClear()" data-dismiss="modal" aria-hidden="true">×</button>
         <h4 class="modal-title">Add ApproveMapFlow</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">
+        <form class="form-horizontal" (ngSubmit)="onSubmit()" #addCom="ngForm">
           <div class="row">
             <!--<div class="form-group">-->
-              <div class="col-md-offset-2 col-md-3 ">
+              <div class="col-md-offset-2 col-md-3 " style="text-align: right">
                 <label for="selectEmployee" class="control-label">Employee: </label>
               </div>
                <div class="col-md-5">
@@ -81,7 +88,7 @@
 
           <div class="row">
             <!--<div class="form-group">-->
-              <div class="col-md-offset-2 col-md-3 ">
+              <div class="col-md-offset-2 col-md-3 " style="text-align: right">
                 <label for="selectApv1" class="control-label">Apv1Emp: </label>
               </div>
                <div class="col-md-5">
@@ -96,7 +103,7 @@
           </div>
           <div class="row">
             <!--<div class="form-group">-->
-              <div class="col-md-offset-2 col-md-3 ">
+              <div class="col-md-offset-2 col-md-3 " style="text-align: right">
                 <label for="selectApv2" class="control-label">Apv2Emp: </label>
               </div>
                <div class="col-md-5">
@@ -111,7 +118,7 @@
           </div>
           <div class="row">
             <!--<div class="form-group">-->
-              <div class="col-md-offset-2 col-md-3 ">
+              <div class="col-md-offset-2 col-md-3 " style="text-align: right">
                 <label for="selectAccount" class="control-label">AccountEmp: </label>
               </div>
                <div class="col-md-5">
@@ -140,7 +147,7 @@
 
 
 <!--Modal UpdateApmf-->
-<div class="modal fade" id="modalUpdate">
+<div class="modal fade modal-black" id="modalUpdate">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -148,18 +155,22 @@
         <h4 class="modal-title">Update ApproveMapFlow</h4>
       </div>
       <div class="modal-body">
-        <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">       
+        <form class="form-horizontal" (ngSubmit)="onSubmit()" #addCom="ngForm">       
           <div class="row">
-            <div class="form-group">
-              <label for="selectEmployee" class="col-md-offset-2 col-md-2 control-label">Employee: </label>
+            <!--<div class="form-group">-->
+              <div class="col-md-offset-2 col-md-3 " style="text-align: right">
+                <label for="selectEmployee" class="control-label">Employee: </label>
+              </div>
                <div class="col-md-5">
                   <input #employee readonly class="form-control" type="text" [value]="employeeUpdate.empName+' '+employeeUpdate.empLastName" />
                 </div>
-            </div>
+            <!--</div>-->
          
             <div class="row">
-              <div class="form-group">
-                <label for="selectApv1" class="col-md-offset-2 col-md-2 control-label">Apv1Emp: </label>
+              <!--<div class="form-group">-->
+                <div class="col-md-offset-2 col-md-3 " style="text-align: right">
+                  <label for="selectApv1" class="control-label">Apv1Emp: </label>
+                </div>
                 <div class="col-md-5">
                     <select #apv1 id="selectApv1" [(ngModel)]="apv1IdUpdate" class="form-control" (change)="onSelectboxChange($event.target.value)"
                     [ngModelOptions]="{standalone: true}">
@@ -168,11 +179,13 @@
                       </option>
                     </select>
                   </div>
-              </div>
+              <!--</div>-->
             </div>
             <div class="row">
-              <div class="form-group">
-                <label for="selectApv2" class="col-md-offset-2 col-md-2 control-label">Apv2Emp: </label>
+              <!--<div class="form-group">-->
+                <div class="col-md-offset-2 col-md-3 " style="text-align: right">
+                  <label for="selectApv2" class="control-label">Apv2Emp: </label>
+                </div>
                 <div class="col-md-5">
                     <select #apv2 id="selectApv2" [(ngModel)]="apv2IdUpdate" class="form-control" (change)="onSelectboxChange($event.target.value)"
                     [ngModelOptions]="{standalone: true}">
@@ -181,11 +194,13 @@
                       </option>
                     </select>
                   </div>
-              </div>
+              <!--</div>-->
             </div>
             <div class="row">
-              <div class="form-group">
-                <label for="selectAccount" class="col-md-offset-2 col-md-2 control-label">AccountEmp: </label>
+              <!--<div class="form-group">-->
+                <div class="col-md-offset-2 col-md-3 " style="text-align: right">
+                  <label for="selectAccount" class="control-label">AccountEmp: </label>
+                </div>
                 <div class="col-md-5">
                     <select #account id="selectAccount" [(ngModel)]="accountIdUpdate" class="form-control" (change)="onSelectboxChange($event.target.value)"
                     [ngModelOptions]="{standalone: true}">
@@ -194,14 +209,14 @@
                       </option>
                     </select>
                   </div>
-              </div>
+              <!--</div>-->
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button  type="button" class="btn btn-default" data-dismiss="modal" (click)="onClearUpdate()" >Close</button>
-        <button  type="submit" class="btn btn-primary" data-dismiss="modal" (click)="updateApproveMapFlow()">Save changes</button>
+        <button  type="submit" class="btn btn-warning" data-dismiss="modal" (click)="updateApproveMapFlow()">Save changes</button>
       </div>
     </div>
   </div>
