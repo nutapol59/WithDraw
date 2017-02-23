@@ -10,7 +10,15 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.apache.commons.io.IOUtils;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.Response;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +79,8 @@ public class TravelExpenseController {
             log.info("{}",list);
 
             return new ResponseEntity<>(new JSONSerializer()
+                    .include("id")
+                    .include("version")
                     .include("expenseDate")
                     .include("employee.id")
                     .include("comment")
@@ -169,5 +179,30 @@ public class TravelExpenseController {
             e.printStackTrace();
             return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(e), headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @RequestMapping(value = "/exportToPdf", method = RequestMethod.GET,headers = "Accept=application/json")
+    public ResponseEntity<String> exportToPdf(@RequestParam Long id, HttpServletResponse response) throws ServletException, IOException{
+        log.info("----------Export to PDF-----------");
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        OutputStream outputStream = null;
+        ByteArrayInputStream byteArrayInputStream = null;
+        try{
+            byte[] b = this.travelExpenseServiceImpl.exportJasperPdf(id);
+            byteArrayInputStream = new ByteArrayInputStream(b);
+
+            outputStream = response.getOutputStream();
+            IOUtils.copy(byteArrayInputStream,outputStream);
+            log.info("OutputStream = {}",outputStream);
+            return new ResponseEntity<>(headers,HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(e.getMessage(),headers,HttpStatus.OK);
+        }finally {
+            IOUtils.closeQuietly(byteArrayInputStream);
+            IOUtils.closeQuietly(outputStream);
+        }
+
     }
 }

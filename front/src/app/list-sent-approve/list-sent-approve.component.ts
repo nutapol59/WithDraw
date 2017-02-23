@@ -11,7 +11,7 @@ import { ActivatedRoute, Params }   from '@angular/router';
 })
 export class ListSentApproveComponent implements OnInit {
   travelExpenses:TravelExpense[];
-  travelExpense:TravelExpense;
+  travelExpense = new TravelExpense();
   appUserId:number;
 
 
@@ -42,6 +42,17 @@ export class ListSentApproveComponent implements OnInit {
                 error => alert(error),
                 () => console.log(JSON.stringify(this.travelExpenses))
             )
+  }
+
+  exportToPdf(travelExpense:TravelExpense){
+    // this.travelExpense = travelExpense;
+    console.log("id TravelExpense Click Export : "+travelExpense.id);
+    this.travelExpenseService.exportToPdf(travelExpense.id)
+                            //  .subscribe(
+                            //  //  data => this.data,
+                            //    error => console.log(error),
+                            //    () => console.log("Show DownLoad PDF Complete")
+                            //  )
   }
 
 }

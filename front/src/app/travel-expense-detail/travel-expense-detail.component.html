@@ -227,8 +227,9 @@
 										<label for="" class="controlLabel">ใบที่ 1</label>
 									</div>
 									<div class="col-md-3 nopadding-left-right">
-										<input #attachFile1 id="file1"  multiple type="file" class="form-control" placeholder="File 1"
-										[(ngModel)]="travelExpenseDetail.attachFile1" [ngModelOptions]="{standalone: true}"/>
+										<input #attachFile1 id="file1" type="file" multiple class="form-control" placeholder="File 1"
+										[(ngModel)]="travelExpenseDetail.attachFile1" [ngModelOptions]="{standalone: true}"
+										(change)="onChangeFile($event,1)"/>
 									</div>
 								<!--</div>
 							</div>
@@ -239,8 +240,9 @@
 										<label for="" class="controlLabel">ใบที่ 2</label>
 									</div>
 									<div class="col-md-3 nopadding-left-right">
-										<input #attachFile2 id="file2"  multiple type="file" class="form-control" placeholder="File 1"
-										[(ngModel)]="travelExpenseDetail.attachFile1" [ngModelOptions]="{standalone: true}"/>
+										<input #attachFile2 id="file2" type="file" multiple class="form-control" placeholder="File 2"
+										[(ngModel)]="travelExpenseDetail.attachFile2" [ngModelOptions]="{standalone: true}"
+										(change)="onChangeFile($event,2)"/>
 									</div>
 								<!--</div>
 							</div>
@@ -251,8 +253,9 @@
 										<label for="" class="controlLabel">ใบที่ 3</label>
 									</div>
 									<div class="col-md-3 nopadding-left-right">
-										<input #attachFile3 id="file3"  multiple type="file" class="form-control" placeholder="File 1"
-										[(ngModel)]="travelExpenseDetail.attachFile3" [ngModelOptions]="{standalone: true}"/>
+										<input #attachFile3 id="file3" type="file" multiple class="form-control" placeholder="File 3"
+										[(ngModel)]="travelExpenseDetail.attachFile3" [ngModelOptions]="{standalone: true}"
+										(change)="onChangeFile($event,3)" />
 									</div>
 								</div>
 							</div>

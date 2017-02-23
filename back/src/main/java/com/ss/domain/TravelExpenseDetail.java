@@ -26,7 +26,7 @@ public class TravelExpenseDetail {
     private Long version;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    HH:mm:ss.SSS
     @Column
     private Date travelDate;
@@ -66,6 +66,8 @@ public class TravelExpenseDetail {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "travelExpense")
     private TravelExpense travelExpense;
+
+
 
     @Override
     public boolean equals(Object o) {

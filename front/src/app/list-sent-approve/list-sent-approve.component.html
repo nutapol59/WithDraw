@@ -14,6 +14,7 @@
         <th>Approve_Date</th>
         <th>Approve_By</th>
         <th>Pay_Date</th>
+        <th></th>
       </thead>
       <tbody>
         <tr *ngFor="let travelExpense of travelExpenses">
@@ -27,6 +28,8 @@
           <td>{{travelExpense.approvelDate  | date:'dd/MM/yyyy'}}</td>
           <td>0</td>
           <td>{{travelExpense.payDate  | date:'dd/MM/yyyy'}}</td>
+          <td><button (click)="exportToPdf(travelExpense)" class="btn btn-raised btnEdit btn-warning">
+            <i  title="Export to PDF Files" class="fa fa-file-pdf-o fa-3x" aria-hidden="true"></i></button></td>
         </tr>
       </tbody>
     </table>

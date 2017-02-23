@@ -10,7 +10,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200") //develop Mode
@@ -102,15 +104,17 @@ public class TravelExpenseDetailController {
 
     }
 
-    @RequestMapping(value = "/addTravelExpenseDetail" ,method = RequestMethod.POST,headers = "Accept=application/json" )
-    public ResponseEntity<String> addTravelExpenseDetail(@RequestBody String json){
+    @RequestMapping(value = "/addTravelExpenseDetail" ,method = RequestMethod.POST,headers = "Accept=application/json")
+    public ResponseEntity<String> addTravelExpenseDetail(@Valid TravelExpenseDetail formData,MultipartHttpServletRequest multipartHttpServletRequest){
         log.info("---------------Add Travel Expense Detail---------------");
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
-        log.info("JSON STRING ADD = {}",json);
+        log.info("formData TravelDate = {}",formData.getTravelDate());
+
+
         String result;
         try{
-            result = this.travelExpenseDetailServiceImpl.addTravelExpenseDetail(json);
+            result = this.travelExpenseDetailServiceImpl.addTravelExpenseDetail(formData,multipartHttpServletRequest);
             if(result.equalsIgnoreCase("Created Success")){
                 return new ResponseEntity<>(new JSONSerializer().exclude("*.class").deepSerialize(result),headers, HttpStatus.OK);
             }else {

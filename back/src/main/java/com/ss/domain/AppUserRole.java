@@ -22,4 +22,6 @@ public class AppUserRole extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="appRole")
     private AppRole appRole;
+
+
 }

@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TravelExpenseJasper" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="46c5fe65-3f39-4da2-8733-c43b3823621b">
+	<property name="ireport.zoom" value="1.9965000000000213"/>
+	<property name="ireport.x" value="45"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/nbkf/Working/WithDraw/back/src/main/resources/jasperreports/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="approveMapFlow" class="com.ss.domain.ApproveMapFlow">
+		<fieldDescription><![CDATA[approveMapFlow]]></fieldDescription>
+	</field>
+	<field name="approveSeq" class="java.lang.Integer">
+		<fieldDescription><![CDATA[approveSeq]]></fieldDescription>
+	</field>
+	<field name="approvelDate" class="java.util.Date">
+		<fieldDescription><![CDATA[approvelDate]]></fieldDescription>
+	</field>
+	<field name="cash" class="java.lang.Integer">
+		<fieldDescription><![CDATA[cash]]></fieldDescription>
+	</field>
+	<field name="chequeBank" class="com.ss.domain.Bank">
+		<fieldDescription><![CDATA[chequeBank]]></fieldDescription>
+	</field>
+	<field name="chequeNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[chequeNumber]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="comment" class="java.lang.String">
+		<fieldDescription><![CDATA[comment]]></fieldDescription>
+	</field>
+	<field name="company" class="com.ss.domain.Company">
+		<fieldDescription><![CDATA[company]]></fieldDescription>
+	</field>
+	<field name="department" class="com.ss.domain.Department">
+		<fieldDescription><![CDATA[department]]></fieldDescription>
+	</field>
+	<field name="documentApproves" class="java.util.Set">
+		<fieldDescription><![CDATA[documentApproves]]></fieldDescription>
+	</field>
+	<field name="documentDate" class="java.util.Date">
+		<fieldDescription><![CDATA[documentDate]]></fieldDescription>
+	</field>
+	<field name="documentNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[documentNumber]]></fieldDescription>
+	</field>
+	<field name="documentStatus" class="java.lang.String">
+		<fieldDescription><![CDATA[documentStatus]]></fieldDescription>
+	</field>
+	<field name="employee" class="com.ss.domain.AppUser">
+		<fieldDescription><![CDATA[employee]]></fieldDescription>
+	</field>
+	<field name="expenseDate" class="java.util.Date">
+		<fieldDescription><![CDATA[expenseDate]]></fieldDescription>
+	</field>
+	<field name="expenseSummary" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[expenseSummary]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="payDate" class="java.util.Date">
+		<fieldDescription><![CDATA[payDate]]></fieldDescription>
+	</field>
+	<field name="travelExpenseDetails" class="java.util.Set">
+		<fieldDescription><![CDATA[travelExpenseDetails]]></fieldDescription>
+	</field>
+	<field name="version" class="java.lang.Long">
+		<fieldDescription><![CDATA[version]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<image>
+				<reportElement x="21" y="0" width="143" height="90" uuid="80455cdd-b8d1-4f29-b040-0bdc4515e513"/>
+				<imageExpression><![CDATA["/home/nbkf/Downloads/soft.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="176" y="10" width="308" height="80" uuid="69a5bd85-f155-4d17-b9ee-cef3397db38f"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="48" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{company}.getName()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="165">
+			<textField isBlankWhenNull="true">
+				<reportElement x="72" y="10" width="151" height="30" uuid="b002123f-54ec-4fb8-bb18-7b0687eb1987"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee}.getEmpName()+" "+$F{employee}.getEmpLastName()]]></textFieldExpression>
+			</textField>
+			<textField pattern="0-0000-00000-00-0" isBlankWhenNull="true">
+				<reportElement x="157" y="52" width="82" height="28" uuid="1228d9eb-17e9-4511-b4ee-1e33574f07f4"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee}.getPersonalId()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="448" y="12" width="90" height="30" uuid="1b5800ec-6924-49e1-8e17-67cc0088fda6"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee}.getDepartment().getName()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="253" y="53" width="20" height="24" uuid="249a58b9-cd90-42cc-a490-6404b7a36519"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[โทร]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="262" y="11" width="116" height="30" uuid="3f8d1c4f-8e24-4703-94b8-5a4ffb4f6f9b"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee}.getCompany().getName()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="226" y="13" width="32" height="24" uuid="fd7f0c37-65d8-4614-be2a-0d58c7a5e494"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[บริษัท]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="53" width="33" height="24" uuid="95a9afb8-8f26-40d9-9e80-815a85dc53e6"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[อีเมลล์]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="133" width="69" height="24" uuid="2d60f20b-147c-4360-9211-dd3f327bf3fe"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[เพื่อชำระค่า]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="383" y="13" width="57" height="24" uuid="faa3326e-b663-4ac7-bbff-9d5f88966d91"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[ฝ่าย/แผนก]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="13" width="46" height="24" uuid="75439ca5-1837-4fc0-b4c3-d16f06861f5d"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ข้าพเจ้า]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="53" width="129" height="24" uuid="d2529eb6-7ab6-4de7-962b-d657bd39be30"/>
+				<textElement textAlignment="Justified">
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[บัตรประจำตัวประชาชนเลขที่]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="93" width="59" height="24" uuid="76b4688d-9287-4698-814f-92bef841f4d3"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[ที่อยู่]]></text>
+			</staticText>
+			<line>
+				<reportElement mode="Opaque" x="73" y="28" width="150" height="1" uuid="a76c064b-f408-4d24-8ab9-ec4ea360b766"/>
+				<graphicElement>
+					<pen lineStyle="Dotted" lineColor="#ACACAC"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement mode="Opaque" x="262" y="29" width="115" height="1" uuid="bc85f4d3-8902-4a72-97a6-68f2e02afa3d"/>
+				<graphicElement>
+					<pen lineStyle="Dotted" lineColor="#ACACAC"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement mode="Opaque" x="449" y="30" width="83" height="1" uuid="74ac38da-d47d-4111-8554-4944d801a41a"/>
+				<graphicElement>
+					<pen lineStyle="Dotted" lineColor="#ACACAC"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement mode="Opaque" x="157" y="69" width="82" height="1" uuid="3e8f4dc6-a207-4bdc-b203-4d524e92c425"/>
+				<graphicElement>
+					<pen lineStyle="Dotted" lineColor="#ACACAC"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="397" y="52" width="146" height="24" uuid="efd07e65-eca2-4525-822f-0efe91da434c"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee}.getEmail()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="53" width="69" height="23" uuid="3b9bbb40-27d4-472e-9bab-bdee699556df"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee}.getTel()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement mode="Opaque" x="279" y="69" width="69" height="1" uuid="66b94540-9967-4e5e-851e-88566f6ed632"/>
+				<graphicElement>
+					<pen lineStyle="Dotted" lineColor="#ACACAC"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement mode="Opaque" x="397" y="68" width="146" height="1" uuid="10bd8f3d-f637-44d4-91e7-e47f3f2db2ff"/>
+				<graphicElement>
+					<pen lineStyle="Dotted" lineColor="#ACACAC"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="103" y="93" width="440" height="24" uuid="9bcbfa7b-fce4-423e-8a32-2a7c71c4b3b8"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee}.getEmpAddress()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement mode="Opaque" x="103" y="110" width="431" height="1" uuid="1b24e869-a2e6-418d-80dd-14f1c3f0711e"/>
+				<graphicElement>
+					<pen lineStyle="Dotted" lineColor="#ACACAC"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="103" y="133" width="440" height="25" uuid="db7b466b-da14-4164-969b-2710b3d75c03"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{comment}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement mode="Opaque" x="103" y="151" width="431" height="1" uuid="f8f304b4-81fd-4e5f-a04b-74d357d3d25a"/>
+				<graphicElement>
+					<pen lineStyle="Dotted" lineColor="#ACACAC"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="172" splitType="Stretch">
+			<subreport>
+				<reportElement x="16" y="0" width="513" height="172" uuid="1bc879bf-074f-490a-8060-e84a9f9a98d5"/>
+				<subreportParameter name="travelExpenseDetails">
+					<subreportParameterExpression><![CDATA[$F{travelExpenseDetails}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource(1)]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "TravelExpenseJasper_TableDetail.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="251" splitType="Stretch">
+			<staticText>
+				<reportElement x="45" y="13" width="55" height="30" uuid="cac1ac45-204e-47b6-a598-ecb07415a31b"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[จำนวนเงิน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="13" width="33" height="30" uuid="f5eb161c-af1d-48d4-9ac1-a4c4b8bc5679"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[บาท]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="54" width="27" height="30" uuid="d1e7986c-7d06-40d3-8b62-7ff333d63cf3"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ได้รับ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="54" width="34" height="30" uuid="19f3a4c7-36df-4cd2-aadf-d10d7d73e17f"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[เงินสด]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="54" width="61" height="30" uuid="08336273-a955-4d07-bb17-f38ff92ba9c2"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[เช็คธนาคาร]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="457" y="54" width="27" height="30" uuid="563777d6-b865-4a3e-b910-cff3ba860944"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[สาขา]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="54" width="24" height="30" uuid="2190cea9-df5d-4b75-9bca-99d00419ab2b"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[เลขที่]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="121" width="108" height="30" uuid="58a35350-3ef3-4f15-8823-22804218bacb"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[.......................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="152" width="119" height="26" uuid="c201a671-749f-49e5-a6de-9a0e4a4b96af"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[(.......................................)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="179" width="38" height="29" uuid="0d7f1938-0f85-4c0e-a25a-32d353c31b63"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ผู้อนุมัติ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="212" width="92" height="30" uuid="5e0b10f2-ba6b-4629-9889-912a25a6b3f7"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[........../........./..........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="223" y="152" width="119" height="26" uuid="73c1a24b-de8c-4a8e-ae28-9b9141b9ccb9"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[(.......................................)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="229" y="121" width="108" height="30" uuid="0dd602cc-1f87-432e-8819-8e5013feaa2e"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[.......................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="179" width="54" height="29" uuid="5a498fb5-4e36-46cd-93b1-49b552ab4926"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ผู้จ่ายเงิน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="239" y="212" width="92" height="30" uuid="111baa87-dc04-481d-9b82-b9f78213119e"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[........../........./..........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="152" width="119" height="26" uuid="df962fc5-b8ce-4d3a-b61e-e6c0557e5eef"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[(.......................................)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="433" y="179" width="45" height="29" uuid="d61ec376-cd1a-4365-bfe6-34e3d334d2bb"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[ผู้รับเงิน]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="212" width="92" height="30" uuid="c8cfc862-23c4-4671-81ba-13f2e66f9581"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[........../........./..........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="121" width="108" height="30" uuid="9f963869-f99b-4a48-b70f-1d35d06b778a"/>
+				<textElement textAlignment="Center">
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[.......................................]]></text>
+			</staticText>
+			<line>
+				<reportElement mode="Opaque" x="100" y="27" width="56" height="1" uuid="02dd4a5c-e8b2-430f-beab-b30a807ea561"/>
+				<graphicElement>
+					<pen lineStyle="Dotted" lineColor="#ACACAC"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="81" y="54" width="19" height="30" uuid="37e130cf-ae2f-4172-8a39-797de9979696"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cash}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="54" width="16" height="30" uuid="27dadf31-878f-4a41-9c27-75bab8a0d2a6"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cash}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="217" y="54" width="100" height="30" uuid="9677880e-fb81-433b-b2c9-5ffba83a3073"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chequeBank}.getName()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="357" y="54" width="76" height="30" uuid="ba92956f-fc50-4b7f-8133-bc6260651be1"/>
+				<textElement>
+					<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chequeNumber}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="73" y="84" width="38" height="13" uuid="1a75e2e5-ccfc-4b54-bb11-1922b9579757"/>
+				<imageExpression><![CDATA[$F{cash}.equals(1)? "/home/nbkf/Pictures/television-png-tv-6.png" : "/home/nbkf/Pictures/radio.png"]]></imageExpression>
+			</image>
+		</band>
+	</summary>
+</jasperReport>

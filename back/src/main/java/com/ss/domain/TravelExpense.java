@@ -21,7 +21,7 @@ import java.util.Set;
 
 public class TravelExpense extends DocumentMaster implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    HH:mm:ss.SSS
     @Column
     private Date expenseDate;
@@ -42,13 +42,13 @@ public class TravelExpense extends DocumentMaster implements Serializable{
     private String comment;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    HH:mm:ss.SSS
     @Column
     private  Date approvelDate;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    HH:mm:ss.SSS"
     @Column
     private Date payDate;
@@ -75,6 +75,8 @@ public class TravelExpense extends DocumentMaster implements Serializable{
     private Set<DocumentApprove> documentApproves;
 
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -99,18 +101,23 @@ public class TravelExpense extends DocumentMaster implements Serializable{
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("TravelExpense{");
+        sb.append("id=").append(this.getId());
+        sb.append("Version=").append(this.getVersion());
         sb.append("expenseDate=").append(expenseDate);
-        sb.append(", employee=").append(employee);
-        sb.append(", company=").append(company);
-        sb.append(", department=").append(department);
+        sb.append(", employee=").append(employee.getId());
+        sb.append(", company=").append(company.getId());
+        sb.append(", department=").append(department.getId());
         sb.append(", comment='").append(comment).append('\'');
         sb.append(", approvelDate=").append(approvelDate);
         sb.append(", payDate=").append(payDate);
         sb.append(", cash=").append(cash);
-//        if(cash == 1){
+        if(chequeBank != null){
             sb.append(", chequeNumber='").append(chequeNumber).append('\'');
             sb.append(", chequeBank=").append(chequeBank.getId());
-//        }
+        }else {
+            sb.append(", chequeNumber='").append("").append('\'');
+            sb.append(", chequeBank=").append("");
+        }
         sb.append(", expenseSummary=").append(expenseSummary);
         sb.append(", travelExpenseDetails=").append(travelExpenseDetails);
         sb.append(", documentApproves=").append(documentApproves);

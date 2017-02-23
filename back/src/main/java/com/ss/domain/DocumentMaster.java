@@ -12,7 +12,6 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
-
 @MappedSuperclass
 public class DocumentMaster {
     @Id
@@ -33,7 +32,7 @@ public class DocumentMaster {
     private Integer approveSeq;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
 //    HH:mm:ss.SSS
     @Column
     private Date documentDate;
@@ -41,5 +40,6 @@ public class DocumentMaster {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "approveMapFlow")
     private ApproveMapFlow approveMapFlow;
+
 
 }

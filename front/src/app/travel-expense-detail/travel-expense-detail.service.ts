@@ -26,21 +26,38 @@ export class TravelExpenseDetailService {
     console.log(location.prepareExternalUrl(location.path()));
    }
 
-  addTravelExpenseDetail(travelExpenseDetail:TravelExpenseDetail,travelExpenseId:number,travelExpenseDetailDate:number){
-    console.log(JSON.stringify(travelExpenseDetail));
-    console.log("travelDate : "+travelExpenseDetailDate);
+  addTravelExpenseDetail(travelExpenseDetail:TravelExpenseDetail,travelExpenseId:number,
+                         files:File[],dateString:string){
+    console.log("travelDate : "+dateString);
     console.log("InService: "+travelExpenseId);
-
+      let formData : FormData = new FormData();
+      for(let i = 0 ; i < files.length ; i++){
+        if(files[i] != null){
+          formData.append("file"+(i+1),files[i]);
+          formData.append("attachFile"+(i+1),files[i].name);
+        }else{
+          formData.append("file"+(i+1),null);
+          formData.append("attachFile"+(i+1),"");
+        }
+      }
+      console.log("attachFile1: "+files[0])
+      console.log("attachFile2: "+files[1])
+      console.log("attachFile3: "+files[2])
+      formData.append("customer",travelExpenseDetail.customer);
+      formData.append("travelFrom",travelExpenseDetail.travelFrom);
+      formData.append("travelTo",travelExpenseDetail.travelTo);
+      formData.append("expense",travelExpenseDetail.expense);
+      formData.append("expWayExpense",travelExpenseDetail.expWayExpense);
+      formData.append("expenseSubSummary",travelExpenseDetail.expenseSubSummary);
+      formData.append("travelDate",dateString);
+      formData.append("comment",travelExpenseDetail.comment);
+      formData.append("travelExpense",travelExpenseId);
+      console.log(formData);
       var headers = new Headers();
-      var json = JSON.stringify({travelExpenseDetail:travelExpenseDetail,travelExpenseId:travelExpenseId,
-                                  date:travelExpenseDetailDate})
       headers.append("Content-Type","application/json");
-      return this._http.post(this.configModeServerService.ipServer+'/travelExpenseDetails/addTravelExpenseDetail',json,{
-        headers : headers
-      })
+      return this._http.post(this.configModeServerService.ipServer+'/travelExpenseDetails/addTravelExpenseDetail',formData,headers)
           .map(res => res.json())
-          .catch((error:Response) => Observable.throw(error.text()))
-           
+          .catch((error:Response) => Observable.throw(error.text()))     
   }
 
   updateTravelExpenseDetail(travelExpenseDetail:TravelExpenseDetail,travelExpenseId:number,

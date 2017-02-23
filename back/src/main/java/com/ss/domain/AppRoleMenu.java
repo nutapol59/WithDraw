@@ -24,4 +24,7 @@ public class AppRoleMenu extends BaseEntity{
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "appMenu")
     private AppMenu appMenu;
+
+
 }
+
