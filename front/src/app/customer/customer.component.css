@@ -34,7 +34,23 @@ th{
     padding-top:6px;
     padding-bottom: 6px;
 }
-.table{
+
+.table-black{
+    border-radius: 0px;
     box-shadow: 3px 2px 10px 1px rgba(0,0,0,0.2);
-    border-radius: 15px 15px 15px 15px;    
+}
+
+.table-black thead{
+    background-color: rgb(50,50,50);
+    border-bottom: 2px solid rgb(255,100,0);
+}
+
+.table-black thead th{
+    background: none;
+    font-size: 14px;
+    border-right: 1px solid rgb(70,70,70);
+}
+
+.table-black tbody td{
+    border-right: 1px solid rgb(250,230,230);
 }

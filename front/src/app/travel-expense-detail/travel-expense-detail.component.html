@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel">
-			<div class="panel-heading" style="background-color: rgb(20,20,20);">
+			<div class="panel-heading panel-black" >
 				<h2 class="panel-title" style="color: white;">ตารางสรุปผล</h2>
 			</div>
 			<div class="panel-body">
@@ -57,9 +57,11 @@
 							<div style="width: 100%; border-bottom: 1px solid rgba(0,0,0,0.1); margin-top: 10px; margin-bottom: 10px;"></div>
 						</div>
 					</div>
-					<div class="col-md-offset-1 col-md-10">
-						<div class="form-group" style="text-align: right;">
-							<input (click)="addExpenseSummary()" class="btn btn-raised btn-success" type="submit" name="summary" value="บันทึกแบบคำขอใบเบิก"/>
+					<div class="row">
+						<div class="col-md-offset-1 col-md-10">
+							<div class="form-group" style="text-align: right;">
+								<input (click)="addExpenseSummary()" class="btn btn-raised btn-success" type="submit" name="summary" value="บันทึกแบบคำขอใบเบิก"/>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -76,10 +78,11 @@
 	<div class="modal-dialog modal-lg">
 		
 		<div class="modal-content modal-lg">
-			<div class="modal-header">
-				<button (click)="onClear()" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h4 class="modal-title">กรณีไปหาลูกค้า</h4>
+			<div class="modal-header modal-black">
+				<button (click)="onClear()" type="button" class="close" data-dismiss="modal" aria-hidden="true" >×</button>
+				<h4 class="modal-title">เพิ่มกรณีไปหาลูกค้า</h4>
 			</div>
+			
 			<div class="modal-body modal-lg">
 				<div class="row">
 					<div class="col-md-12">
@@ -277,6 +280,7 @@
 					</div>
 				</div>
 			</div>
+			<hr/>
 			<div class="modal-footer">
 				<div class="row">
 					<div class="col-md-offset-8 col-md-3">
@@ -300,9 +304,9 @@
 	<div class="modal-dialog modal-lg">
 		
 		<div class="modal-content modal-lg">
-			<div class="modal-header">
+			<div class="modal-header modal-black">
 				<button (click)="onClearUpdate(travelDate,customer,travelFrom,travelTo,expenseUpdate,expWayExpenseUpdate,expenseSubSummaryUpdate,comment)" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h4 class="modal-title">กรณีไปหาลูกค้า</h4>
+				<h4 class="modal-title">อัพเดทกรณีไปหาลูกค้า</h4>
 			</div>
 			<div class="modal-body modal-lg">
 				<div class="row">
@@ -310,8 +314,10 @@
 						<div class="row">
 							<div class="col-md-offset-1 col-md-5 nopadding-left-right">
 								<div class="form-group ">
-									<label for="" class="col-md-3 nopadding-left-right controlLabel">วันที่</label>
-									<div class="col-md-9 nopadding-left-right">
+									<div class="col-md-3 nopadding-left-right ">
+										<label for="" class="controlLabel">วันที่</label>
+									</div>
+									<div class="col-md-8 nopadding-left-right">
 										<!--<input type="date" class="form-control" #travelDate [value]="travelExpenseDetail.travelDate" />-->
 										<my-date-picker #travelDate [ngModel]="travelExpenseDetailUpdate.travelDate" [options]="myDatePickerOptions" (dateChanged)="onDateChangedUpdate($event)" ></my-date-picker>
 										<!--<ng2-datepicker  #travelDate [(ngModel)]="dateUpdate" [ngModelOptions]="{standalone: true}"></ng2-datepicker>-->
@@ -323,8 +329,10 @@
 
 							<div class="col-md-5   nopadding-left-right">
 								<div class="form-group ">
-									<label for="" class="col-md-2 nopadding-left-right controlLabel">ลูกค้า</label>
-									<div class="col-md-10 nopadding-left-right">
+									<div class="col-md-offset-1 col-md-3 nopadding-left-right ">
+										<label for="" class="controlLabel">ลูกค้า</label>
+									</div>
+									<div class="col-md-8 nopadding-left-right">
 										<select #customer [(ngModel)]="customerIdUpdate" [ngModelOptions]="{standalone: true}"
 											class="form-control" (change)="onSelectboxChange($event.target.value)">
 											<option *ngFor="let customer of customers" [value]="customer.id">
@@ -340,8 +348,10 @@
 						<div class="row">
 							<div class="col-md-offset-1 col-md-5 nopadding-left-right">
 								<div class="form-group ">
-									<label for="" class="col-md-3 nopadding-left-right controlLabel">เดินทางจาก</label>
-									<div class="col-md-9 nopadding-left-right">
+									<div class="col-md-3 nopadding-left-right ">
+										<label for="" class="controlLabel">เดินทางจาก</label>
+									</div>
+									<div class="col-md-8 nopadding-left-right">
 										<input #travelFrom class="form-control" type="text" 
 										[value]="travelExpenseDetailUpdate.travelFrom">
 									</div>
@@ -350,8 +360,10 @@
 
 							<div class="col-md-5 nopadding-left-right">
 								<div class="form-group ">
-									<label  class="col-md-2 nopadding-left-right controlLabel">ถึง</label>
-									<div class="col-md-10 nopadding-left-right">
+									<div class="col-md-offset-1 col-md-3 nopadding-left-right ">
+										<label  class="controlLabel">ถึง</label>
+									</div>
+									<div class="col-md-8 nopadding-left-right">
 										<input #travelTo class="form-control" type="text"
 										[value]="travelExpenseDetailUpdate.travelTo">
 									</div>
@@ -362,27 +374,37 @@
 						<div class="row">
 							<div class="col-md-offset-1 col-md-5 nopadding-left-right">
 								<div class="form-group ">
-									<label for="" class="col-md-3 nopadding-left-right controlLabel">ค่าเดินทาง</label>
-									<div class="col-md-7 nopadding-left-right">
+									<div class="col-md-3 nopadding-left-right ">
+										<label for="" class="controlLabel">ค่าเดินทาง</label>
+									</div>
+									<div class="col-md-6 nopadding-left-right">
 										<input #expenseUpdate class="form-control" type="text" min="0" 
 										[value]="travelExpenseDetailUpdate.expense"
 										(keyup)="validateNegative($event)"
 										(blur)="sumTravelExpenseSubSummaryUpdate(expenseUpdate,expWayExpenseUpdate)" />
 									</div>
-									<label for="" class="col-md-1 nopadding-left-right label-center">บาท</label>
+									<div class="col-md-2 nopadding-left-right">
+										<input class="form-control" type="text" value="บาท" readonly style="text-align: right"/>
+									</div>
+									<!--<label for="" class="col-md-1 nopadding-left-right label-center">บาท</label>-->
 								</div>
 							</div>
 
 							<div class="col-md-5 nopadding-left-right">
 								<div class="form-group ">
-									<label for="" class="col-md-3 nopadding-left-right controlLabel">ค่าทางด่วน</label>
-									<div class="col-md-8 nopadding-left-right">
+									<div class="col-md-offset-1 col-md-3 nopadding-left-right ">
+										<label for="" class="controlLabel">ค่าทางด่วน</label>
+									</div>
+									<div class="col-md-6 nopadding-left-right">
 										<input #expWayExpenseUpdate class="form-control" type="text" min="0" 
 										[value]="travelExpenseDetailUpdate.expWayExpense"
 										(keyup)="validateNegative($event)"
 										(blur)="sumTravelExpenseSubSummaryUpdate(expenseUpdate,expWayExpenseUpdate)" />
 									</div>
-									<label for="" class="col-md-1 nopadding-left-right label-center">บาท</label>
+									<div class="col-md-2 nopadding-left-right">
+										<input class="form-control" type="text" value="บาท" readonly style="text-align: right"/>
+									</div>
+									<!--<label for="" class="col-md-1 nopadding-left-right label-center">บาท</label>-->
 								</div>
 							</div>				
 						</div>
@@ -390,19 +412,26 @@
 						<div class="row">
 							<div class="col-md-offset-1 col-md-5 nopadding-left-right">
 								<div class="form-group ">
-									<label for="" class="col-md-3 nopadding-left-right controlLabel">ยอดเงินรวม</label>
-									<div class="col-md-7 nopadding-left-right">
+									<div class="col-md-3 nopadding-left-right ">
+										<label for="" class="controlLabel">ยอดเงินรวม</label>
+									</div>
+									<div class="col-md-6 nopadding-left-right">
 										<input #expenseSubSummaryUpdate class="form-control" type="text" 
 										[value]="travelExpenseDetailUpdate.expenseSubSummary">
 									</div>
-									<label for="" class="col-md-1 nopadding-left-right label-center">บาท</label>
+									<div class="col-md-2 nopadding-left-right">
+										<input class="form-control" type="text" value="บาท" readonly style="text-align: right"/>
+									</div>
+									<!--<label for="" class="col-md-1 nopadding-left-right label-center">บาท</label>-->
 								</div>
 							</div>
 
 							<div class="col-md-5 nopadding-left-right">
 								<div class="form-group ">
-									<label for="" class="col-md-3 nopadding-left-right controlLabel">หมายเหตุ</label>
-									<div class="col-md-9 nopadding-left-right">
+									<div class="col-md-offset-1 col-md-3 nopadding-left-right ">
+										<label for="" class="controlLabel">หมายเหตุ</label>
+									</div>
+									<div class="col-md-8 nopadding-left-right">
 										<input #comment class="form-control" type="text"
 										[value]="travelExpenseDetailUpdate.comment">
 									</div>
@@ -410,9 +439,56 @@
 								</div>
 							</div>				
 						</div>
+
+						<!-- file attach  -->
+						<div class="row">
+							<div class="col-md-offset-1 col-md-10 nopadding-left-right">
+								<div class="form-group ">
+									<div class="col-md-12 nopadding-left-right ">
+										<label for="" class="controlLabel">เอกสารแนบ</label>
+									</div>
+								</div>
+								<div class="form-group ">
+									<div class="col-md-1 nopadding-left-right ">
+										<label for="" class="controlLabel">ใบที่ 1</label>
+									</div>
+									<div class="col-md-3 nopadding-left-right">
+										<input #updateAttachFile1 id="file1"  multiple type="file" class="form-control" placeholder="File 1"
+										[(ngModel)]="travelExpenseDetail.attachFile1" [ngModelOptions]="{standalone: true}"/>
+									</div>
+								<!--</div>
+							</div>
+
+							<div class="col-md-3 nopadding-left-right">
+								<div class="form-group ">-->
+									<div class="col-md-1 nopadding-left-right ">
+										<label for="" class="controlLabel">ใบที่ 2</label>
+									</div>
+									<div class="col-md-3 nopadding-left-right">
+										<input #updateAttachFile2 id="file2"  multiple type="file" class="form-control" placeholder="File 1"
+										[(ngModel)]="travelExpenseDetail.attachFile1" [ngModelOptions]="{standalone: true}"/>
+									</div>
+								<!--</div>
+							</div>
+
+							<div class="col-md-3 nopadding-left-right">
+								<div class="form-group ">-->
+									<div class="col-md-1 nopadding-left-right ">
+										<label for="" class="controlLabel">ใบที่ 3</label>
+									</div>
+									<div class="col-md-3 nopadding-left-right">
+										<input #updateAttachFile3 id="file3"  multiple type="file" class="form-control" placeholder="File 1"
+										[(ngModel)]="travelExpenseDetail.attachFile3" [ngModelOptions]="{standalone: true}"/>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--/ file attach  -->
+
 					</div>
 				</div>
 			</div>
+			<hr/>
 			<div class="modal-footer">
 				<div class="row">
 					<div class="col-md-offset-8 col-md-3">

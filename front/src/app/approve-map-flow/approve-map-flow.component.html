@@ -1,20 +1,41 @@
 <div class="container">
   <div class="row">
-    <button  (click)="getAppUsers()" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#modalAdd" class="btn btn-raised btn-default"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    <div class="col-md-12">
+      <ul class="breadcrumb" style="margin-bottom: 0px;">
+        <li><a href="javascript:void(0)">Master</a></li>
+        <li class="active">ApproveMapFlows</li>
+        <button  (click)="getAppUsers()" data-toggle="modal" data-backdrop="static" data-keyboard="false" 
+          data-target="#modalAdd" class="btn btn-danger btn-fab"
+          style="position: absolute; top: -8px; right: 30px;"><i class="fa fa-plus" aria-hidden="true"></i></button>
+      </ul>
+      </div>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <hr style="margin-right: 0px;"/>
+    </div>
+  </div>
+
+  <!--<div class="row">
+    <div class="col-md-12">
+      <button  (click)="getAppUsers()" data-toggle="modal" data-backdrop="static" data-keyboard="false" 
+      data-target="#modalAdd" class="btn btn-danger btn-fab"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    </div>
+  </div>-->
+  
 
   <div class="row">
     <div class="col-md-12">
-      <table class="table table-striped">
+      <table class="table table-striped table-black" >
         <thead>
-          <th>Action</th>
-          <th>Employee</th>
-          <th>Apv1Emp</th>
-          <th>Apv2Emp</th>
-          <th>AccountEmp</th>
+          <th >Action</th>
+          <th >Employee</th>
+          <th >Apv1Emp</th>
+          <th >Apv2Emp</th>
+          <th >AccountEmp</th>
         </thead>
-        <tbody>
-          <tr *ngFor="let apvmf of apvmfs">
+        <tbody >
+          <tr *ngFor="let apvmf of apvmfs" >
             <td><button (click)="deleteApproveMapFlow(apvmf)" class="btn btnEdit btn-raised btn-danger"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></button>
                 <button class="btn btnEdit btn-raised btn-info" data-backdrop="static" data-keyboard="false" 
                               data-target="#modalUpdate" data-toggle="modal"
@@ -43,8 +64,10 @@
       <div class="modal-body">
         <form class="form-horzontal" (ngSubmit)="onSubmit()" #addCom="ngForm">
           <div class="row">
-            <div class="form-group">
-              <label for="selectEmployee" class="col-md-offset-2 col-md-2 control-label">Employee: </label>
+            <!--<div class="form-group">-->
+              <div class="col-md-offset-2 col-md-3 ">
+                <label for="selectEmployee" class="control-label">Employee: </label>
+              </div>
                <div class="col-md-5">
                   <select id="selectEmployee" [(ngModel)]="employeeId" class="form-control"
                   [ngModelOptions]="{standalone: true}">
@@ -53,12 +76,14 @@
                     </option>
                   </select>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
 
           <div class="row">
-            <div class="form-group">
-              <label for="selectApv1" class="col-md-offset-2 col-md-2 control-label">Apv1Emp: </label>
+            <!--<div class="form-group">-->
+              <div class="col-md-offset-2 col-md-3 ">
+                <label for="selectApv1" class="control-label">Apv1Emp: </label>
+              </div>
                <div class="col-md-5">
                   <select id="selectApv1" [(ngModel)]="apv1Id" class="form-control"
                   [ngModelOptions]="{standalone: true}">
@@ -67,11 +92,13 @@
                     </option>
                   </select>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-              <label for="selectApv2" class="col-md-offset-2 col-md-2 control-label">Apv2Emp: </label>
+            <!--<div class="form-group">-->
+              <div class="col-md-offset-2 col-md-3 ">
+                <label for="selectApv2" class="control-label">Apv2Emp: </label>
+              </div>
                <div class="col-md-5">
                   <select id="selectApv2" [(ngModel)]="apv2Id" class="form-control"
                   [ngModelOptions]="{standalone: true}">
@@ -80,11 +107,13 @@
                     </option>
                   </select>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
           <div class="row">
-            <div class="form-group">
-              <label for="selectAccount" class="col-md-offset-2 col-md-2 control-label">AccountEmp: </label>
+            <!--<div class="form-group">-->
+              <div class="col-md-offset-2 col-md-3 ">
+                <label for="selectAccount" class="control-label">AccountEmp: </label>
+              </div>
                <div class="col-md-5">
                   <select id="selectAccount" [(ngModel)]="accountId" class="form-control"
                   [ngModelOptions]="{standalone: true}">
@@ -93,14 +122,14 @@
                     </option>
                   </select>
                 </div>
-            </div>
+            <!--</div>-->
           </div>
         </form>
       </div>
 
       <div class="modal-footer">
         <button type="button" (click)="onClear()" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" data-dismiss="modal" (click)="addApproveMapFlow()">Save changes</button>
+        <button type="submit" class="btn btn-warning" data-dismiss="modal" (click)="addApproveMapFlow()">Save changes</button>
       </div>
     </div>
   </div>

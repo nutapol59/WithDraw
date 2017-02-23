@@ -68,3 +68,8 @@ table,th,td{
 body{
     background-color: #DFE6EF;
 }
+
+.panel-black{
+    background-color: rgb(50,50,50);
+    border-bottom: 2px solid rgb(255,100,0);
+}

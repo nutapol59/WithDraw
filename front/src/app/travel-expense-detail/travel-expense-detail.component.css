@@ -97,3 +97,18 @@ body{
  /*input[type="file"] {
     opacity: 0;
 }*/
+
+.panel-black{
+    background-color: rgb(50,50,50);
+    border-bottom: 2px solid rgb(255,100,0);
+}
+
+.modal-black{
+    background-color: rgb(50,50,50);
+    padding-bottom: 20px;
+    color: white;
+}
+
+.modal-black button{
+    color: white;
+}
