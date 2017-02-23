@@ -724,7 +724,7 @@
 							<staticText>
 								<reportElement x="0" y="0" width="61" height="64" uuid="59a8c6dd-4854-4b69-b6d8-2cd1de825f73"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16" isBold="true"/>
+									<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
 								<text><![CDATA[วันที่]]></text>
 							</staticText>
@@ -733,7 +733,7 @@
 							<textField pattern="dd/MM/yyyy">
 								<reportElement x="0" y="0" width="61" height="54" uuid="16324a8f-525c-4add-9c68-3be0d2a6ca34"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
+									<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{travelDate}]]></textFieldExpression>
 							</textField>
@@ -744,7 +744,7 @@
 							<staticText>
 								<reportElement x="0" y="0" width="73" height="64" uuid="f97e378c-cd31-46ba-b366-071a6054c14c"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16" isBold="true"/>
+									<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
 								<text><![CDATA[ลูกค้า]]></text>
 							</staticText>
@@ -753,7 +753,7 @@
 							<textField>
 								<reportElement x="0" y="0" width="73" height="54" uuid="11ed13f4-9612-4273-ad45-4115ab142759"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
+									<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{customer}.getName()]]></textFieldExpression>
 							</textField>
@@ -764,7 +764,7 @@
 							<staticText>
 								<reportElement x="0" y="0" width="135" height="30" uuid="f4929f01-7d2d-4669-9ef1-cc3943165d0d"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16" isBold="true"/>
+									<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
 								<text><![CDATA[เดินทาง]]></text>
 							</staticText>
@@ -774,7 +774,7 @@
 								<staticText>
 									<reportElement x="0" y="0" width="68" height="34" uuid="eaad19a7-8c71-40e6-adfa-21bbdafb3034"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="TH Sarabun New" size="16" isBold="true"/>
+										<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 									</textElement>
 									<text><![CDATA[จาก]]></text>
 								</staticText>
@@ -783,7 +783,7 @@
 								<textField>
 									<reportElement x="0" y="0" width="68" height="54" uuid="13297292-5006-4a05-898b-2492062d34e5"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="TH Sarabun New" size="16"/>
+										<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 									</textElement>
 									<textFieldExpression><![CDATA[$F{travelFrom}]]></textFieldExpression>
 								</textField>
@@ -794,7 +794,7 @@
 								<staticText>
 									<reportElement x="0" y="0" width="67" height="34" uuid="3b74c6ee-4dd6-4011-99df-f2fde659c7cc"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="TH Sarabun New" size="16" isBold="true"/>
+										<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 									</textElement>
 									<text><![CDATA[ถึง]]></text>
 								</staticText>
@@ -803,7 +803,7 @@
 								<textField>
 									<reportElement x="0" y="0" width="67" height="54" uuid="47160f5a-e05a-497e-945b-0b644ac3ffe3"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="TH Sarabun New" size="16"/>
+										<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 									</textElement>
 									<textFieldExpression><![CDATA[$F{travelTo}]]></textFieldExpression>
 								</textField>
@@ -815,7 +815,7 @@
 							<staticText>
 								<reportElement x="0" y="0" width="113" height="30" uuid="6b2db42c-4a73-42e0-bc25-10bb02db615f"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16" isBold="true"/>
+									<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
 								<text><![CDATA[ค่าใช้จ่าย]]></text>
 							</staticText>
@@ -825,7 +825,7 @@
 								<staticText>
 									<reportElement x="0" y="0" width="54" height="34" uuid="a21628a1-33e0-4d44-bb5f-500d6141bc86"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="TH Sarabun New" size="16" isBold="true"/>
+										<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 									</textElement>
 									<text><![CDATA[ค่าเดินทาง]]></text>
 								</staticText>
@@ -834,7 +834,7 @@
 								<textField>
 									<reportElement x="0" y="0" width="54" height="54" uuid="50eef0a5-17a5-4dca-b67b-0e851a7c5c7c"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="TH Sarabun New" size="16"/>
+										<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 									</textElement>
 									<textFieldExpression><![CDATA[$F{expWayExpense}]]></textFieldExpression>
 								</textField>
@@ -845,7 +845,7 @@
 								<staticText>
 									<reportElement x="0" y="0" width="59" height="34" uuid="c85e55f6-a097-423c-bdfb-03413ee2f286"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="TH Sarabun New" size="16" isBold="true"/>
+										<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 									</textElement>
 									<text><![CDATA[ค่าทางด่วน]]></text>
 								</staticText>
@@ -854,7 +854,7 @@
 								<textField>
 									<reportElement x="0" y="0" width="59" height="54" uuid="c3a2cf8c-a6c1-45ea-9f3a-a08fdee4a9fb"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="TH Sarabun New" size="16"/>
+										<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 									</textElement>
 									<textFieldExpression><![CDATA[$F{expenseSubSummary}]]></textFieldExpression>
 								</textField>
@@ -866,7 +866,7 @@
 							<staticText>
 								<reportElement x="0" y="0" width="55" height="64" uuid="8c61af2d-09c4-4661-ae08-66f24b387f23"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16" isBold="true"/>
+									<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
 								<text><![CDATA[รวมทั้งสิ้น]]></text>
 							</staticText>
@@ -875,7 +875,7 @@
 							<textField>
 								<reportElement x="0" y="0" width="55" height="54" uuid="239466c9-dfb8-4f5a-8de4-2fbf3aa11f67"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
+									<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{expenseSubSummary}]]></textFieldExpression>
 							</textField>
@@ -888,7 +888,7 @@
 							<staticText>
 								<reportElement x="0" y="0" width="90" height="64" uuid="c7903b0e-5c76-4129-9471-bf44ad59bda8"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16" isBold="true"/>
+									<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
 								<text><![CDATA[หมายเหตุ]]></text>
 							</staticText>
@@ -897,7 +897,7 @@
 							<textField>
 								<reportElement x="0" y="0" width="90" height="54" uuid="b66d695d-5664-443a-af6c-4573481be8cc"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="TH Sarabun New" size="16"/>
+									<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{comment}]]></textFieldExpression>
 							</textField>

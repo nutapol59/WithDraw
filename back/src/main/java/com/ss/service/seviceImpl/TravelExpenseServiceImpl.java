@@ -9,17 +9,21 @@ import com.ss.repository.AppUserRepository;
 import com.ss.repository.ApproveMapFlowRepository;
 import com.ss.repository.TravelExpenseRepository;
 import com.ss.service.TravelExpenseService;
+import com.ss.util.AbstractReportJasperPDF;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporterParameter;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import java.io.ByteArrayOutputStream;
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.leftPad;
 
@@ -191,5 +195,40 @@ public class TravelExpenseServiceImpl  implements TravelExpenseService{
             e.printStackTrace();
             return "Delete Failed";
         }
+    }
+
+    public byte[] exportJasperPdf(Long id){
+        try{
+            String jasperFileName = "TravelExpenseJasper.jasper";
+//            JSONObject jsonObject = new JSONObject(json);
+//            TravelExpense travelExpense = this.travelExpenseRepository.findOne(jsonObject.getLong("travelExpenseId"));
+            TravelExpense travelExpense = this.travelExpenseRepository.findOne(id);
+            List<JasperPrint> jasperPrints = new ArrayList<>();
+            Map<String,Object> map = new HashMap<>();
+            if(travelExpense != null){
+                //JasperPrint jasperPrint = AbstractReportJasperPDF.exportReport(jasperFileName, Arrays.asList(travelExpense), map);
+                JasperPrint jasperPrint = AbstractReportJasperPDF.exportReport(jasperFileName, Arrays.asList(travelExpense),map);
+                jasperPrints.add(jasperPrint);
+                byte[] b = generateReportBOJ5(jasperPrints);
+
+                return b;
+            }else {
+                return null;
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    public byte[] generateReportBOJ5(List<JasperPrint> jasperPrintList)  throws JRException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        JRPdfExporter pdfExporter = new JRPdfExporter();
+        pdfExporter.setParameter(JRExporterParameter.JASPER_PRINT_LIST, jasperPrintList);
+        pdfExporter.setParameter(JRExporterParameter.OUTPUT_STREAM, baos);
+        pdfExporter.exportReport();
+        return baos.toByteArray();
     }
 }

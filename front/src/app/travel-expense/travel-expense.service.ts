@@ -84,5 +84,18 @@ export class TravelExpenseService {
           .catch((error:Response) => Observable.throw(error.text()))
            
    }
+   exportToPdf(travelExpenseId:number){
+      console.log(travelExpenseId);
+      // window.location.href= this.configModeServerService.ipServer+'/travelExpenses/exportToPdf?id='+travelExpenseId;
+      window.open(this.configModeServerService.ipServer+'/travelExpenses/exportToPdf?id='+travelExpenseId,'_blank')
+      //var headers = new Headers();
+      // var json = JSON.stringify({travelExpenseId:travelExpenseId})
+      // headers.append("Content-Type","application/json");
+      // return this._http.post(this.configModeServerService.ipServer+'/travelExpenses/exportToPdf',json,{
+      //   headers : headers
+      // })
+      //     .map(res => res.blob())
+      //     .catch((error:Response) => Observable.throw(error.text()))
+   }
 
 }

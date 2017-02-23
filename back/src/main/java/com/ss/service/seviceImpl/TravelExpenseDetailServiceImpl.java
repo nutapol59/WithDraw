@@ -12,7 +12,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import java.io.FileOutputStream;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,6 +26,7 @@ import java.util.Map;
 @Service
 public class TravelExpenseDetailServiceImpl implements TravelExpenseDetailService{
     private static final Logger log = LoggerFactory.getLogger(TravelExpenseDetailServiceImpl.class);
+    private static final String path = "/home/nbkf/Working/TempWithDrawFile/";
 
     private TravelExpenseDetailRepository travelExpenseDetailRepository;
     private TravelExpenseRepository travelExpenseRepository;
@@ -58,45 +63,63 @@ public class TravelExpenseDetailServiceImpl implements TravelExpenseDetailServic
 
 
     @Override
-    public String addTravelExpenseDetail(String json) {
+    public String addTravelExpenseDetail(TravelExpenseDetail formdata, MultipartHttpServletRequest multipartHttpServletRequest) {
         try {
-            JSONObject jsonObject = new JSONObject(json);
 
-            Map<String,Object> travelExpenseDetailMap = new JSONDeserializer<Map<String,Object>>().deserialize(jsonObject.get("travelExpenseDetail").toString());
-
-
-            log.info("MapDetail =  {}",travelExpenseDetailMap);
-//            TravelExpenseDetail travelExpenseDetail = travelExpenseDetailMap.get("travelExpenseDetail");
-
+            if(!formdata.getAttachFile1().equalsIgnoreCase("")){
+                MultipartFile multipartFile1 = multipartHttpServletRequest.getFile("file1"); //getFile
+                byte[] bytesFile1 = multipartFile1.getBytes(); //get byte file
+                FileCopyUtils.copy(bytesFile1, new FileOutputStream(path+ formdata.getAttachFile1()));
+            }
 
 
-            TravelExpenseDetail travelExpenseDetail = new TravelExpenseDetail();
-            travelExpenseDetail.setTravelFrom((String)travelExpenseDetailMap.get("travelFrom"));
-            travelExpenseDetail.setTravelTo((String)travelExpenseDetailMap.get("travelTo"));
-            travelExpenseDetail.setComment((String)travelExpenseDetailMap.get("comment"));
-            travelExpenseDetail.setExpense(new BigDecimal(travelExpenseDetailMap.get("expense")+""));
-            travelExpenseDetail.setExpWayExpense(new BigDecimal(travelExpenseDetailMap.get("expWayExpense")+""));
-            travelExpenseDetail.setExpenseSubSummary(new BigDecimal(travelExpenseDetailMap.get("expenseSubSummary")+""));
+            if(!formdata.getAttachFile2().equalsIgnoreCase("")) {
+                MultipartFile multipartFile2 = multipartHttpServletRequest.getFile("file2");
+                byte[] bytesFile2 = multipartFile2.getBytes(); //get byte file
+                FileCopyUtils.copy(bytesFile2, new FileOutputStream(path + formdata.getAttachFile2()));
+            }
 
-            TravelExpense travelExpense = this.travelExpenseRepository.findOne(jsonObject.getLong("travelExpenseId"));
-            travelExpenseDetail.setTravelExpense(travelExpense);
 
-            Customer customer = this.customerRepository.findOne(Long.parseLong(travelExpenseDetailMap.get("customer")+""));
-            travelExpenseDetail.setCustomer(customer);
+            if(!formdata.getAttachFile3().equalsIgnoreCase("")) {
+                MultipartFile multipartFile3 = multipartHttpServletRequest.getFile("file3");
+                byte[] bytesFile3 = multipartFile3.getBytes(); //get byte file
+                FileCopyUtils.copy(bytesFile3, new FileOutputStream(path + formdata.getAttachFile3()));
+                //save file to path
+            }
 
-            Long date = jsonObject.getLong("date");
-            log.info("date = {}",date);
-            Date travelDate = new Date(date);
-            log.info("travelDate = {}",travelDate);
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            String dateText = formatter.format(travelDate);
-            log.info("dateText: {}",dateText);
-            travelExpenseDetail.setTravelDate(formatter.parse(dateText));
-    //            travelExpenseDetail.setAttachFile1("attachFile1");
-//            travelExpenseDetail.setAttachFile2("attachFile2");
-//            travelExpenseDetail.setAttachFile3("attachFile3");
+            this.travelExpenseDetailRepository.save(formdata);
 
-            this.travelExpenseDetailRepository.save(travelExpenseDetail);
+//            //JSONObject jsonObject = new JSONObject(json);
+//            Map<String,Object> travelExpenseDetailMap = new JSONDeserializer<Map<String,Object>>().deserialize(jsonObject.get("travelExpenseDetail").toString());
+//            log.info("MapDetail =  {}",travelExpenseDetailMap);
+////            TravelExpenseDetail travelExpenseDetail = travelExpenseDetailMap.get("travelExpenseDetail");
+//            TravelExpenseDetail travelExpenseDetail = new TravelExpenseDetail();
+//            travelExpenseDetail.setTravelFrom((String)travelExpenseDetailMap.get("travelFrom"));
+//            travelExpenseDetail.setTravelTo((String)travelExpenseDetailMap.get("travelTo"));
+//            travelExpenseDetail.setComment((String)travelExpenseDetailMap.get("comment"));
+//            travelExpenseDetail.setExpense(new BigDecimal(travelExpenseDetailMap.get("expense")+""));
+//            travelExpenseDetail.setExpWayExpense(new BigDecimal(travelExpenseDetailMap.get("expWayExpense")+""));
+//            travelExpenseDetail.setExpenseSubSummary(new BigDecimal(travelExpenseDetailMap.get("expenseSubSummary")+""));
+//
+//            TravelExpense travelExpense = this.travelExpenseRepository.findOne(jsonObject.getLong("travelExpenseId"));
+//            travelExpenseDetail.setTravelExpense(travelExpense);
+//
+//            Customer customer = this.customerRepository.findOne(Long.parseLong(travelExpenseDetailMap.get("customer")+""));
+//            travelExpenseDetail.setCustomer(customer);
+//
+//            Long date = jsonObject.getLong("date");
+//            log.info("date = {}",date);
+//            Date travelDate = new Date(date);
+//            log.info("travelDate = {}",travelDate);
+//            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+//            String dateText = formatter.format(travelDate);
+//            log.info("dateText: {}",dateText);
+//            travelExpenseDetail.setTravelDate(formatter.parse(dateText));
+//    //            travelExpenseDetail.setAttachFile1("attachFile1");
+////            travelExpenseDetail.setAttachFile2("attachFile2");
+////            travelExpenseDetail.setAttachFile3("attachFile3");
+//
+//            this.travelExpenseDetailRepository.save(travelExpenseDetail);
 
             return "Created Success";
         } catch (Exception e) {

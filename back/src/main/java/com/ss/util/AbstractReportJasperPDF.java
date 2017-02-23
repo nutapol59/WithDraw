@@ -32,6 +32,7 @@ public class AbstractReportJasperPDF {
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(jasperStream);
             JRDataSource beanCollectionDataSource = new JRBeanCollectionDataSource(list);
             LOGGER.info("JRDataSource : {}", beanCollectionDataSource);
+//            jasperPrint = JasperFillManager.fillReport(jasperReport, params, beanCollectionDataSource);
             jasperPrint = JasperFillManager.fillReport(jasperReport, params, beanCollectionDataSource);
             return jasperPrint;
 
