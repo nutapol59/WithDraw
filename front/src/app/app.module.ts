@@ -35,7 +35,10 @@ import { ApproveMapFlowComponent } from './approve-map-flow/approve-map-flow.com
 
 
 import { ConfigModeServerService } from './config-mode-server.service';
-
+import { LoginpageComponent } from './loginpage/loginpage.component';
+import { LoginpageService } from './loginpage/loginpage.service';
+import { AuthGuard } from './loginpage/AuthGuard';
+import {AuthenticationService} from "./loginpage/authentication.service";
 
 
 
@@ -53,7 +56,8 @@ import { ConfigModeServerService } from './config-mode-server.service';
     TravelExpenseDetailComponent,
     DocumentMasterComponent,
     ListSentApproveComponent,
-    ApproveMapFlowComponent
+    ApproveMapFlowComponent,
+    LoginpageComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,7 @@ import { ConfigModeServerService } from './config-mode-server.service';
   providers: [CompanyService,DepartmentService,AppUserService
              ,CustomerService,BankService,TravelExpenseService
              ,TravelExpenseDetailService,ApproveMapFlowService,
-             ConfigModeServerService],
+             ConfigModeServerService,LoginpageService,AuthenticationService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

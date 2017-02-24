@@ -1,6 +1,6 @@
 import { Component, OnInit, Input,Directive } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router'
+import {Router, NavigationEnd} from '@angular/router'
 
 
 import { TravelExpense } from './travel-expense'
@@ -14,6 +14,7 @@ import { TravelExpenseDetailComponent } from '../travel-expense-detail/travel-ex
 import { TravelExpenseService } from '../travel-expense/travel-expense.service'
 import { AppUserService } from '../app-user/app-user.service';
 import{ CustomerService } from '../customer/customer.service';
+import {AuthenticationService} from "../loginpage/authentication.service";
 
 
 
@@ -21,10 +22,10 @@ import{ CustomerService } from '../customer/customer.service';
   selector: 'app-travel-expense',
   templateUrl: './travel-expense.component.html',
   styleUrls: ['./travel-expense.component.css']
-  
+
 })
 export class TravelExpenseComponent implements OnInit {
-  
+
   travelExpenses:TravelExpense[];
   travelExpense = new TravelExpense();
   customers:Customer[];
@@ -33,30 +34,42 @@ export class TravelExpenseComponent implements OnInit {
   company = new Company();
   department = new Department();
 
-  
-  
+
+
 
   isResultTable : boolean = false;
 
   constructor(private travelExpenseService:TravelExpenseService,
               private appUserService:AppUserService, private customerService:CustomerService,
-              private router: Router) {
-              
-               }
+              private router: Router,private authenticationService: AuthenticationService) {
 
-  
+    router.events.subscribe((val) => {
+      // see also
+      console.log(val)
+      this.fetchNew();
+      // console.log(val instanceof NavigationEnd)
+    });
+  }
+
+
 
   ngOnInit() {
+    // this.fetchNew();
+  }
+
+  fetchNew(){
     this.getAppUserById();
     setTimeout(() => {
-       this.company = this.appUser.company;
-       this.department = this.appUser.department;
+      if (this.appUser != null) {
+        this.company = this.appUser.company;
+        this.department = this.appUser.department;
+      }
     },1000);
   }
 
 
   showResultTable(){
-    this.isResultTable = true;  
+    this.isResultTable = true;
   }
 
   gotoListSentApprove(){
@@ -74,13 +87,13 @@ export class TravelExpenseComponent implements OnInit {
   }
 
   getAppUserById(){
-    this.appUserService.getAppUserById(2)
+    this.appUserService.getAppUserById(this.authenticationService.token)
       .subscribe(
                 data => this.appUser = data,
                 error => alert(error),
                 () => console.log(JSON.stringify(this.appUser))
             )
-    
+
   }
 
     getCustomers(){
@@ -90,7 +103,7 @@ export class TravelExpenseComponent implements OnInit {
         error => console.log(error),
         () => console.log(JSON.stringify(this.customers))
       )
-    
+
   }
 
 
@@ -103,7 +116,7 @@ export class TravelExpenseComponent implements OnInit {
                                     this.showResultTable(),
                                   console.log(this.travelExpense.id)}
                             )
-    
+
   }
 
   onClearUpdate(comment:HTMLInputElement){
@@ -120,7 +133,7 @@ export class TravelExpenseComponent implements OnInit {
                                () => {
                                  console.log("Update Success"),
                                  console.log(this.travelExpense.id)}
-                               
+
                              )
   }
 

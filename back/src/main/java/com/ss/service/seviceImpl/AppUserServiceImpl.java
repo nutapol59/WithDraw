@@ -58,6 +58,26 @@ public class AppUserServiceImpl  implements AppUserService{
     }
 
     @Override
+    public Long isValidUserLogin(String json) {
+        JSONObject jsonObject = new JSONObject(json);
+        String username = jsonObject.getString("username");
+        String password = jsonObject.getString("password");
+        log.error("--------------------");
+        log.error(username);
+        log.error(password);
+        log.error("--------------------");
+        List<AppUser> appUserList = this.appUserRepository.findByUserNameAndPasswordEquals(username,password);
+        if(appUserList.size() > 0 ){
+            log.error("appUser: {}",appUserList.get(0));
+            return appUserList.get(0).getId();
+        }
+        else{
+            log.error("....invalid login....");
+            return -1l;
+        }
+    }
+
+    @Override
     public String addAppUser(String json) {
         try {
             log.info("===================add AppUser IMPL===================");
@@ -150,4 +170,7 @@ public class AppUserServiceImpl  implements AppUserService{
     }
 
 
+
+
 }
+

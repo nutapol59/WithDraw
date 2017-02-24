@@ -10,17 +10,20 @@ import { CustomerComponent } from './customer/customer.component';
 import { TravelExpenseComponent } from './travel-expense/travel-expense.component'
 import { ListSentApproveComponent } from './list-sent-approve/list-sent-approve.component';
 import { ApproveMapFlowComponent } from './approve-map-flow/approve-map-flow.component';
+import { LoginpageComponent } from './loginpage/loginpage.component';
+import {AuthGuard} from "./loginpage/AuthGuard";
 
 const routes: Routes = [
     // { path: '', redirectTo: '/', pathMatch: 'full' }, //remember / == /dashboard begin openWeb
-  { path: '',  component: TravelExpenseComponent},
-  { path: 'companies', component:CompanyComponent},
-  { path: 'departments', component:DepartmentComponent},
-  { path: 'appUsers' , component:AppUserComponent },
-  { path: 'customers' , component:CustomerComponent },
-  { path: 'banks' , component:BankComponent },
-  { path: 'listSentApprove/:id' , component:ListSentApproveComponent },
-  { path: 'approveMapFlow' , component:ApproveMapFlowComponent }
+  { path: '',  component: TravelExpenseComponent, canActivate: [AuthGuard]},
+  { path: 'companies', component:CompanyComponent, canActivate: [AuthGuard]},
+  { path: 'departments', component:DepartmentComponent, canActivate: [AuthGuard]},
+  { path: 'appUsers' , component:AppUserComponent , canActivate: [AuthGuard]},
+  { path: 'customers' , component:CustomerComponent , canActivate: [AuthGuard]},
+  { path: 'banks' , component:BankComponent , canActivate: [AuthGuard]},
+  { path: 'listSentApprove/:id' , component:ListSentApproveComponent , canActivate: [AuthGuard]},
+  { path: 'approveMapFlow' , component:ApproveMapFlowComponent , canActivate: [AuthGuard]},
+  { path: 'login', component:LoginpageComponent }
 
 
 //   { path: 'detail/:id', component: HeroDetailComponent },

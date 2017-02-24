@@ -11,4 +11,5 @@ public interface AppUserService {
     String updateAppUser(String json);
     String deleteAppUser(Long id);
     AppUser getAppUserById(Long id);
+    Long isValidUserLogin(String json);
 }
