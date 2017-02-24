@@ -13,7 +13,7 @@ public class TravelExpenseFactory {
         AppMenu appMenu = new AppMenu();
         AppRole appRole = new AppRole();
         AppRoleMenu appRoleMenu = new AppRoleMenu();
-        ApproveMapFlow approveMapFlow = new ApproveMapFlow();
+
 
         Company company = new Company();
         company.setId(new Long(1));
@@ -50,6 +50,9 @@ public class TravelExpenseFactory {
         appUser.setPassword("098652484");
         appUser.setDepartment(department);
         appUser.setCompany(company);
+
+        ApproveMapFlow approveMapFlow = new ApproveMapFlow();
+        approveMapFlow.setApv1Emp(appUser);
 
         AppUserRole appUserRole = new AppUserRole();
         Bank bank = new Bank();
@@ -104,6 +107,7 @@ public class TravelExpenseFactory {
         travelExpense.setCash(1);
         travelExpense.setChequeNumber("cheScB9934244");
         travelExpense.setChequeBank(bank);
+        travelExpense.setApproveMapFlow(approveMapFlow);
         travelExpense.setExpenseSummary(new BigDecimal(40000));
 
         Set<TravelExpenseDetail> travelExpenseDetails = new HashSet();

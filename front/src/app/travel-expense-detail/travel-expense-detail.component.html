@@ -227,7 +227,7 @@
 										<label for="" class="controlLabel">ใบที่ 1</label>
 									</div>
 									<div class="col-md-3 nopadding-left-right">
-										<input #attachFile1 id="file1" type="file" multiple class="form-control" placeholder="File 1"
+										<input #attachFile1 accept=".jpg, .png, .pdf" id="file1" max-size=5000000 type="file" multiple class="form-control" placeholder="File 1"
 										[(ngModel)]="travelExpenseDetail.attachFile1" [ngModelOptions]="{standalone: true}"
 										(change)="onChangeFile($event,1)"/>
 									</div>
@@ -240,7 +240,7 @@
 										<label for="" class="controlLabel">ใบที่ 2</label>
 									</div>
 									<div class="col-md-3 nopadding-left-right">
-										<input #attachFile2 id="file2" type="file" multiple class="form-control" placeholder="File 2"
+										<input #attachFile2 accept=".jpg, .png, .pdf" id="file2" max-size=5000000 type="file" multiple class="form-control" placeholder="File 2"
 										[(ngModel)]="travelExpenseDetail.attachFile2" [ngModelOptions]="{standalone: true}"
 										(change)="onChangeFile($event,2)"/>
 									</div>
@@ -253,7 +253,7 @@
 										<label for="" class="controlLabel">ใบที่ 3</label>
 									</div>
 									<div class="col-md-3 nopadding-left-right">
-										<input #attachFile3 id="file3" type="file" multiple class="form-control" placeholder="File 3"
+										<input #attachFile3 accept=".jpg, .png, .pdf" id="file3" max-size=5000000 type="file" multiple class="form-control" placeholder="File 3"
 										[(ngModel)]="travelExpenseDetail.attachFile3" [ngModelOptions]="{standalone: true}"
 										(change)="onChangeFile($event,3)" />
 									</div>
@@ -306,9 +306,10 @@
 <div class="modal fade modal-black" id="modalUpdateTravelExpenseDetail">
 	<div class="modal-dialog">
 		
-		<div class="modal-content">
-			<div class="modal-header ">
-				<button (click)="onClearUpdate(travelDate,customer,travelFrom,travelTo,expenseUpdate,expWayExpenseUpdate,expenseSubSummaryUpdate,comment)" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+		<div class="modal-content modal-lg">
+			<div class="modal-header modal-black">
+				<button (click)="onClearUpdate(travelDate,customer,travelFrom,travelTo,expenseUpdate,expWayExpenseUpdate,expenseSubSummaryUpdate,comment,updateAttachFile1,updateAttachFile2,updateAttachFile3)" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				<h4 class="modal-title">อัพเดทกรณีไปหาลูกค้า</h4>
 			</div>
 			<div class="modal-body">
@@ -322,7 +323,8 @@
 									</div>
 									<div class="col-md-8 nopadding-left-right">
 										<!--<input type="date" class="form-control" #travelDate [value]="travelExpenseDetail.travelDate" />-->
-										<my-date-picker #travelDate [ngModel]="travelExpenseDetailUpdate.travelDate" [options]="myDatePickerOptions" (dateChanged)="onDateChangedUpdate($event)" ></my-date-picker>
+										<my-date-picker #travelDate  
+										[options]="myDatePickerOptions" (dateChanged)="onDateChangedUpdate($event)" ></my-date-picker>
 										<!--<ng2-datepicker  #travelDate [(ngModel)]="dateUpdate" [ngModelOptions]="{standalone: true}"></ng2-datepicker>-->
 										
 									</div>
@@ -420,7 +422,7 @@
 									</div>
 									<div class="col-md-6 nopadding-left-right">
 										<input #expenseSubSummaryUpdate class="form-control" type="text" 
-										[value]="travelExpenseDetailUpdate.expenseSubSummary">
+										readonly [value]="travelExpenseDetailUpdate.expenseSubSummary">
 									</div>
 									<div class="col-md-2 nopadding-left-right">
 										<input class="form-control" type="text" value="บาท" readonly style="text-align: right"/>
@@ -456,32 +458,44 @@
 										<label for="" class="controlLabel">ใบที่ 1</label>
 									</div>
 									<div class="col-md-3 nopadding-left-right">
-										<input #updateAttachFile1 id="file1"  multiple type="file" class="form-control" placeholder="File 1"
-										[(ngModel)]="travelExpenseDetail.attachFile1" [ngModelOptions]="{standalone: true}"/>
+										<a href="javascript:void(0)" (click)="showPreview(1)">{{travelExpenseDetailUpdate.attachFile1}}</a>
 									</div>
-								<!--</div>
-							</div>
 
-							<div class="col-md-3 nopadding-left-right">
-								<div class="form-group ">-->
 									<div class="col-md-1 nopadding-left-right ">
 										<label for="" class="controlLabel">ใบที่ 2</label>
 									</div>
 									<div class="col-md-3 nopadding-left-right">
-										<input #updateAttachFile2 id="file2"  multiple type="file" class="form-control" placeholder="File 1"
-										[(ngModel)]="travelExpenseDetail.attachFile1" [ngModelOptions]="{standalone: true}"/>
+										<a href="javascript:void(0)" (click)="showPreview(2)">{{travelExpenseDetailUpdate.attachFile2}}</a>
 									</div>
-								<!--</div>
-							</div>
 
-							<div class="col-md-3 nopadding-left-right">
-								<div class="form-group ">-->
 									<div class="col-md-1 nopadding-left-right ">
 										<label for="" class="controlLabel">ใบที่ 3</label>
 									</div>
 									<div class="col-md-3 nopadding-left-right">
-										<input #updateAttachFile3 id="file3"  multiple type="file" class="form-control" placeholder="File 1"
-										[(ngModel)]="travelExpenseDetail.attachFile3" [ngModelOptions]="{standalone: true}"/>
+										<a href="javascript:void(0)" (click)="showPreview(3)">{{travelExpenseDetailUpdate.attachFile3}}</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-offset-1 col-md-10 nopadding-left-right">
+								<div class="form-group ">
+									
+									<div class="col-md-3 nopadding-left-right">
+										<input #fileUpdate1 accept=".jpg, .png, .pdf"  multiple type="file" class="form-control" placeholder="File 1"
+										(change)="onChangeFileUpdate($event,1)" /> 
+									</div>
+	
+									<div class="col-md-offset-1 col-md-3 nopadding-left-right">
+										<input #fileUpdate2 accept=".jpg, .png, .pdf"  multiple type="file" class="form-control" placeholder="File 1"
+										(change)="onChangeFileUpdate($event,2)"/>
+									</div>
+			
+									
+									<div class="col-md-offset-1 col-md-3 nopadding-left-right">
+										<input #fileUpdate3 accept=".jpg, .png, .pdf" multiple type="file" class="form-control" placeholder="File 1"
+										(change)="onChangeFileUpdate($event,3)"/>
 									</div>
 								</div>
 							</div>
@@ -496,7 +510,7 @@
 				<div class="row">
 					<div class="col-md-offset-8 col-md-3">
 						<div class="form-group">
-							<button (click)="onClearUpdate(travelDate,customer,travelFrom,travelTo,expenseUpdate,expWayExpenseUpdate,expenseSubSummaryUpdate,comment)" type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+							<button (click)="onClearUpdate(travelDate,customer,travelFrom,travelTo,expenseUpdate,expWayExpenseUpdate,expenseSubSummaryUpdate,comment,updateAttachFile1,updateAttachFile2,updateAttachFile3)" type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
 							<button (click)="updateTravelExpenseDetail(travelDate,customer,travelFrom,travelTo,expenseUpdate,expWayExpenseUpdate,expenseSubSummaryUpdate,comment)" data-dismiss="modal" class="btn btn-raised btn-inverse" type="submit" name="submit">เพิ่ม</button>
 						</div>
 					</div>

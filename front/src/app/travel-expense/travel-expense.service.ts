@@ -87,7 +87,7 @@ export class TravelExpenseService {
    exportToPdf(travelExpenseId:number){
       console.log(travelExpenseId);
       // window.location.href= this.configModeServerService.ipServer+'/travelExpenses/exportToPdf?id='+travelExpenseId;
-      window.open(this.configModeServerService.ipServer+'/travelExpenses/exportToPdf?id='+travelExpenseId,'_blank')
+      window.open(this.configModeServerService.ipServer+'/travelExpenses/exportToPdf?id='+travelExpenseId,'_blank');
       //var headers = new Headers();
       // var json = JSON.stringify({travelExpenseId:travelExpenseId})
       // headers.append("Content-Type","application/json");
@@ -97,5 +97,7 @@ export class TravelExpenseService {
       //     .map(res => res.blob())
       //     .catch((error:Response) => Observable.throw(error.text()))
    }
+
+   
 
 }

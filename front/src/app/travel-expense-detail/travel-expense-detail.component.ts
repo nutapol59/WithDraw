@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input,ViewChild } from '@angular/core';
 import { Router } from '@angular/router'
 
 import { Customer } from '../customer/customer';
@@ -32,7 +32,23 @@ export class TravelExpenseDetailComponent implements OnInit {
 
   @Input('appUserId')
   appUserId:number;
+
+  @ViewChild('attachFile1')
+  inputFile1: any; 
+  @ViewChild('attachFile2')
+  inputFile2: any; 
+  @ViewChild('attachFile3')
+  inputFile3: any; 
+
+  @ViewChild('fileUpdate1')
+  inputFileUpdate1: any; 
+  @ViewChild('fileUpdate2')
+  inputFileUpdate2: any; 
+  @ViewChild('fileUpdate3')
+  inputFileUpdate3: any; 
   
+  
+
   customer = new Customer();
   customerIdUpdate:number;
 
@@ -45,6 +61,15 @@ export class TravelExpenseDetailComponent implements OnInit {
   file2:File = null;
   file3:File = null;
   files:File[] = [];
+
+  file1History:File = null;
+  file2History:File = null;
+  file3History:File = null;
+
+  file1Update:File = null;
+  file2Update:File = null;
+  file3Update:File = null;
+  filesUpdate:File[] = [];
 
 
 
@@ -149,9 +174,45 @@ onChangeFile(event:EventTarget,num:number){
     // this.files.push(this.file3);
     // console.log(this.files);
 }
+
+onChangeFileUpdate(event:EventTarget,num:number){
+  let eventObj: MSInputMethodContext;
+  let target: HTMLInputElement;
+  let files: FileList;
+
+  if(num == 1){
+    eventObj = <MSInputMethodContext> event;
+    target = <HTMLInputElement> eventObj.target;
+    files = target.files;
+    this.file1Update = files[0];
+    console.log(this.file1Update);
+
+  }else if(num == 2){
+    eventObj = <MSInputMethodContext> event;
+    target = <HTMLInputElement> eventObj.target;
+    files = target.files;
+    this.file2Update = files[0];
+    console.log(this.file2Update);
+
+  }else if(num == 3){
+    eventObj = <MSInputMethodContext> event;
+    target = <HTMLInputElement> eventObj.target;
+    files = target.files;
+    this.file3Update = files[0];
+    console.log(this.file3Update);
+  }
+    // this.files.push(this.file1);
+    // this.files.push(this.file2);
+    // this.files.push(this.file3);
+    // console.log(this.files);
+}
   
 
   onClear(){
+    this.file1History = this.file1;
+    this.file2History = this.file2;
+    this.file3History = this.file3;
+
     this.travelExpenseDetail.travelDate = null;
     this.travelExpenseDetail.customer = null;
     this.travelExpenseDetail.travelFrom = "";
@@ -160,17 +221,30 @@ onChangeFile(event:EventTarget,num:number){
     this.travelExpenseDetail.expWayExpense=null;
     this.travelExpenseDetail.expenseSubSummary=null;
     this.travelExpenseDetail.comment ="";
+    this.travelExpenseDetail.attachFile1="";
+    this.travelExpenseDetail.attachFile2="";
+    this.travelExpenseDetail.attachFile3="";
+    this.file1=null;
+    this.file2=null;
+    this.file3=null;
+    this.files = [];
+    this.inputFile1.nativeElement.value="";
+    this.inputFile2.nativeElement.value="";
+    this.inputFile3.nativeElement.value="";
   }
 
   detailModalUpdate(travelExpenseDetail){
     console.log(travelExpenseDetail)
     this.travelExpenseDetailUpdate = travelExpenseDetail;
-    
+    console.log(this.travelExpenseDetailUpdate.attachFile1);
+    console.log(this.travelExpenseDetailUpdate.attachFile2);
+    console.log(this.travelExpenseDetailUpdate.attachFile3);
   }
 
   onClearUpdate(travelDate:HTMLInputElement,customer:HTMLInputElement,travelFrom:HTMLInputElement,
                 travelTo:HTMLInputElement,expense:HTMLInputElement,expWayExpense:HTMLInputElement
-                ,expenseSubSummary:HTMLInputElement,comment:HTMLInputElement){
+                ,expenseSubSummary:HTMLInputElement,comment:HTMLInputElement,
+                attachFileUpdate1,attachFileUpdate2,attachFileUpdate3){
       travelDate.value = this.travelExpenseDetailUpdate.travelDate.toString();
       customer.value = this.travelExpenseDetailUpdate.customer.toString();
       travelFrom.value = this.travelExpenseDetailUpdate.travelFrom;
@@ -179,7 +253,15 @@ onChangeFile(event:EventTarget,num:number){
       expWayExpense.value = this.travelExpenseDetailUpdate.expWayExpense.toString();
       expenseSubSummary.value = this.travelExpenseDetailUpdate.expenseSubSummary.toString();
       comment.value = this.travelExpenseDetailUpdate.comment;
-
+      // attachFileUpdate1.value = this.travelExpenseDetailUpdate.attachFile1;
+      // attachFileUpdate2.value = this.travelExpenseDetailUpdate.attachFile2;
+      // attachFileUpdate3.value = this.travelExpenseDetailUpdate.attachFile3;
+      this.file1Update = null;
+      this.file2Update = null;
+      this.file3Update = null;
+      this.inputFileUpdate1.nativeElement.value="";
+      this.inputFileUpdate2.nativeElement.value="";
+      this.inputFileUpdate3.nativeElement.value="";
       console.log(this.travelExpenseDetailUpdate);
 
   }
@@ -246,8 +328,9 @@ onChangeFile(event:EventTarget,num:number){
         data => console.log(JSON.stringify(data)),
         error => console.log(error),
         () => {console.log("Add Detail Success"),
+                this.onClear(),
                 this.getTravelExpenseDetailsByTravelExpenseId()
-                this.onClear(); }
+                 }
       )
   }
 
@@ -266,14 +349,34 @@ onChangeFile(event:EventTarget,num:number){
                 ,expenseSubSummary:HTMLInputElement,comment:HTMLInputElement){
           console.log("dateUpdate:"+this.dateStringUpdate);
           console.log("cusUpdate:"+this.customerIdUpdate);
+          if(this.file1Update == null){
+            console.log("into null fileUpdate");
+            this.file1Update = this.file1History;
+            console.log(this.file1Update);
+          }
+
+          if(this.file2Update == null){
+            this.file2Update = this.file2History;
+            console.log(this.file2Update);
+          }
+
+          if(this.file3Update == null){
+            this.file3Update = this.file3History;
+            console.log(this.file3Update);
+          }
           
           if(this.customerIdUpdate != null){
             this.travelExpenseDetailUpdate.customer.id = this.customerIdUpdate;
           }
 
-          if(this.dateUpdate != null){
-            this.travelExpenseDetailUpdate.travelDate = this.dateUpdate.getTime();
+          if(this.dateStringUpdate == ""){
+            this.dateStringUpdate = this.dateString;
           }
+
+          this.filesUpdate.push(this.file1Update);
+          this.filesUpdate.push(this.file2Update);
+          this.filesUpdate.push(this.file3Update);
+          console.log(this.filesUpdate);
 
           this.travelExpenseDetailUpdate.travelFrom = travelFrom.value;
           this.travelExpenseDetailUpdate.travelTo = travelTo.value;
@@ -282,12 +385,16 @@ onChangeFile(event:EventTarget,num:number){
           this.travelExpenseDetailUpdate.expenseSubSummary = parseInt(expenseSubSummary.value);
           this.travelExpenseDetailUpdate.comment = comment.value;
 
-          this.travelExpenseDetailService.updateTravelExpenseDetail(this.travelExpenseDetailUpdate,this.travelExpenseId,
-                                                                    this.travelExpenseDetailUpdate.customer.id, this.travelExpenseDetailUpdate.travelDate)
+          this.travelExpenseDetailService.updateTravelExpenseDetail(this.travelExpenseDetailUpdate,this.travelExpenseId
+                                                                    ,this.filesUpdate,this.dateStringUpdate)
             .subscribe(
               data => console.log(JSON.stringify(data)),
               error => console.log(error),
               () => {console.log("Update Detail Success"),
+                      this.file1Update = null,
+                      this.file2Update = null,
+                      this.file3Update = null,
+                      this.filesUpdate = [],
                       this.getTravelExpenseDetailsByTravelExpenseId(),
                       this.customerIdUpdate = null }
             )
@@ -317,7 +424,7 @@ onChangeFile(event:EventTarget,num:number){
   getTravelExpenseDetailsByTravelExpenseId(){
     this.travelExpenseDetailService.getTravelExpenseDetailsByTravelExpenseId(this.travelExpenseId)
         .subscribe(
-          data => {this.travelExpenseDetails = data, alert(JSON.stringify(data))},
+          data => {this.travelExpenseDetails = data},
           error => console.log(error),
           () => {
             alert("Get TravelExpenseDetails Success");
@@ -355,5 +462,12 @@ onChangeFile(event:EventTarget,num:number){
    console.log("ExpWay  Result: "+this.expenseWayResult);
    console.log("ExpenseSummary : "+this.expenseSummary);
  }  
+
+
+
+ showPreview(filenumber:number){
+    console.log("travelExpenseDetailUpdate id : "+this.travelExpenseDetailUpdate.id);
+    this.travelExpenseDetailService.showPreview(this.travelExpenseDetailUpdate.id,filenumber)
+ }
 
 }

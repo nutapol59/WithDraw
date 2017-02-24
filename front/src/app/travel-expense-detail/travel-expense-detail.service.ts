@@ -30,6 +30,7 @@ export class TravelExpenseDetailService {
                          files:File[],dateString:string){
     console.log("travelDate : "+dateString);
     console.log("InService: "+travelExpenseId);
+    console.log("comment"+travelExpenseDetail.comment);
       let formData : FormData = new FormData();
       for(let i = 0 ; i < files.length ; i++){
         if(files[i] != null){
@@ -61,17 +62,39 @@ export class TravelExpenseDetailService {
   }
 
   updateTravelExpenseDetail(travelExpenseDetail:TravelExpenseDetail,travelExpenseId:number,
-                            customerId:number,travelExpenseDetailDate:number){
-    console.log("travelDate in Update : "+travelExpenseDetail.travelDate);
+                            files:File[],dateString:string){
+    // console.log("travelDate in Update : "+travelExpenseDetail.travelDate);
     console.log("InService: "+travelExpenseId);
-    console.log("customerId : "+customerId);
+     console.log("travelDate : "+dateString);
+    console.log("travelExpenseDetail.customer.id : "+travelExpenseDetail.customer.id);
+
+    let formData : FormData = new FormData();
+      for(let i = 0 ; i < files.length ; i++){
+        if(files[i] != null){
+          formData.append("file"+(i+1),files[i]);
+          formData.append("attachFile"+(i+1),files[i].name);
+        }else{
+          formData.append("file"+(i+1),null);
+          formData.append("attachFile"+(i+1),"");
+        }
+      }
+      console.log("attachFile1: "+files[0])
+      console.log("attachFile2: "+files[1])
+      console.log("attachFile3: "+files[2])
+      formData.append("id",travelExpenseDetail.id)
+      formData.append("customer",travelExpenseDetail.customer.id);
+      formData.append("travelFrom",travelExpenseDetail.travelFrom);
+      formData.append("travelTo",travelExpenseDetail.travelTo);
+      formData.append("expense",travelExpenseDetail.expense);
+      formData.append("expWayExpense",travelExpenseDetail.expWayExpense);
+      formData.append("expenseSubSummary",travelExpenseDetail.expenseSubSummary);
+      formData.append("travelDate",dateString);
+      formData.append("comment",travelExpenseDetail.comment);
+      formData.append("travelExpense",travelExpenseId);
+      console.log(formData);
       var headers = new Headers();
-      var json = JSON.stringify({travelExpenseDetail:travelExpenseDetail,travelExpenseId:travelExpenseId
-                                , customerId:customerId, date:travelExpenseDetailDate})
       headers.append("Content-Type","application/json");
-      return this._http.put(this.configModeServerService.ipServer+'/travelExpenseDetails/updateTravelExpenseDetail',json,{
-        headers : headers
-      })
+      return this._http.post(this.configModeServerService.ipServer+'/travelExpenseDetails/updateTravelExpenseDetail',formData,headers)
           .map(res => res.json())
           .catch((error:Response) => Observable.throw(error.text()))
   }
@@ -106,5 +129,9 @@ getTravelExpenseDetailsByTravelExpenseId(travelExpenseId:number){
       .map(res => res.json())
       .catch((error:Response) => Observable.throw(error.text()))
   }
+
+  showPreview(travelExpenseDetailId:number,filenumber:number){
+      window.open(this.configModeServerService.ipServer+'/travelExpenseDetails/showPreview?travelExpenseDetailId='+travelExpenseDetailId+'&filenumber='+filenumber,'_blank','height=500,width=500');
+   }
 
 }

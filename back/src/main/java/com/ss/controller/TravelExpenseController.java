@@ -198,7 +198,7 @@ public class TravelExpenseController {
             return new ResponseEntity<>(headers,HttpStatus.OK);
         }catch (Exception e){
             e.printStackTrace();
-            return new ResponseEntity<>(e.getMessage(),headers,HttpStatus.OK);
+            return new ResponseEntity<>(e.getMessage(),headers,HttpStatus.INTERNAL_SERVER_ERROR);
         }finally {
             IOUtils.closeQuietly(byteArrayInputStream);
             IOUtils.closeQuietly(outputStream);
