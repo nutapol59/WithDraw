@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TravelExpenseJasper_TableDetail" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5c63a94a-c1d0-409e-821e-87b27c0666c4">
-	<property name="ireport.zoom" value="1.210000000000001"/>
+	<property name="ireport.zoom" value="1.3310000000000015"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="table">
@@ -658,9 +658,21 @@
 		<field name="customer" class="com.ss.domain.Customer">
 			<fieldDescription><![CDATA[customer]]></fieldDescription>
 		</field>
-		<variable name="variable1" class="java.lang.String"/>
+		<variable name="variable1" class="java.math.BigDecimal" calculation="Sum">
+			<variableExpression><![CDATA[$F{expense}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
 	</subDataset>
 	<parameter name="travelExpenseDetails" class="java.util.Set"/>
+	<parameter name="expenseResult" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="expWayExpenseResult" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="expenseSummary" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -691,14 +703,19 @@
 	<field name="expense" class="java.math.BigDecimal">
 		<fieldDescription><![CDATA[expense]]></fieldDescription>
 	</field>
+	<variable name="sumExpense" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[$F{expense}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="variable1" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="53">
+		<band height="44">
 			<staticText>
-				<reportElement x="24" y="7" width="99" height="36" uuid="d9561ae4-1a98-4822-baf4-3c57019cfa47"/>
-				<textElement>
+				<reportElement x="0" y="7" width="99" height="37" uuid="d9561ae4-1a98-4822-baf4-3c57019cfa47"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="TH Sarabun New" size="20" isBold="true"/>
 				</textElement>
 				<text><![CDATA[กรณีไปหาลูกค้า]]></text>
@@ -708,30 +725,27 @@
 	<pageHeader>
 		<band splitType="Stretch"/>
 	</pageHeader>
-	<columnHeader>
-		<band/>
-	</columnHeader>
 	<detail>
-		<band height="53" splitType="Stretch">
+		<band height="54" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 30" style="table 30" x="0" y="0" width="572" height="53" uuid="b21fa6c7-a0b3-481d-b084-40591880f237"/>
+				<reportElement key="" mode="Transparent" x="0" y="0" width="572" height="53" uuid="b21fa6c7-a0b3-481d-b084-40591880f237"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="details" uuid="c7192e0e-35a6-45bc-bd4b-6dc25946f973">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{travelExpenseDetails})]]></dataSourceExpression>
 					</datasetRun>
 					<jr:column width="61" uuid="869a2b45-71cc-4be0-8d9c-05a35fbe4b96">
-						<jr:columnHeader style="table" height="64" rowSpan="2">
+						<jr:columnHeader style="table" height="45" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="0" width="61" height="64" uuid="59a8c6dd-4854-4b69-b6d8-2cd1de825f73"/>
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="61" height="45" isPrintWhenDetailOverflows="true" uuid="59a8c6dd-4854-4b69-b6d8-2cd1de825f73"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
 								<text><![CDATA[วันที่]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table" height="55" rowSpan="1">
-							<textField pattern="dd/MM/yyyy">
-								<reportElement x="0" y="0" width="61" height="54" uuid="16324a8f-525c-4add-9c68-3be0d2a6ca34"/>
+						<jr:detailCell style="table" height="25" rowSpan="1">
+							<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="61" height="25" isPrintWhenDetailOverflows="true" uuid="16324a8f-525c-4add-9c68-3be0d2a6ca34"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
@@ -740,18 +754,18 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="73" uuid="2e86b5ed-20f8-4fdb-839d-deb0d39a70c7">
-						<jr:columnHeader style="table" height="64" rowSpan="2">
+						<jr:columnHeader style="table" height="45" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="0" width="73" height="64" uuid="f97e378c-cd31-46ba-b366-071a6054c14c"/>
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="73" height="45" isPrintWhenDetailOverflows="true" uuid="f97e378c-cd31-46ba-b366-071a6054c14c"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
 								<text><![CDATA[ลูกค้า]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table" height="55" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="73" height="54" uuid="11ed13f4-9612-4273-ad45-4115ab142759"/>
+						<jr:detailCell style="table" height="25" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="73" height="25" isPrintWhenDetailOverflows="true" uuid="11ed13f4-9612-4273-ad45-4115ab142759"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
@@ -759,29 +773,29 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:columnGroup width="135" uuid="a8c54cab-0439-44a1-8eea-19f744383128">
-						<jr:columnHeader style="table" height="30" rowSpan="1">
+					<jr:columnGroup width="169" uuid="a8c54cab-0439-44a1-8eea-19f744383128">
+						<jr:columnHeader style="table" height="23" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="135" height="30" uuid="f4929f01-7d2d-4669-9ef1-cc3943165d0d"/>
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="169" height="23" isPrintWhenDetailOverflows="true" uuid="f4929f01-7d2d-4669-9ef1-cc3943165d0d"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
 								<text><![CDATA[เดินทาง]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:column width="68" uuid="0ec2544d-d839-448b-bfea-d9f1bfd97dc2">
-							<jr:columnHeader style="table" height="34" rowSpan="1">
+						<jr:column width="85" uuid="0ec2544d-d839-448b-bfea-d9f1bfd97dc2">
+							<jr:columnHeader style="table" height="22" rowSpan="1">
 								<staticText>
-									<reportElement x="0" y="0" width="68" height="34" uuid="eaad19a7-8c71-40e6-adfa-21bbdafb3034"/>
+									<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="85" height="22" isPrintWhenDetailOverflows="true" uuid="eaad19a7-8c71-40e6-adfa-21bbdafb3034"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 									</textElement>
 									<text><![CDATA[จาก]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="table" height="55" rowSpan="1">
-								<textField>
-									<reportElement x="0" y="0" width="68" height="54" uuid="13297292-5006-4a05-898b-2492062d34e5"/>
+							<jr:detailCell style="table" height="25" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="85" height="25" isPrintWhenDetailOverflows="true" uuid="13297292-5006-4a05-898b-2492062d34e5"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 									</textElement>
@@ -789,19 +803,19 @@
 								</textField>
 							</jr:detailCell>
 						</jr:column>
-						<jr:column width="67" uuid="e479a3c6-0f05-49f8-8664-c0731482cc39">
-							<jr:columnHeader style="table" height="34" rowSpan="1">
+						<jr:column width="84" uuid="e479a3c6-0f05-49f8-8664-c0731482cc39">
+							<jr:columnHeader style="table" height="22" rowSpan="1">
 								<staticText>
-									<reportElement x="0" y="0" width="67" height="34" uuid="3b74c6ee-4dd6-4011-99df-f2fde659c7cc"/>
+									<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="84" height="22" isPrintWhenDetailOverflows="true" uuid="3b74c6ee-4dd6-4011-99df-f2fde659c7cc"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 									</textElement>
 									<text><![CDATA[ถึง]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="table" height="55" rowSpan="1">
-								<textField>
-									<reportElement x="0" y="0" width="67" height="54" uuid="47160f5a-e05a-497e-945b-0b644ac3ffe3"/>
+							<jr:detailCell style="table" height="25" rowSpan="1">
+								<textField isStretchWithOverflow="true">
+									<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="84" height="25" isPrintWhenDetailOverflows="true" uuid="47160f5a-e05a-497e-945b-0b644ac3ffe3"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 									</textElement>
@@ -811,9 +825,9 @@
 						</jr:column>
 					</jr:columnGroup>
 					<jr:columnGroup width="113" uuid="4931ded5-a7e1-4aa7-9dd1-67821ec9d410">
-						<jr:columnHeader style="table" height="30" rowSpan="1">
+						<jr:columnHeader style="table" height="23" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="113" height="30" uuid="6b2db42c-4a73-42e0-bc25-10bb02db615f"/>
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="113" height="23" isPrintWhenDetailOverflows="true" uuid="6b2db42c-4a73-42e0-bc25-10bb02db615f"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
@@ -821,18 +835,38 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:column width="54" uuid="ad2d5736-3dda-48df-b223-4972e6873579">
-							<jr:columnHeader style="table" height="34" rowSpan="1">
+							<jr:columnHeader style="table" height="22" rowSpan="1">
 								<staticText>
-									<reportElement x="0" y="0" width="54" height="34" uuid="a21628a1-33e0-4d44-bb5f-500d6141bc86"/>
+									<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="54" height="22" isPrintWhenDetailOverflows="true" uuid="a21628a1-33e0-4d44-bb5f-500d6141bc86"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 									</textElement>
 									<text><![CDATA[ค่าเดินทาง]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="table" height="55" rowSpan="1">
-								<textField>
-									<reportElement x="0" y="0" width="54" height="54" uuid="50eef0a5-17a5-4dca-b67b-0e851a7c5c7c"/>
+							<jr:detailCell style="table" height="25" rowSpan="1">
+								<textField isStretchWithOverflow="true" pattern="###0.00">
+									<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="54" height="25" isPrintWhenDetailOverflows="true" uuid="f98a90c3-23a0-4e05-812e-594f455dab00"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{expense}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="59" uuid="32304183-9652-4116-886b-59769c91b9a0">
+							<jr:columnHeader style="table" height="22" rowSpan="1">
+								<staticText>
+									<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="59" height="22" isPrintWhenDetailOverflows="true" uuid="c85e55f6-a097-423c-bdfb-03413ee2f286"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									</textElement>
+									<text><![CDATA[ค่าทางด่วน]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table" height="25" rowSpan="1">
+								<textField isStretchWithOverflow="true" pattern="#,##0.00">
+									<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="59" height="25" isPrintWhenDetailOverflows="true" uuid="c3a2cf8c-a6c1-45ea-9f3a-a08fdee4a9fb"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 									</textElement>
@@ -840,40 +874,21 @@
 								</textField>
 							</jr:detailCell>
 						</jr:column>
-						<jr:column width="59" uuid="32304183-9652-4116-886b-59769c91b9a0">
-							<jr:columnHeader style="table" height="34" rowSpan="1">
-								<staticText>
-									<reportElement x="0" y="0" width="59" height="34" uuid="c85e55f6-a097-423c-bdfb-03413ee2f286"/>
-									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-									</textElement>
-									<text><![CDATA[ค่าทางด่วน]]></text>
-								</staticText>
-							</jr:columnHeader>
-							<jr:detailCell style="table" height="55" rowSpan="1">
-								<textField>
-									<reportElement x="0" y="0" width="59" height="54" uuid="c3a2cf8c-a6c1-45ea-9f3a-a08fdee4a9fb"/>
-									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
-									</textElement>
-									<textFieldExpression><![CDATA[$F{expenseSubSummary}]]></textFieldExpression>
-								</textField>
-							</jr:detailCell>
-						</jr:column>
 					</jr:columnGroup>
-					<jr:column width="55" uuid="34920abc-b05c-4324-933b-6be0ab5b6855">
-						<jr:columnHeader style="table" height="64" rowSpan="2">
+					<jr:column width="58" uuid="34920abc-b05c-4324-933b-6be0ab5b6855">
+						<jr:columnHeader style="table" height="45" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="0" width="55" height="64" uuid="8c61af2d-09c4-4661-ae08-66f24b387f23"/>
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="58" height="45" isPrintWhenDetailOverflows="true" uuid="8c61af2d-09c4-4661-ae08-66f24b387f23"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
-								<text><![CDATA[รวมทั้งสิ้น]]></text>
+								<text><![CDATA[รวมเป็นเงิน]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table" height="55" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="55" height="54" uuid="239466c9-dfb8-4f5a-8de4-2fbf3aa11f67"/>
+						<jr:columnFooter height="0" rowSpan="1"/>
+						<jr:detailCell style="table" height="25" rowSpan="1">
+							<textField isStretchWithOverflow="true" pattern="#,##0.00">
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="58" height="25" isPrintWhenDetailOverflows="true" uuid="239466c9-dfb8-4f5a-8de4-2fbf3aa11f67"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
@@ -881,21 +896,22 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="47c32271-b74a-4c4f-852c-b9c9d7ac8d59">
+					<jr:column width="81" uuid="47c32271-b74a-4c4f-852c-b9c9d7ac8d59">
 						<jr:tableHeader height="0" rowSpan="1"/>
 						<jr:tableFooter height="0" rowSpan="1"/>
-						<jr:columnHeader style="table" height="64" rowSpan="2">
+						<jr:columnHeader style="table" height="45" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="64" uuid="c7903b0e-5c76-4129-9471-bf44ad59bda8"/>
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="81" height="45" isPrintWhenDetailOverflows="true" uuid="c7903b0e-5c76-4129-9471-bf44ad59bda8"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
 								<text><![CDATA[หมายเหตุ]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table" height="55" rowSpan="1">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="54" uuid="b66d695d-5664-443a-af6c-4573481be8cc"/>
+						<jr:columnFooter height="0" rowSpan="1"/>
+						<jr:detailCell style="table" height="25" rowSpan="1">
+							<textField isStretchWithOverflow="true">
+								<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="0" width="81" height="25" isPrintWhenDetailOverflows="true" uuid="b66d695d-5664-443a-af6c-4573481be8cc"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="TH Sarabun New" size="16" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 								</textElement>
@@ -911,9 +927,42 @@
 		<band/>
 	</columnFooter>
 	<pageFooter>
-		<band splitType="Stretch"/>
+		<band/>
 	</pageFooter>
 	<summary>
-		<band splitType="Stretch"/>
+		<band height="24">
+			<staticText>
+				<reportElement style="table 23" mode="Opaque" x="0" y="-1" width="303" height="25" uuid="6a7cb448-2e16-4691-bed9-a325ba19365a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[รวมทั้งสิ้น]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement style="table 30" mode="Opaque" x="303" y="-1" width="54" height="25" uuid="84bcb189-055f-4c13-beba-bdd5f2a03268"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true" isUnderline="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{expenseResult}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement style="table 30" mode="Opaque" x="357" y="-1" width="59" height="25" uuid="5d06779c-7055-4c17-a0a5-ec8872f3233d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true" isUnderline="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{expWayExpenseResult}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement style="table 30" mode="Opaque" x="416" y="-1" width="58" height="25" uuid="1ff06060-1272-44d0-907f-faf317657250"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="TH Sarabun New" size="16" isBold="true" isUnderline="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{expenseSummary}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table 30" mode="Opaque" x="474" y="-1" width="81" height="25" uuid="74f1b727-c83b-4fc3-921b-6bb5a0e236ed"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
 	</summary>
 </jasperReport>

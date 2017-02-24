@@ -1,12 +1,10 @@
 package com.ss.service.seviceImpl;
 
 
-import com.ss.domain.AppUser;
-import com.ss.domain.ApproveMapFlow;
-import com.ss.domain.DocumentApprove;
-import com.ss.domain.TravelExpense;
+import com.ss.domain.*;
 import com.ss.repository.AppUserRepository;
 import com.ss.repository.ApproveMapFlowRepository;
+import com.ss.repository.TravelExpenseDetailRepository;
 import com.ss.repository.TravelExpenseRepository;
 import com.ss.service.TravelExpenseService;
 import com.ss.util.AbstractReportJasperPDF;
@@ -19,7 +17,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.io.ByteArrayOutputStream;
 import java.math.BigDecimal;
@@ -32,12 +29,14 @@ public class TravelExpenseServiceImpl  implements TravelExpenseService{
     private static final Logger log = LoggerFactory.getLogger(TravelExpenseServiceImpl.class);
 
     private TravelExpenseRepository travelExpenseRepository;
+    private TravelExpenseDetailRepository travelExpenseDetailRepository;
     private AppUserRepository appUserRepository;
     private ApproveMapFlowRepository approveMapFlowRepository;
 
     @Autowired
-    public TravelExpenseServiceImpl(TravelExpenseRepository travelExpenseRepository, AppUserRepository appUserRepository, ApproveMapFlowRepository approveMapFlowRepository) {
+    public TravelExpenseServiceImpl(TravelExpenseRepository travelExpenseRepository, TravelExpenseDetailRepository travelExpenseDetailRepository, AppUserRepository appUserRepository, ApproveMapFlowRepository approveMapFlowRepository) {
         this.travelExpenseRepository = travelExpenseRepository;
+        this.travelExpenseDetailRepository = travelExpenseDetailRepository;
         this.appUserRepository = appUserRepository;
         this.approveMapFlowRepository = approveMapFlowRepository;
     }
@@ -203,8 +202,19 @@ public class TravelExpenseServiceImpl  implements TravelExpenseService{
 //            JSONObject jsonObject = new JSONObject(json);
 //            TravelExpense travelExpense = this.travelExpenseRepository.findOne(jsonObject.getLong("travelExpenseId"));
             TravelExpense travelExpense = this.travelExpenseRepository.findOne(id);
+            log.info("approveMapFlow = {}",travelExpense.getApproveMapFlow().getApv1Emp().getEmpName());
+
+//          travelExpense.getTravelExpenseDetails().size();
+            BigDecimal expenseResult = this.travelExpenseDetailRepository.getExpenseByTravelExpense(travelExpense);
+            log.info("ExpenseResult  = {}",expenseResult);
+            BigDecimal expWayExpenseResult = this.travelExpenseDetailRepository.getExpWayExpenseByTravelExpense(travelExpense);
+            log.info("ExpWayExpense Result  = {}",expWayExpenseResult);
+
+
             List<JasperPrint> jasperPrints = new ArrayList<>();
             Map<String,Object> map = new HashMap<>();
+            map.put("expenseResult",expenseResult);
+            map.put("expWayExpenseResult",expWayExpenseResult);
             if(travelExpense != null){
                 //JasperPrint jasperPrint = AbstractReportJasperPDF.exportReport(jasperFileName, Arrays.asList(travelExpense), map);
                 JasperPrint jasperPrint = AbstractReportJasperPDF.exportReport(jasperFileName, Arrays.asList(travelExpense),map);

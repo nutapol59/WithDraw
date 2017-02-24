@@ -64,7 +64,7 @@ public class AppUser implements Serializable {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("\nAppuser{");
+        final StringBuffer sb = new StringBuffer("\nAppUser{");
         sb.append("id: ");sb.append(this.getId());sb.append(", ");
         sb.append("version: ");sb.append(this.getVersion());sb.append(", ");
         sb.append("empcode: ");sb.append(this.getEmpCode());sb.append(", ");

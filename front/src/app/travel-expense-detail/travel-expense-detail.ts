@@ -5,14 +5,14 @@ export class TravelExpenseDetail {
     version:number;
     travelDate:number;
     customer:Customer;
-    travelFrom:string;
-    travelTo:string;
+    travelFrom:string="";
+    travelTo:string="";
     expense:number;
     expWayExpense:number;
     expenseSubSummary:number;
-    comment:string;
-    attachFile1:string;
-    attachFile2:string;
-    attachFile3:string;
+    comment:string="";
+    attachFile1:string="";
+    attachFile2:string="";
+    attachFile3:string="";
     travelExpense:TravelExpense;
 }
