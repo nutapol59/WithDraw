@@ -15,7 +15,7 @@
               <input #password type="password" placeholder="password"  class="form-control"/>
             </div>
             <div class="col-sm-12">
-              <button style="width: 100%;" class="btn btn-warning" (click)="login(username,password)" type="submit" >login</button>
+              <button style="width: 100%;" class="btn btn-warning" (keyup.enter)="login(username,password)" (click)="login(username,password)" type="submit" >login</button>
             </div>
           </form>
         </div>

@@ -29,7 +29,7 @@ import java.util.Map;
 @Service
 public class TravelExpenseDetailServiceImpl implements TravelExpenseDetailService{
     private static final Logger log = LoggerFactory.getLogger(TravelExpenseDetailServiceImpl.class);
-    private static final String path = "/home/nbkf/Working/TempWithDrawFile/";
+    private static final String pathUpload = "/home/nbkf/Working/TempWithDrawFile/";
 
     private TravelExpenseDetailRepository travelExpenseDetailRepository;
     private TravelExpenseRepository travelExpenseRepository;
@@ -72,21 +72,21 @@ public class TravelExpenseDetailServiceImpl implements TravelExpenseDetailServic
             if(!formdata.getAttachFile1().equalsIgnoreCase("")){
                 MultipartFile multipartFile1 = multipartHttpServletRequest.getFile("file1"); //getFile
                 byte[] bytesFile1 = multipartFile1.getBytes(); //get byte file
-                FileCopyUtils.copy(bytesFile1, new FileOutputStream(path+ formdata.getAttachFile1()));
+                FileCopyUtils.copy(bytesFile1, new FileOutputStream(pathUpload+ formdata.getAttachFile1()));
             }
 
 
             if(!formdata.getAttachFile2().equalsIgnoreCase("")) {
                 MultipartFile multipartFile2 = multipartHttpServletRequest.getFile("file2");
                 byte[] bytesFile2 = multipartFile2.getBytes(); //get byte file
-                FileCopyUtils.copy(bytesFile2, new FileOutputStream(path + formdata.getAttachFile2()));
+                FileCopyUtils.copy(bytesFile2, new FileOutputStream(pathUpload + formdata.getAttachFile2()));
             }
 
 
             if(!formdata.getAttachFile3().equalsIgnoreCase("")) {
                 MultipartFile multipartFile3 = multipartHttpServletRequest.getFile("file3");
                 byte[] bytesFile3 = multipartFile3.getBytes(); //get byte file
-                FileCopyUtils.copy(bytesFile3, new FileOutputStream(path + formdata.getAttachFile3()));
+                FileCopyUtils.copy(bytesFile3, new FileOutputStream(pathUpload + formdata.getAttachFile3()));
                 //save file to path
             }
 
@@ -141,21 +141,21 @@ public class TravelExpenseDetailServiceImpl implements TravelExpenseDetailServic
             if(!formdata.getAttachFile1().equalsIgnoreCase("")){
                 MultipartFile multipartFile1 = multipartHttpServletRequest.getFile("file1"); //getFile
                 byte[] bytesFile1 = multipartFile1.getBytes(); //get byte file
-                FileCopyUtils.copy(bytesFile1, new FileOutputStream(path+ formdata.getAttachFile1()));
+                FileCopyUtils.copy(bytesFile1, new FileOutputStream(pathUpload+ formdata.getAttachFile1()));
             }
 
 
             if(!formdata.getAttachFile2().equalsIgnoreCase("")) {
                 MultipartFile multipartFile2 = multipartHttpServletRequest.getFile("file2");
                 byte[] bytesFile2 = multipartFile2.getBytes(); //get byte file
-                FileCopyUtils.copy(bytesFile2, new FileOutputStream(path + formdata.getAttachFile2()));
+                FileCopyUtils.copy(bytesFile2, new FileOutputStream(pathUpload + formdata.getAttachFile2()));
             }
 
 
             if(!formdata.getAttachFile3().equalsIgnoreCase("")) {
                 MultipartFile multipartFile3 = multipartHttpServletRequest.getFile("file3");
                 byte[] bytesFile3 = multipartFile3.getBytes(); //get byte file
-                FileCopyUtils.copy(bytesFile3, new FileOutputStream(path + formdata.getAttachFile3()));
+                FileCopyUtils.copy(bytesFile3, new FileOutputStream(pathUpload + formdata.getAttachFile3()));
                 //save file to path
             }
             log.info("customer Id Update = {}",formdata.getCustomer().getId());
@@ -216,7 +216,7 @@ public class TravelExpenseDetailServiceImpl implements TravelExpenseDetailServic
             }else if(filenumber == 3){
                 name = travelExpenseDetail.getAttachFile3();
             }
-            inputStream = new FileInputStream(new File(path+name));
+            inputStream = new FileInputStream(new File(pathUpload+name));
 
         }catch (Exception e){
             e.printStackTrace();
